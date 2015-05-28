@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Lectura y escritura de ficheros con Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Lectura y escritura de ficheros con Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Lectura y escritura de ficheros con Java</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#ficheros-en-java"><span class="toc-section-number">1</span> Ficheros en Java</a></li>
+<li><a href="#uso-de-la-clase-file"><span class="toc-section-number">2</span> Uso de la clase File</a></li>
+<li><a href="#métodos-de-file"><span class="toc-section-number">3</span> Métodos de File</a></li>
+<li><a href="#ejemplo-lectura-fichero"><span class="toc-section-number">4</span> Ejemplo lectura fichero</a></li>
+<li><a href="#ejemplo-escritura-fichero"><span class="toc-section-number">5</span> Ejemplo escritura fichero</a></li>
+<li><a href="#xml-en-java"><span class="toc-section-number">6</span> XML en Java</a></li>
+<li><a href="#ejemplo-xstream-pojo"><span class="toc-section-number">7</span> Ejemplo XStream: POJO</a></li>
+<li><a href="#ejemplo-xstream-xml"><span class="toc-section-number">8</span> Ejemplo XStream: XML</a></li>
+<li><a href="#ejemplo-xstream-conversión"><span class="toc-section-number">9</span> Ejemplo XStream: Conversión</a></li>
+</ul>
+</nav>
+<h1 id="ficheros-en-java"><span class="header-section-number">1</span> Ficheros en Java</h1>
+<p>Java es multiplataforma, e intenta aislarse del sistema de ficheros, aunque no consigue evitarlo del todo.</p>
+<p>Utiliza el clase <strong>File</strong> del paquete java.io:</p>
+<ul>
+<li><p>Está pensada para realizar operaciones de <strong>información</strong> sobre archivos.</p></li>
+<li><p>No proporciona métodos de acceso a los archivos.</p></li>
+<li>Sólo proporciona operaciones a nivel de sistema de archivos:
+<ul>
+<li>listado de archivos,</li>
+<li>crear carpetas,</li>
+<li>borrar ficheros,</li>
+<li>cambiar nombre,</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+<h1 id="uso-de-la-clase-file"><span class="header-section-number">2</span> Uso de la clase File</h1>
+<p>Utiliza como único argumento una cadena que representa una <strong>ruta</strong> (ya sea absoluta o relativa) en el sistema de archivos. El problema es que a veces se utiliza / otras \ etc.</p>
+<p>La clase File tiene variables estáticas que nos facilitan la tarea:</p>
+<ul>
+<li><strong>separator</strong>: El carácter separador de nombres de archivo y carpetas.
+<ul>
+<li>/ para Linux</li>
+<li>\ para Windows (que debe escribirse \\).</li>
+</ul></li>
+<li><strong>pathSeparator</strong>: El carácter separador de rutas de archivo que permite poner más de un archivo en una ruta.
+<ul>
+<li>: para Linux</li>
+<li>; para Windows.</li>
+</ul></li>
+</ul>
+<h1 id="métodos-de-file"><span class="header-section-number">3</span> Métodos de File</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 35%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong> </strong> <strong> </strong> <strong> </strong> **</td>
+<td style="text-align: left;">boolean isDirectory()<strong> boolean isFile()</strong> boolean exists()<strong> boolean canRead()</strong> boolean canWrite()<strong> boolean isHidden()</strong> boolean isAbsolute()**</td>
+<td style="text-align: left;">Devuelve true si es una carpeta Devuelve true si es un archivo Devuelve true si existe la carpeta o archivo Devuelve true si se puede leer Devuelve true si se puede escribir Devuelve true si es oculto Devuelve true si la ruta es absoluta</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 35%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong> </strong> <strong> </strong> <strong> </strong> **</td>
+<td style="text-align: left;">String getAbsolutePath()<strong> File getAbsoluteFile()</strong> String getName()<strong> String getParent()</strong> File getParentFile()<strong> boolean setReadOnly()</strong> boolean delete()**</td>
+<td style="text-align: left;">Devuelve una cadena con la ruta absoluta Devuelve un objeto File con la ruta absoluta Devuelve una cadena con el nombre de la carpeta o archivo Devuelve el nombre de la carpeta superior o null si no tiene Devuelve un objeto File la carpeta superior o null si no tiene Activa el atributo de sólo lectura Devuelve true si borra la carpeta o archivo</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 35%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong> </strong> <strong> </strong> **</td>
+<td style="text-align: left;">boolean mkdir()<strong> boolean mkdirs()</strong> String[] list()<strong> File[] listfiles()</strong> static File[] listRoots()**</td>
+<td style="text-align: left;">Devuelve true si consigue crear una carpeta Devuelve true si consigue crear una carpeta y si hace falta toda la estructura Devuelve un array con los nombres de los ficheros Devuelve un array de objetos File con los ficheros del directorio Devuelve un array de objetos File con los ficheros de la carpeta raíz</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 35%" />
+<col style="width: 62%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong> </strong> **</td>
+<td style="text-align: left;">boolean renameTo(File f2)<strong> long length()</strong> boolean createNewFile()**</td>
+<td style="text-align: left;">Devuelve true si consigue cambiar el nombre por el de f2 Devuelve el tamaño del archivo en bytes Devuelve true si consigue crear el archivo, false si ya estaba creado, y IOEXception si falla Borra el archivo cuando finaliza la ejecución del programa</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ejemplo-lectura-fichero"><span class="header-section-number">4</span> Ejemplo lectura fichero</h1>
+<pre><code>BufferedReader fichero = null;
+StringBuilder texto = null;
+try{
+    fichero = new BufferedReader(new FileReader(&quot;texto.txt&quot;));
+    String linea = fichero.readLine();
+    while (linea != null) {
+        texto.append(linea);
+        linea = fichero.readLine();
+    }
+} catch(Exception e){
+    System.out.println(&quot;Error&quot;+e.toString());
+} finally {
+    try {
+        if (fichero != null) fichero.close();
+    } catch(Exception e){
+        System.out.println(&quot;Error&quot;+e.toString());
+    }
+}
+// salida por pantalla
+System.out.println(texto);</code></pre>
+<h1 id="ejemplo-escritura-fichero"><span class="header-section-number">5</span> Ejemplo escritura fichero</h1>
+<pre><code>PrintWriter fichero = null;
+try
+{
+    // si append == true  escribe al final del fichero
+    // si append == false sobrescribe el fichero
+    boolean append = false;
+    fichero = new PrintWriter(new FileWriter(&quot;texto.txt&quot;, append));
+    for (int i = 0; i &lt; 10; i++) {
+        fichero.println(&quot;Linea &quot; + i);
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+   try {
+     if (null != fichero) fichero.close();
+   } catch (Exception e) {
+      e.printStackTrace();
+   }
+}</code></pre>
+<h1 id="xml-en-java"><span class="header-section-number">6</span> XML en Java</h1>
+<p>Existen numerosas librerías para procesar XML en Java.</p>
+<p><strong>XStream</strong> nos permite parsear <strong>POJO</strong> (Plain Old Java Objects) a XML y viceversa.</p>
+<p>Caracteristicas de XStream:</p>
+<ul>
+<li><p><strong>Fácil de usar</strong>.</p></li>
+<li><p><strong>No requiere mapeos</strong>.</p></li>
+<li><p><strong>Alto rendimiento</strong>.</p></li>
+<li><p><strong>XML Limpio</strong>.</p></li>
+<li><p><strong>No requiere modificar los objetos</strong>.</p></li>
+<li><p><strong>Soporte completo para objetos complejos</strong>.</p></li>
+<li><p><strong>Integración con otras API de XML</strong>.</p></li>
+<li><p><strong>Estrategias de conversión personalizables</strong>.</p></li>
+<li><p><strong>Mensajes de error detallados</strong>.</p></li>
+<li><p><strong>Permite otros formatos de salida como JSON</strong>.</p></li>
+</ul>
+<h1 id="ejemplo-xstream-pojo"><span class="header-section-number">7</span> Ejemplo XStream: POJO</h1>
+<pre><code>public class PhoneNumber {
+  private int code;
+  private String number;
+  // ... constructores y métodos
+}
+public class Person {
+  private String firstname;
+  private String lastname;
+  private PhoneNumber phone;
+  private PhoneNumber fax;
+  // ... constructores y métodos
+}</code></pre>
+<h1 id="ejemplo-xstream-xml"><span class="header-section-number">8</span> Ejemplo XStream: XML</h1>
+<pre><code>&lt;person&gt;
+    &lt;firstname&gt;Joe&lt;/firstname&gt;
+    &lt;lastname&gt;Walnes&lt;/lastname&gt;
+    &lt;phone&gt;
+      &lt;code&gt;123&lt;/code&gt;
+      &lt;number&gt;1234-456&lt;/number&gt;
+    &lt;/phone&gt;
+    &lt;fax&gt;
+      &lt;code&gt;123&lt;/code&gt;
+      &lt;number&gt;9999-999&lt;/number&gt;
+    &lt;/fax&gt;
+&lt;/person&gt;</code></pre>
+<h1 id="ejemplo-xstream-conversión"><span class="header-section-number">9</span> Ejemplo XStream: Conversión</h1>
+<p>POJO to XML</p>
+<pre><code>XStream xstream = new XStream();
+xstream.alias(&quot;person&quot;, Person.class);
+Person joe = new Person(&quot;Joe&quot;, &quot;Walnes&quot;);
+joe.setPhone(new PhoneNumber(123, &quot;1234-456&quot;));
+joe.setFax(new PhoneNumber(123, &quot;9999-999&quot;));
+String xml = xstream.toXML(joe);</code></pre>
+<p>XML to POJO</p>
+<pre><code>Person newJoe = (Person) xstream.fromXML(xml);</code></pre>
+</body>
+</html>

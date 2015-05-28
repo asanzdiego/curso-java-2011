@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="./JPADAOFactory.html" title="curso.java.app.miniclase.dao.jpa.JPADAOFactory" alt="" coords="652,221,911,357"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/ProfesorDAO.html" title="curso.java.app.miniclase.dao.ProfesorDAO" alt="" coords="16,424,283,512"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/AlumnoDAO.html" title="curso.java.app.miniclase.dao.AlumnoDAO" alt="" coords="328,416,589,520"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/CalificacionDAO.html" title="curso.java.app.miniclase.dao.CalificacionDAO" alt="" coords="635,424,928,512"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/ModuloDAO.html" title="curso.java.app.miniclase.dao.ModuloDAO" alt="" coords="973,416,1248,520"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/ClaseDAO.html" title="curso.java.app.miniclase.dao.ClaseDAO" alt="" coords="1293,416,1475,520"/>
+<area shape="rect" href="http://java.sun.com/j2se/1.4.2/docs/api/curso/java/app/miniclase/dao/DAOFactory.html" title="curso.java.app.miniclase.dao.DAOFactory" alt="" coords="652,11,911,163"/>
+</map>

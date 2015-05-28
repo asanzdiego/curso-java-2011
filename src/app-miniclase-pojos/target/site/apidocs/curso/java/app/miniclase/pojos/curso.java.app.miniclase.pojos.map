@@ -1,0 +1,9 @@
+<map id="G" name="G">
+<area shape="rect" href="./Calificacion.html" title="curso.java.app.miniclase.pojos.Calificacion" alt="" coords="400,11,587,155"/>
+<area shape="rect" href="./Alumno.html" title="curso.java.app.miniclase.pojos.Alumno" alt="" coords="227,249,445,329"/>
+<area shape="rect" href="./Evaluacion.html" title="curso.java.app.miniclase.pojos.Evaluacion" alt="" coords="541,213,672,365"/>
+<area shape="rect" href="./Modulo.html" title="curso.java.app.miniclase.pojos.Modulo" alt="" coords="384,440,501,504"/>
+<area shape="rect" href="./Clase.html" title="curso.java.app.miniclase.pojos.Clase" alt="" coords="105,424,289,520"/>
+<area shape="rect" href="./Persona.html" title="curso.java.app.miniclase.pojos.Persona" alt="" coords="133,43,259,123"/>
+<area shape="rect" href="./Profesor.html" title="curso.java.app.miniclase.pojos.Profesor" alt="" coords="16,249,181,329"/>
+</map>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Estructuras de datos en Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Estructuras de datos en Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Estructuras de datos en Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="introducción" class="slide level1">
+<h2><span class="header-section-number">1</span> Introducción</h2>
+<ul>
+<li>En Java existen las <strong>matrices</strong>.</li>
+<li><strong>Pero</strong> existen todo un conjunto de clases que nos facilitan el trabajo:
+<ul>
+<li>Hasta la versión 1.1:
+<ul>
+<li>Existían las clases <strong>Vector, Stack y Hashtable</strong>
+<ul>
+<li>todos sus métodos están <strong>sincronizados</strong> -&gt; implica rendimiento muchísimo menor</li>
+<li>ahora para sincronizar -&gt; utilizar <strong>Collections.sincronizedX()</strong></li>
+</ul></li>
+</ul></li>
+<li>Desde la versión 1.2:
+<ul>
+<li><strong>Iterator</strong> -&gt; para iterar</li>
+<li><strong>Collection</strong> -&gt; contenedores de objetos
+<ul>
+<li><strong>List</strong> -&gt; prima orden, se permiten duplicados</li>
+<li><strong>Set</strong> -&gt; no permiten duplicados (sobreescribir <strong>equals() y hashCode()</strong>)</li>
+</ul></li>
+<li><strong>Map</strong> -&gt; asociaciones clave/valor</li>
+</ul></li>
+<li>A parir de la versión 5.0:
+<ul>
+<li><strong>Genéricos</strong> (parametrización)</li>
+<li><strong>for-each</strong> (Interfaz <strong>Iterable</strong>)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="diagrama-de-clases" class="slide level1">
+<h2><span class="header-section-number">2</span> Diagrama de clases</h2>
+<figure>
+<img src="../img/java-collections.png" />
+</figure>
+</section>
+<section id="interfaz-iterator" class="slide level1">
+<h2><span class="header-section-number">3</span> Interfaz Iterator</h2>
+<ul>
+<li>Sirve para <strong>iterar</strong>.</li>
+<li>Todas las Collection tienen un <strong>método .iterator()</strong> que devuelve un Iterator.</li>
+<li>Funcionamiento:</li>
+</ul>
+<pre><code>Iterator i = nombreVariableContenedor.iterator();
+while (i.hasNext()) {
+    Object o = i.next();
+    ...
+}</code></pre>
+</section>
+<section id="interfaz-iterable" class="slide level1">
+<h2><span class="header-section-number">4</span> Interfaz Iterable</h2>
+<ul>
+<li>Desde la versión 5.0 todas los contenedores implementan la <strong>interfaz Iterable</strong>.</li>
+<li>Nos sirve para iterar con el <strong>for-each</strong>.</li>
+<li>Funcionamiento:</li>
+</ul>
+<pre><code>for (Object objetoIterado: nombreContenedorIterable) {
+    ...
+}</code></pre>
+</section>
+<section id="interfaz-collection" class="slide level1">
+<h2><span class="header-section-number">5</span> Interfaz Collection</h2>
+<ul>
+<li>Define un <strong>contenedor de objetos</strong>, pero no comprueba que objetos introducimos.</li>
+<li>Es la interfaz de la que heredan todas las demás.</li>
+<li>Ejemplo:</li>
+</ul>
+<pre><code>Collection coleccionDeObjetos = new ArrayList();</code></pre>
+<ul>
+<li>A partir de Java 5.0, con la llegada de los <strong>genéricos</strong>, podemos parametrizar los tipos de objetos.</li>
+<li>Ejemplo:</li>
+</ul>
+<pre><code>Collection&lt;String&gt; coleccionDeCadenas = new ArrayList&lt;String&gt;();</code></pre>
+</section>
+<section id="interfaz-list" class="slide level1">
+<h2><span class="header-section-number">6</span> Interfaz List</h2>
+<ul>
+<li><strong>Permite duplicados</strong>.</li>
+<li>Los elementos <strong>se ordenan secuencialmente</strong>.</li>
+<li>Para ordenar no secuencialmente -&gt; utilizar Collections.sort()</li>
+<li>Sus 2 implementaciones más importantes:
+<ul>
+<li><strong>LinkedList</strong>:
+<ul>
+<li>Lista doblemente enlazada, optimizado para crear pilas.</li>
+<li>Inserción y borrado por indice rápida.</li>
+<li>Iterador menos rápido.</li>
+</ul></li>
+<li><strong>ArrayList</strong>:
+<ul>
+<li>Inserción secuencial y búqueda por índice rápida.</li>
+<li>Iterator rápido.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="interfaz-set" class="slide level1">
+<h2><span class="header-section-number">7</span> Interfaz Set</h2>
+<ul>
+<li><strong>NO permite duplicados</strong></li>
+<li>Si modificamos el estado de un elemento, su comportamiento es impredecible, por lo que se recomienda utilizar <strong>objetos inmutables</strong> (no cambian su estado)</li>
+<li>Los objetos deberían sobrescribir los métodos <strong>hasCode() y equals()</strong>
+<ul>
+<li>Su implementación más importante es <strong>HashSet</strong></li>
+<li>Hereda de ella la Interfaz <strong>SortedSet</strong>:
+<ul>
+<li>Los elementos están <strong>ordenados</strong>, por ello:
+<ul>
+<li>hay que utilizar un <strong>Comparator</strong>.</li>
+<li>o que los objetos implementen la interfaz <strong>Comparable</strong>.</li>
+</ul></li>
+<li>Su implementación más importante es <strong>TreeSet</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="interfaz-map" class="slide level1">
+<h2><span class="header-section-number">8</span> Interfaz Map</h2>
+<ul>
+<li>Define un contenedor de <strong>asociaciones clave/valor</strong>.</li>
+<li><strong>NO permite claves duplicados</strong></li>
+<li>Si modificamos el estado de una clave, su comportamiento es impredecible, por lo que se recomienda utilizar <strong>objetos inmutables</strong> (no cambian su estado) para las claves.</li>
+<li>Los claves deberían sobrescribir los métodos <strong>hasCode() y equals()</strong>
+<ul>
+<li>Su implementación más importante es <strong>HashMap</strong></li>
+<li>Hereda de ella la Interfaz <strong>SortedMap</strong>:
+<ul>
+<li>Las claves están <strong>ordenadas</strong>, por ello:
+<ul>
+<li>hay que utilizar un <strong>Comparator</strong>.</li>
+<li>o que las claves implementen la interfaz <strong>Comparable</strong>.</li>
+</ul></li>
+<li>Su implementación más importante es <strong>TreeMap</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="comparable-y-compararator" class="slide level1">
+<h2><span class="header-section-number">9</span> Comparable y Compararator</h2>
+<ul>
+<li>Los objetos que implementen <strong>Comparable</strong> tienen que implementar el método:
+<ul>
+<li>int compareTo(Object o)</li>
+</ul></li>
+<li>Los objetos que implementen <strong>Compararator</strong> tienen que implementar el método:
+<ul>
+<li>int compare(Object o1, Object o2)</li>
+<li>boolean equals(Object o)</li>
+</ul></li>
+<li>Los métodos <strong>compareTo()</strong> y <strong>compare()</strong> devuelven:
+<ul>
+<li>un int &lt;0 si menor</li>
+<li>un int =0 si igual</li>
+<li>un int &gt;0 si mayor</li>
+</ul></li>
+<li>Los métodos <strong>compareTo()</strong> y <strong>compare()</strong> deberían de ser consistentes con el método <strong>equals()</strong></li>
+</ul>
+</section>
+<section id="boolean-equalsobject-o" class="slide level1">
+<h2><span class="header-section-number">10</span> boolean equals(Object o)</h2>
+<ul>
+<li>Cuando sobreescribimos la función <strong>equals()</strong> tenemos que tener en cuenta que:
+<ul>
+<li>a.equals(a) == true</li>
+<li>a.equals(b) == b.equals(a)</li>
+<li>a.equals(b) == b.equals(c) == true -&gt; implica a.equals(c) == true</li>
+<li>a == b -&gt; implica a.equals(b) == true</li>
+<li>b == null -&gt; implica a.equals(b) == false</li>
+</ul></li>
+</ul>
+</section>
+<section id="int-hashcode" class="slide level1">
+<h2><span class="header-section-number">11</span> int hashCode()</h2>
+<ul>
+<li>Se utiliza como <strong>índice</strong>.</li>
+<li>Sobrescribir el método equals() -&gt; implica sobrescribir el método hashCode()
+<ul>
+<li>a.equals(b) == true -&gt; implica a.hashCode() == b.hashCode()</li>
+<li>pero a.hashCode() == b.hashCode() -&gt; NO implica a.equals(b) == true</li>
+</ul></li>
+<li>Su cálculo ha de ser rápido.</li>
+<li>Los valores devueltos deben de ser uniformemente distribuidos.</li>
+</ul>
+</section>
+<section id="otras-características" class="slide level1">
+<h2><span class="header-section-number">12</span> Otras características</h2>
+<ul>
+<li>Los objetos de tipo Collection o Map son contenedores, que a diferencia de las matrices, incrementan su capacidad cuando lo necesitan.</li>
+<li><strong>loadFactor</strong> = size / capacity</li>
+<li>Si size &gt; loadFactor
+<ul>
+<li>-&gt; se incrementa la capacidad</li>
+<li>-&gt; se crea una nueva estructura de datos</li>
+<li>-&gt; se copia los elementos de una a otra</li>
+</ul></li>
+<li>Para evitar ampliaciones sucesivas <strong>initialCapacity</strong> debería ser lo más cercano al tamaño esperado.</li>
+<li>Las clases <strong>Collections</strong> y <strong>Arrays</strong> son clases de utilidades.</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

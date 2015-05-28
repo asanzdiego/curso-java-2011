@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Estructuras de datos en Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Estructuras de datos en Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Estructuras de datos en Java</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a></li>
+<li><a href="#diagrama-de-clases"><span class="toc-section-number">2</span> Diagrama de clases</a></li>
+<li><a href="#interfaz-iterator"><span class="toc-section-number">3</span> Interfaz Iterator</a></li>
+<li><a href="#interfaz-iterable"><span class="toc-section-number">4</span> Interfaz Iterable</a></li>
+<li><a href="#interfaz-collection"><span class="toc-section-number">5</span> Interfaz Collection</a></li>
+<li><a href="#interfaz-list"><span class="toc-section-number">6</span> Interfaz List</a></li>
+<li><a href="#interfaz-set"><span class="toc-section-number">7</span> Interfaz Set</a></li>
+<li><a href="#interfaz-map"><span class="toc-section-number">8</span> Interfaz Map</a></li>
+<li><a href="#comparable-y-compararator"><span class="toc-section-number">9</span> Comparable y Compararator</a></li>
+<li><a href="#boolean-equalsobject-o"><span class="toc-section-number">10</span> boolean equals(Object o)</a></li>
+<li><a href="#int-hashcode"><span class="toc-section-number">11</span> int hashCode()</a></li>
+<li><a href="#otras-características"><span class="toc-section-number">12</span> Otras características</a></li>
+</ul>
+</nav>
+<h1 id="introducción"><span class="header-section-number">1</span> Introducción</h1>
+<p>En Java existen las <strong>matrices</strong>.</p>
+<p><strong>Pero</strong> existen todo un conjunto de clases que nos facilitan el trabajo:</p>
+<ul>
+<li>Hasta la versión 1.1:
+<ul>
+<li>Existían las clases <strong>Vector, Stack y Hashtable</strong>
+<ul>
+<li>todos sus métodos están <strong>sincronizados</strong> -&gt; implica rendimiento muchísimo menor</li>
+<li>ahora para sincronizar -&gt; utilizar <strong>Collections.sincronizedX()</strong></li>
+</ul></li>
+</ul></li>
+<li>Desde la versión 1.2:
+<ul>
+<li><strong>Iterator</strong> -&gt; para iterar</li>
+<li><strong>Collection</strong> -&gt; contenedores de objetos
+<ul>
+<li><strong>List</strong> -&gt; prima orden, se permiten duplicados</li>
+<li><strong>Set</strong> -&gt; no permiten duplicados (sobreescribir <strong>equals() y hashCode()</strong>)</li>
+</ul></li>
+<li><strong>Map</strong> -&gt; asociaciones clave/valor</li>
+</ul></li>
+<li>A parir de la versión 5.0:
+<ul>
+<li><strong>Genéricos</strong> (parametrización)</li>
+</ul></li>
+</ul>
+<h1 id="diagrama-de-clases"><span class="header-section-number">2</span> Diagrama de clases</h1>
+<div style="text-align:center">
+<img src="../img/java-collections.png" />
+</div>
+<h1 id="interfaz-iterator"><span class="header-section-number">3</span> Interfaz Iterator</h1>
+<p>Sirve para <strong>iterar</strong>.</p>
+<p>Todas las Collection tienen un <strong>método .iterator()</strong> que devuelve un Iterator.</p>
+<p>Funcionamiento:</p>
+<pre><code>Iterator i = nombreVariableContenedor.iterator();
+while (i.hasNext()) {
+    Object o = i.next();
+    ...
+}</code></pre>
+<h1 id="interfaz-iterable"><span class="header-section-number">4</span> Interfaz Iterable</h1>
+<p>Desde la versión 5.0 todas los contenedores implementan la <strong>interfaz Iterable</strong>.</p>
+<p>Nos sirve para iterar con el <strong>for-each</strong>.</p>
+<p>Funcionamiento:</p>
+<pre><code>for (Object objetoIterado: nombreContenedorIterable) {
+    ...
+}</code></pre>
+<h1 id="interfaz-collection"><span class="header-section-number">5</span> Interfaz Collection</h1>
+<p>Define un <strong>contenedor de objetos</strong>, pero no comprueba que objetos introducimos.</p>
+<p>Es la interfaz de la que heredan todas las demás.</p>
+<p>Ejemplo:</p>
+<pre><code>Collection coleccionDeObjetos = new ArrayList();</code></pre>
+<p>A partir de Java 5.0, con la llegada de los <strong>genéricos</strong>, podemos parametrizar los tipos de objetos.</p>
+<p>Ejemplo:</p>
+<pre><code>Collection&lt;String&gt; coleccionDeCadenas = new ArrayList&lt;String&gt;();</code></pre>
+<h1 id="interfaz-list"><span class="header-section-number">6</span> Interfaz List</h1>
+<p><strong>Permite duplicados</strong>.</p>
+<p>Los elementos <strong>se ordenan secuencialmente</strong>.</p>
+<p>Para ordenar no secuencialmente -&gt; utilizar Collections.sort()</p>
+<p>Sus 2 implementaciones más importantes:</p>
+<ul>
+<li><strong>LinkedList</strong>:
+<ul>
+<li>Lista doblemente enlazada, optimizado para crear pilas.</li>
+<li>Inserción y borrado por indice rápida.</li>
+<li>Iterador menos rápido.</li>
+</ul></li>
+<li><strong>ArrayList</strong>:
+<ul>
+<li>Inserción secuencial y búqueda por índice rápida.</li>
+<li>Iterator rápido.</li>
+</ul></li>
+</ul>
+<h1 id="interfaz-set"><span class="header-section-number">7</span> Interfaz Set</h1>
+<p><strong>NO permite duplicados</strong></p>
+<p>Si modificamos el estado de un elemento, su comportamiento es impredecible, por lo que se recomienda utilizar <strong>objetos inmutables</strong> (no cambian su estado)</p>
+<p>Los objetos deberían sobrescribir los métodos <strong>hasCode() y equals()</strong></p>
+<ul>
+<li><p>Su implementación más importante es <strong>HashSet</strong></p></li>
+<li>Hereda de ella la Interfaz <strong>SortedSet</strong>:
+<ul>
+<li>Los elementos están <strong>ordenados</strong>, por ello:
+<ul>
+<li>hay que utilizar un <strong>Comparator</strong>.</li>
+<li>o que los objetos implementen la interfaz <strong>Comparable</strong>.</li>
+</ul></li>
+<li>Su implementación más importante es <strong>TreeSet</strong></li>
+</ul></li>
+</ul>
+<h1 id="interfaz-map"><span class="header-section-number">8</span> Interfaz Map</h1>
+<p>Define un contenedor de <strong>asociaciones clave/valor</strong>.</p>
+<p><strong>NO permite claves duplicados</strong></p>
+<p>Si modificamos el estado de una clave, su comportamiento es impredecible, por lo que se recomienda utilizar <strong>objetos inmutables</strong> (no cambian su estado) para las claves.</p>
+<p>Los claves deberían sobrescribir los métodos <strong>hasCode() y equals()</strong></p>
+<ul>
+<li><p>Su implementación más importante es <strong>HashMap</strong></p></li>
+<li>Hereda de ella la Interfaz <strong>SortedMap</strong>:
+<ul>
+<li>Las claves están <strong>ordenadas</strong>, por ello:
+<ul>
+<li>hay que utilizar un <strong>Comparator</strong>.</li>
+<li>o que las claves implementen la interfaz <strong>Comparable</strong>.</li>
+</ul></li>
+<li>Su implementación más importante es <strong>TreeMap</strong></li>
+</ul></li>
+</ul>
+<h1 id="comparable-y-compararator"><span class="header-section-number">9</span> Comparable y Compararator</h1>
+<p>Los objetos que implementen <strong>Comparable</strong> tienen que implementar el método:</p>
+<ul>
+<li>int compareTo(Object o)</li>
+</ul>
+<p>Los objetos que implementen <strong>Compararator</strong> tienen que implementar el método:</p>
+<ul>
+<li><p>int compare(Object o1, Object o2)</p></li>
+<li><p>boolean equals(Object o)</p></li>
+</ul>
+<p>Los métodos <strong>compareTo()</strong> y <strong>compare()</strong> devuelven:</p>
+<ul>
+<li><p>un int &lt;0 si menor</p></li>
+<li><p>un int =0 si igual</p></li>
+<li><p>un int &gt;0 si mayor</p></li>
+</ul>
+<p>Los métodos <strong>compareTo()</strong> y <strong>compare()</strong> deberían de ser consistentes con el método <strong>equals()</strong></p>
+<h1 id="boolean-equalsobject-o"><span class="header-section-number">10</span> boolean equals(Object o)</h1>
+<p>Cuando sobreescribimos la función <strong>equals()</strong> tenemos que tener en cuenta que:</p>
+<ul>
+<li><p>a.equals(a) == true</p></li>
+<li><p>a.equals(b) == b.equals(a)</p></li>
+<li><p>a.equals(b) == b.equals(c) == true -&gt; implica a.equals(c) == true</p></li>
+<li><p>a == b -&gt; implica a.equals(b) == true</p></li>
+<li><p>b == null -&gt; implica a.equals(b) == false</p></li>
+</ul>
+<h1 id="int-hashcode"><span class="header-section-number">11</span> int hashCode()</h1>
+<p>Se utiliza como <strong>índice</strong>.</p>
+<p>Sobrescribir el método equals() -&gt; implica sobrescribir el método hashCode()</p>
+<ul>
+<li><p>a.equals(b) == true -&gt; implica a.hashCode() == b.hashCode()</p></li>
+<li><p>pero a.hashCode() == b.hashCode() -&gt; NO implica a.equals(b) == true</p></li>
+</ul>
+<p>Su cálculo ha de ser rápido.</p>
+<p>Los valores devueltos deben de ser uniformemente distribuidos.</p>
+<h1 id="otras-características"><span class="header-section-number">12</span> Otras características</h1>
+<p>Los objetos de tipo Collection o Map son contenedores, que a diferencia de las matrices, incrementan su capacidad cuando lo necesitan.</p>
+<p><strong>loadFactor</strong> = size / capacity</p>
+<p>Si size &gt; loadFactor</p>
+<ul>
+<li><p>-&gt; se incrementa la capacidad</p></li>
+<li><p>-&gt; se crea una nueva estructura de datos</p></li>
+<li><p>-&gt; se copia los elementos de una a otra</p></li>
+</ul>
+<p>Para evitar ampliaciones sucesivas <strong>initialCapacity</strong> debería ser lo más cercano al tamaño esperado.</p>
+<p>Las clases <strong>Collections</strong> y <strong>Arrays</strong> son clases de utilidades.</p>
+</body>
+</html>

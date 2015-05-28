@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Lectura y escritura de información estándar con Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Lectura y escritura de información estándar con Java</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Lectura y escritura de información estándar con Java</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="entradasalida-en-java" class="slide level1">
+<h2><span class="header-section-number">1</span> Entrada/Salida en Java</h2>
+<ul>
+<li>Todas las clases relacionadas con la Entrada/Salida estén en el paquete <strong>java.io</strong></li>
+<li>Java lo que maneja en realidad son flujos, ya sean de <strong>flujos de bytes o de caracteres</strong>.</li>
+<li>Los <strong>flujos de entrada</strong> son de entrada de datos del exterior hacia el sistema.</li>
+<li>Los <strong>flujos de salida</strong> son de salida de datos del sistema hacia el exterior.</li>
+<li>Esto se hizo así, de forma genérica, para poder <strong>manejar igual</strong> todos los flujos: el de entrada/salida estándar (teclado y monitor), el de los ficheros o el de red, etc.</li>
+<li>Las clases del paquete java.io implementan el <strong>patrón Decorator</strong>.</li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-i" class="slide level1">
+<h2><span class="header-section-number">2</span> Clases del paquete java.io (I)</h2>
+<ul>
+<li><strong>InputStream/OutputStream</strong>
+<ul>
+<li><strong>Clases abstractas</strong> que definen las funciones básicas de lectura y escritura de un <strong>flujo de bytes sin estructurar</strong>.</li>
+</ul></li>
+<li><strong>Reader/Writer</strong>
+<ul>
+<li><strong>Clases abstractas</strong> que definen las funciones básicas de lectura y escritura de un <strong>flujo de caracteres</strong>.</li>
+</ul></li>
+<li><strong>InputStreamReader/OutputStreamWriter</strong>
+<ul>
+<li><strong>Convierten flujos</strong> de bytes en flujos de caracteres.</li>
+</ul></li>
+<li><strong>DataInputStream/DataOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>datos primitivos</strong> (int, long, double ...)</li>
+</ul></li>
+<li><strong>ObjectInputStream/ObjectOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>objetos serializables</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-ii" class="slide level1">
+<h2><span class="header-section-number">3</span> Clases del paquete java.io (II)</h2>
+<ul>
+<li><strong>FileInputStream/FileOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>archivos binarios</strong>.</li>
+</ul></li>
+<li><strong>FileReader/FileWriter</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>archivos de texto</strong>.</li>
+</ul></li>
+<li><strong>BufferedInputStream/BufferedOutputStream</strong>
+<ul>
+<li><strong>Decoradores</strong> que añaden un <strong>buffer</strong> a los flujos de bytes.</li>
+</ul></li>
+<li><strong>BufferedReader/BufferedWriter</strong>
+<ul>
+<li><strong>Decoradores</strong> que añaden un <strong>buffer</strong> a los flujos de caracteres.</li>
+</ul></li>
+<li><strong>PrintWriter</strong>
+<ul>
+<li>Posee los métodos <strong>print y println</strong> que otorgan gran potencia a la escritura.</li>
+</ul></li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-iii" class="slide level1">
+<h2><span class="header-section-number">4</span> Clases del paquete java.io (III)</h2>
+<figure>
+<img src="../img/java-io.png" />
+</figure>
+</section>
+<section id="es-estándar-en-java" class="slide level1">
+<h2><span class="header-section-number">5</span> E/S estándar en Java</h2>
+<ul>
+<li><strong>System.in</strong>
+<ul>
+<li>es un InputStream que representa la entrada estándar (normalmente el <strong>teclado</strong>)</li>
+</ul></li>
+<li><strong>System.out</strong>
+<ul>
+<li>es un OutputStream que representa la salida estándar (normalmente la <strong>pantalla</strong>)</li>
+</ul></li>
+<li><strong>System.err</strong>
+<ul>
+<li>es un OutputStream que representa la salida estándar para <strong>errores</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="ejemplo-de-es-estándar" class="slide level1">
+<h2><span class="header-section-number">6</span> Ejemplo de E/S estándar</h2>
+<pre><code>String texto = &quot;&quot;;
+try{
+    // Obtención del objeto InputStrem
+    InputStream tecladoBytes = System.in;
+    
+    // Obtención del objeto Reader
+    InputStreamReader tecladoCaracteres = new InputStreamReader(tecladoBytes);
+    
+    // Obtención del objeto BufferedReader
+    BufferedReader tecladoTexto = new BufferedReader(tecladoCaracteres);
+    
+    // Lectura linea
+    texto=tecladoTexto.readLine();
+} catch(Exception e){
+    System.out.println(&quot;Error&quot;+e.toString());
+}
+// salida por pantalla
+System.out.println(texto);</code></pre>
+</section>
+<section id="sistemas-de-log" class="slide level1">
+<h2><span class="header-section-number">7</span> Sistemas de log</h2>
+<ul>
+<li>Permite sacar mensajes por pantalla o fichero en aplicaciones grandes.</li>
+<li>El más conocido es <strong>Log4J</strong>, aunque desde Java 1.4 está el paquete <strong>java.util.logging</strong>.</li>
+<li>Existe también <strong>The Simple Logging Facade for Java or (SLF4J)</strong> que es un wrapper que te permite usar de forma transparente distintos sistemas de log</li>
+<li>Tienen un <strong>fichero de configuración</strong> en donde se indica el <strong>nivel de trazas</strong> para sacar por pantalla, para guardar en un fichero, o en general.</li>
+<li>También se puede indicar distintos niveles de traza, para los <em>nombres de los logs</em>, que se suelen usar los nombres de las clases donde se utiliza.</li>
+</ul>
+</section>
+<section id="niveles-de-trazas" class="slide level1">
+<h2><span class="header-section-number">8</span> Niveles de trazas</h2>
+<ul>
+<li><strong>OFF</strong>: No se genera traza alguna.</li>
+<li><strong>FATAL</strong>: Se usa para trazar errores catastróficos, que son aquellos de los que no hay recuperación posible.</li>
+<li><strong>ERROR</strong>: Se usa para trazar errores peligrosos, para los que hay previsto un mecanismo de supervivencia.</li>
+<li><strong>WARN</strong>: Se usa para trazar errores sin peligro, o posibles errores.</li>
+<li><strong>INFO</strong>: Trazas normales: para ir viendo lo que pasa.</li>
+<li><strong>DEBUG</strong>: Información de detalle, típicamente útil para localizar errores (depuración).</li>
+<li><strong>TRACE</strong>: Información de más detalle, típicamente útil para localizar errores (depuración).</li>
+<li><strong>ALL</strong>: Se traza todo, a cualquier nivel.</li>
+</ul>
+</section>
+<section id="ejemplo-con-jcl" class="slide level1">
+<h2><span class="header-section-number">9</span> Ejemplo con JCL</h2>
+<pre><code>import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+...
+private Logger log = LogFactory.getLog(this.getClass()); 
+...
+if ( log.isFatalEnabled() ) log.debug(&quot;error fatal&quot;);
+if ( log.isErrorEnabled() ) log.error(&quot;error&quot;);
+if ( log.isWarnEnabled() )  log.warn(&quot;atencion&quot;);
+if ( log.isInfoEnabled() )  log.info(&quot;informacion&quot;);
+if ( log.isDebugEnabled() ) log.debug(&quot;depurando&quot;);
+if ( log.isTraceEnabled() ) log.trace(&quot;depurando mucho&quot;);</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

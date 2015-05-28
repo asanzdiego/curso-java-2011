@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Sintaxis del Lenguaje Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Sintaxis del Lenguaje Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Sintaxis del Lenguaje Java</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#tipos-de-datos"><span class="toc-section-number">1</span> Tipos de Datos</a></li>
+<li><a href="#tipos-primitivos"><span class="toc-section-number">2</span> Tipos Primitivos</a></li>
+<li><a href="#matrices"><span class="toc-section-number">3</span> Matrices</a></li>
+<li><a href="#cadenas"><span class="toc-section-number">4</span> Cadenas</a></li>
+<li><a href="#operadores"><span class="toc-section-number">5</span> Operadores</a></li>
+<li><a href="#llamadas-a-métodos"><span class="toc-section-number">6</span> Llamadas a métodos</a></li>
+<li><a href="#sintaxis-general"><span class="toc-section-number">7</span> Sintaxis General</a></li>
+<li><a href="#estructuras-de-control"><span class="toc-section-number">8</span> Estructuras de Control</a></li>
+<li><a href="#convenciones-nomenclatura"><span class="toc-section-number">9</span> Convenciones nomenclatura</a></li>
+<li><a href="#jerarquía-de-excepciones"><span class="toc-section-number">10</span> Jerarquía de Excepciones</a></li>
+<li><a href="#control-de-excepciones"><span class="toc-section-number">11</span> Control de Excepciones</a></li>
+<li><a href="#novedades-java-5.0"><span class="toc-section-number">12</span> Novedades Java 5.0</a></li>
+</ul>
+</nav>
+<h1 id="tipos-de-datos"><span class="header-section-number">1</span> Tipos de Datos</h1>
+<p>Java no es orientado a objetos puro, tiene <strong>tipos primitivos</strong>.</p>
+<p>Para cada tipo primitivo hay una clase envoltorio (<strong>wrapper</strong>) que le añade funcionalidad, entre ellas la posibilidad de convertir cadenas al tipo primitivo y viceversa.</p>
+<p>Las clases envoltorio se llaman igual que el tipo primitivo, empezando por mayúscula en vez de minúscula.</p>
+<p>Hay 2 excepciones a la regla anterior: el wrapper de int es Integer y el de char es Character.</p>
+<h1 id="tipos-primitivos"><span class="header-section-number">2</span> Tipos Primitivos</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 15%" />
+<col style="width: 11%" />
+<col style="width: 59%" />
+<col style="width: 11%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ti</td>
+<td style="text-align: left;">po</td>
+<td style="text-align: left;">Nombre</td>
+<td style="text-align: left;">Rango de valores</td>
+<td style="text-align: left;">Wrapper</td>
+</tr>
+</tbody>
+</table>
+<p>Enteros byte [-128 a 127] Byte</p>
+<pre><code>          short    [-32768 a 32767]                               Short
+
+          int      [-2147483648 a 2147483647]                     Integer
+
+          long     [-9223372036854775808 a 9223372036854775807]   Long</code></pre>
+<p>Coma Flotante float [32 bits, precisión simple; 3,4E-38 a 3,4E38] Float</p>
+<pre><code>          double   [64 bits, precisión doble; 1,7E-308 a 1,7E308] Double</code></pre>
+<p>Booleano boolean [true o false] Boolean</p>
+<p>Carácter char [carácter alfanumérico] Character</p>
+<hr />
+<h1 id="matrices"><span class="header-section-number">3</span> Matrices</h1>
+<p>En Java se pueden crear <strong>matrices</strong> multidimensionales.</p>
+<p>Pero por lo general se usan las <strong>estructuras de datos</strong> de Java que veremos más adelante.</p>
+<h1 id="cadenas"><span class="header-section-number">4</span> Cadenas</h1>
+<p>Las cadenas se representan con la clase <strong>String</strong>.</p>
+<p>Es una clase envoltorio de una matriz de chars.</p>
+<p>Es una clase especial:</p>
+<ul>
+<li><p>permite &quot;&quot; como constructor.</p></li>
+<li><p>permite el operador + para concatenar.</p></li>
+</ul>
+<h1 id="operadores"><span class="header-section-number">5</span> Operadores</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 91%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">Aritméticos Lógicos Condicionales</td>
+</tr>
+</tbody>
+</table>
+<p>+ [adición] &gt; [mayor que] &amp;&amp; [ambos ciertos]</p>
+<p>- [sustracción] &gt;= [mayor o igual que] || [cierto al menos uno]</p>
+<p>* [multiplicación] &lt; [menor que] ! [negación]</p>
+<p>/ [división] &lt;= [menor o igual que]</p>
+<p>% [resto] == [igual a]</p>
+<p>++ [incremento] != [distinto de]</p>
+<ul>
+<li>[decremento]</li>
+</ul>
+<hr />
+<h1 id="llamadas-a-métodos"><span class="header-section-number">6</span> Llamadas a métodos</h1>
+<p>En Java todos los pasos se hacen <strong>por valor</strong>.</p>
+<ul>
+<li><p>Si es un tipo primitivo (int, double, char, etc.) -&gt; se pasa el valor.</p></li>
+<li><p>Si es una referencia a un objeto -&gt; se pasa el valor de dicha referencia (un puntero a un objeto)</p></li>
+</ul>
+<p>Así mismo el operador == compara valores.</p>
+<ul>
+<li><p>Si comparamos tipos primitivos (int, double, char, etc.) -&gt; compara que tengan el mismo valor.</p></li>
+<li><p>Si comparamos referencias de objetos -&gt; compara que apunten al mismo objeto (mismos punteros)</p></li>
+</ul>
+<h1 id="sintaxis-general"><span class="header-section-number">7</span> Sintaxis General</h1>
+<table>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 16%" />
+<col style="width: 81%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Comentarios**</td>
+<td style="text-align: left;">// comentario de una línea /* comentario multilínea <em>/ /</em>* javadoc */ [modificadores] tipo nombreVariable1 [,nombreVariable2,...]; [modificadores] class NombreClase [extends Clase] [implements Interfaz] { ... } [modificadores] abstract class NombreClaseAbstracta [extends Clase] [implements Interfaz] { ... } [modificadores] interface NombreInterfaz [implements Interfaz] { ... } [modificadores] tipoRetorno|void nombreMetodo ( parámetros ) [throws Excepcion] { ... }</td>
+</tr>
+</tbody>
+</table>
+<h1 id="estructuras-de-control"><span class="header-section-number">8</span> Estructuras de Control</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 12%" />
+<col style="width: 85%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong> </strong> <strong> </strong> **</td>
+<td style="text-align: left;">for<strong> while</strong> do..while<strong> if..else</strong> switch**</td>
+<td style="text-align: left;">for ( inicio; condición; post ) { ... } while ( condición ) { ... } do { ... } while ( condición ); if ( condición ) { ... } else if ( condición ) { ... } else { ... } switch ( variable ) { case n1: ... break; case n2: ... break; default: ... }</td>
+</tr>
+</tbody>
+</table>
+<h1 id="convenciones-nomenclatura"><span class="header-section-number">9</span> Convenciones nomenclatura</h1>
+<p>En general, los nombres deben ser <strong>simples y descriptivos</strong>.</p>
+<p>Se utilizan <strong>palabras completas</strong>, en mayúsculas y minúsculas, con la primera letra de cada palabra en mayúscula.</p>
+<p>Los nombres no pueden empezar por números aunque si contenerlos.</p>
+<p>No se permiten caracteres extraños (salvo guión '-' y guión bajo '_')</p>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 13%" />
+<col style="width: 64%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Clases**</td>
+<td style="text-align: left;">Primera letra también en mayúscula. Nombres comunes.</td>
+<td style="text-align: left;">CocheDeCarreras</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Interfaces**</td>
+<td style="text-align: left;">Primera letra también en mayúscula. Nombres comunes aunque también adjetivos. Suelen empezar por I.</td>
+<td style="text-align: left;">IDesmontable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Métodos**</td>
+<td style="text-align: left;">Primera letra en minúsculas. Verbos o preguntas con 'is' si devuelven un boolean.</td>
+<td style="text-align: left;">.acelerarConTurbo() .isDesmontable()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Variables**</td>
+<td style="text-align: left;">Primera letra en minúsculas. Evitar variables de una sola letra excepto (i, j, k, etc.).</td>
+<td style="text-align: left;">numeroDeRuedas isDesmontable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">Constantes**</td>
+<td style="text-align: left;">Todas en mayúsculas, con las palabras internas separadas por el signo de subrayado</td>
+<td style="text-align: left;">MAXIMA_VELOCIDAD</td>
+</tr>
+</tbody>
+</table>
+<h1 id="jerarquía-de-excepciones"><span class="header-section-number">10</span> Jerarquía de Excepciones</h1>
+<div style="text-align:center">
+<img src="../img/jerarquia-excepciones.jpg" />
+</div>
+<h1 id="control-de-excepciones"><span class="header-section-number">11</span> Control de Excepciones</h1>
+<p>Tipos</p>
+<ul>
+<li><p><strong>Error</strong>: indican problemas muy graves, que suelen ser no recuperables y no deberían ser capturadas.</p></li>
+<li><p><strong>Exception</strong>: problemas no definitivos, que se pueden capturar y tratar (te obligan a capturarlas o relanzarlas).</p></li>
+<li><p><strong>RuntimeException</strong>: problemas que se dan durante la ejecución del programa (no te obligan a capturarlas o relanzarlas).</p></li>
+</ul>
+<p>Tratamiento</p>
+<pre><code>try {
+  // Código posiblemente problemático
+} catch( tipo_de_excepcion e1) {
+  // Código para solucionar la excepción e1
+} catch( tipo_de_excepcion_mas_general e2) {
+  // Código para solucionar la excepción e2
+} finally {
+  // se ejecuta siempre
+}</code></pre>
+<h1 id="novedades-java-5.0"><span class="header-section-number">12</span> Novedades Java 5.0</h1>
+<p><strong>Genéricos</strong></p>
+<ul>
+<li>Permite no concretar en la definición con que tipo de objetos van a trabajar sus instancias.
+<ul>
+<li>[modificadores] class NombreClase&lt;A,B,C... &gt; [extends Clase] [implements Interfaz] { ... }
+<ul>
+<li>pudiendo sustituir &lt;A&gt; por &lt;A [[extends Clase] [&amp; Interfaz1] [&amp; Interfaz1] ... ]&gt;</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Enumeraciones</strong></p>
+<ul>
+<li>Se caracterizan por tener un número finito y normalmente bajo de posibles valores.
+<ul>
+<li>[modificadores] enum NombreTipoEnumerado { valor1, valor2, ... }</li>
+</ul></li>
+</ul>
+<p><strong>Anotaciones</strong></p>
+<ul>
+<li>Nos dan información sobre el código (clase, propiedad o método)
+<ul>
+<li><span class="citation" data-cites="TipoAnotacion">@TipoAnotacion</span> (nombre1=valor1, nombre2=valor2, ... )</li>
+<li>Sirven para:
+<ul>
+<li>que el compilador compruebe posibles errores,</li>
+<li>generar documentación y/o código</li>
+<li>programar con <strong>AOP</strong> (Aspect Oriented Programming o Programación Orientada a Aspectos)</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>Autoboxing</strong></p>
+<ul>
+<li>Utilizar indistintamente un tipo primitivo o su wrapper.
+<ul>
+<li>Aunque resulta muy cómodo las conversiones tienen un alto coste computacional.</li>
+<li>Además hay que tener mucho cuidado con el operador de igualdad &quot;==&quot;.</li>
+</ul></li>
+</ul>
+<p><strong>varargs</strong></p>
+<ul>
+<li>Posibilidad de declarar que un método admita varios argumentos de un mismo tipo sin determinar la cantidad exacta.
+<ul>
+<li>Se añaden tres puntos al último parámetro.</li>
+</ul></li>
+</ul>
+<p><strong>for-each</strong></p>
+<ul>
+<li>for (tipo nombreVariableIteracion: nombreContenedorIterable) { ... }</li>
+</ul>
+<p><strong>static imports</strong></p>
+<ul>
+<li>Permite importar propiedades o métodos estáticos de una clase, interfaz o enumeración, para evitar anteponer el nombre de la clase, interfaz o enumeración en cada aparición.</li>
+</ul>
+</body>
+</html>

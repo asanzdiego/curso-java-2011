@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Introducción a Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Introducción a Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Introducción a Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="historia-de-java" class="slide level1">
+<h2><span class="header-section-number">1</span> Historia de Java</h2>
+<ul>
+<li>En 1991 <strong>James Gosling</strong> creó una plataforma para ser usada en <strong>pequeños dispositivos</strong>.</li>
+<li>En 1994 se reorientó hacia la <strong>web</strong>.</li>
+<li>En 1995 <strong>Netscape</strong> anunció que sería soportado en sus <strong>navegadores</strong>.</li>
+<li>En 1996 aparece <strong>JDK 1.0</strong>.</li>
+<li>En 2001 ya es el lenguaje de programación más popular según el <strong>índice TIOBE</strong>.</li>
+<li>En 2006 cambia su licencia a <strong>GPL</strong>.</li>
+<li>En 2009 <strong>Oracle Corporation compra Sun Microsystems</strong>.</li>
+</ul>
+</section>
+<section id="versiones-de-java" class="slide level1">
+<h2><span class="header-section-number">2</span> Versiones de Java</h2>
+<ul>
+<li>En 1997 aparece <strong>JDK 1.1</strong> (<strong>AWT</strong>, inner classes, <strong>JDBC</strong>, etc.).</li>
+<li>En 1998 aparece <strong>J2SE 1.2</strong> (<strong>Swing</strong>, reflexión, <strong>compilador JIT</strong>, collections, etc.).</li>
+<li>En 2000 aparece <strong>J2SE 1.3</strong> (<strong>recompilación dinámica</strong>, JNDI, <strong>debugger</strong>, etc.).</li>
+<li>En 2002 aparece <strong>J2SE 1.4</strong> (assert, expresiones regulares, logging, parser XML, JAAS, etc.).</li>
+<li>En 2004 aparece <strong>J2SE 5.0</strong> (<strong>genéricos</strong>, autoboxing, <strong>anotaciones</strong>, enumeraciones, <strong>varargs</strong>, for mejorado, etc.).</li>
+<li>En 2006 aparece <strong>JSE 6.0</strong> (combinación con <strong>lenguajes dinámicos</strong>, Rhino, etc.).</li>
+<li>Previsto para 2011 <strong>JSE 7.0</strong> (<strong>superpaquetes</strong>, soporte XML nativo, <strong>closures</strong>, etc.).</li>
+</ul>
+</section>
+<section id="entorno-de-java" class="slide level1">
+<h2><span class="header-section-number">3</span> Entorno de Java</h2>
+<figure>
+<img src="../img/java-entorno.png" />
+</figure>
+</section>
+<section id="ejecución-de-java" class="slide level1">
+<h2><span class="header-section-number">4</span> Ejecución de Java</h2>
+<figure>
+<img src="../img/java-bytecode.png" />
+</figure>
+</section>
+<section id="ejecución-de-otros-lenguajes" class="slide level1">
+<h2><span class="header-section-number">5</span> Ejecución de otros lenguajes</h2>
+<figure>
+<img src="../img/java-groovy-scala-bytecode.png" />
+</figure>
+</section>
+<section id="distintas-plataformas-java" class="slide level1">
+<h2><span class="header-section-number">6</span> Distintas plataformas Java</h2>
+<figure>
+<img src="../img/java-plataformas.gif" />
+</figure>
+</section>
+<section id="características-de-java-i" class="slide level1">
+<h2><span class="header-section-number">7</span> Características de Java (I)</h2>
+<ul>
+<li>Java: el lenguaje
+<ul>
+<li><strong>Sintaxis parecida a la C++</strong> pero sin elementos de errores (punteros, destructores, etc.).</li>
+<li>Lenguaje <strong>Orientado a Objetos</strong> aunque con tipos primitivos (int, char, long, etc.).</li>
+<li>Soporta sincronización de múltiples hilos de ejecución (<strong>multithreading</strong>).</li>
+<li><strong>Gran cantidad de herramientas y APIs</strong> tanto estándar como de terceros.</li>
+</ul></li>
+</ul>
+</section>
+<section id="características-de-java-ii" class="slide level1">
+<h2><span class="header-section-number">8</span> Características de Java (II)</h2>
+<ul>
+<li>Java: la máquina virtual
+<ul>
+<li>El <strong>recolector de basura</strong> evita fugas de memoria.</li>
+<li><strong>Multiplataforma</strong> &quot;Write Once, Run Anywhere&quot; (Escríbelo una vez, ejecútalo en cualquier lugar).</li>
+<li><strong>Robusto</strong> pues realiza numerosas comprobaciones en compilación y en tiempo de ejecución.</li>
+<li><strong>Alto rendimiento</strong> con la compilación JIT y con la recompilación dinámica.</li>
+</ul></li>
+</ul>
+</section>
+<section id="apis-y-herramientas-de-java" class="slide level1">
+<h2><span class="header-section-number">9</span> APIs y herramientas de Java</h2>
+<figure>
+<img src="../img/java-apis.png" />
+</figure>
+</section>
+<section id="apis-y-herramientas" class="slide level1">
+<h2><span class="header-section-number">10</span> APIs y herramientas</h2>
+<ul>
+<li><strong>IDEs</strong>: Eclipse, NetBeans</li>
+<li><strong>Empaquetamiento</strong>: Ant, Maven, Hudson, Jenkins</li>
+<li><strong>MVC</strong>: GWT, Struts, JSF, JSP</li>
+<li><strong>Frameworks</strong>: Spring, Seam</li>
+<li><strong>Web</strong>: Grails, Play</li>
+<li><strong>Persistencia</strong>: Hibernate, JPA</li>
+<li><strong>Testing</strong>: JUnit, TestNG</li>
+<li><strong>Chequeos</strong>: FindBugs, CheckStyle, PMD, Cobertura, Sonar</li>
+<li><strong>Móviles</strong>: Android</li>
+<li><strong>Cloud</strong>: Google APP Engine</li>
+<li><strong>Certificación</strong>: BlackBeltFactory</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Persistencia de objetos con JPA" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Persistencia de objetos con JPA</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Persistencia de objetos con JPA</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#persistencia-de-objetos"><span class="toc-section-number">1</span> Persistencia de objetos</a></li>
+<li><a href="#técnicas-de-persistencia"><span class="toc-section-number">2</span> Técnicas de persistencia</a></li>
+<li><a href="#orm"><span class="toc-section-number">3</span> ORM</a></li>
+<li><a href="#jpa"><span class="toc-section-number">4</span> JPA</a></li>
+<li><a href="#implementaciones-jpa"><span class="toc-section-number">5</span> Implementaciones JPA</a></li>
+<li><a href="#entidades"><span class="toc-section-number">6</span> Entidades</a></li>
+<li><a href="#requerimientos-para-las-entidades"><span class="toc-section-number">7</span> Requerimientos para las Entidades</a></li>
+<li><a href="#atributos-persistentes"><span class="toc-section-number">8</span> Atributos persistentes</a></li>
+<li><a href="#ejemplo-entidad"><span class="toc-section-number">9</span> Ejemplo: Entidad</a></li>
+<li><a href="#ejemplo-uno-a-muchos"><span class="toc-section-number">10</span> Ejemplo: Uno a Muchos</a></li>
+<li><a href="#ejemplo-muchos-a-muchos"><span class="toc-section-number">11</span> Ejemplo: Muchos a Muchos</a></li>
+<li><a href="#herencia"><span class="toc-section-number">12</span> Herencia</a></li>
+<li><a href="#herencia-una-tabla"><span class="toc-section-number">13</span> Herencia: una tabla</a></li>
+<li><a href="#herencia-un-join-de-tablas"><span class="toc-section-number">14</span> Herencia: un join de tablas</a></li>
+<li><a href="#herencia-una-tabla-por-clase"><span class="toc-section-number">15</span> Herencia: una tabla por clase</a></li>
+<li><a href="#el-entitymanager"><span class="toc-section-number">16</span> El EntityManager</a></li>
+<li><a href="#arquitectura-jpa"><span class="toc-section-number">17</span> Arquitectura JPA</a></li>
+<li><a href="#persistence.xml"><span class="toc-section-number">18</span> persistence.xml</a></li>
+<li><a href="#ejemplo-persistir"><span class="toc-section-number">19</span> Ejemplo: persistir</a></li>
+<li><a href="#otros-ejemplos"><span class="toc-section-number">20</span> Otros ejemplos</a></li>
+<li><a href="#jpql-una-query"><span class="toc-section-number">21</span> JPQL: una query</a></li>
+<li><a href="#jpql-query-con-parámetros"><span class="toc-section-number">22</span> JPQL: query con parámetros</a></li>
+</ul>
+</nav>
+<h1 id="persistencia-de-objetos"><span class="header-section-number">1</span> Persistencia de objetos</h1>
+<p>Acción de preservar la información de un objeto de forma permanente (<strong>guardar</strong>), para poder recuperar la información del mismo (<strong>leer</strong>) en un futuro.</p>
+<p>En el caso de objetos la información que persiste son los valores que contienen los <strong>atributos</strong> en ese momento, no la funcionalidad de sus métodos.</p>
+<h1 id="técnicas-de-persistencia"><span class="header-section-number">2</span> Técnicas de persistencia</h1>
+<p><strong>Serialización</strong>:</p>
+<ul>
+<li><p>Objeto -&gt; bytes -&gt; (fichero, red, campo tabla bbdd, etc.) -&gt; bytes -&gt; Objeto</p></li>
+<li><p>Proceso manual.</p></li>
+</ul>
+<p><strong>Motores de persistencia</strong>:</p>
+<ul>
+<li>Proceso semi-autotico.</li>
+</ul>
+<p><strong>Bases de datos orientadas a objetos</strong>:</p>
+<ul>
+<li><p>Objeto -&gt; Objeto bbdd -&gt; Objeto</p></li>
+<li><p>Proceso automático, pero bbdddoo no han terminado de despegar.</p></li>
+</ul>
+<h1 id="orm"><span class="header-section-number">3</span> ORM</h1>
+<p><strong>O</strong>bject-<strong>R</strong>elational <strong>M</strong>apping o <strong>mapeo objeto/relacional</strong></p>
+<p>Técnica para <strong>persistir objetos en bases de datos relacionales</strong>.</p>
+<p>Persigue no perder las ventajas de la orientación a objetos al interactuar con una base de datos relacional.</p>
+<h1 id="jpa"><span class="header-section-number">4</span> JPA</h1>
+<p><strong>J</strong>ava <strong>P</strong>ersistence <strong>A</strong>PI.</p>
+<p>API de persistencia desarrollada para la plataforma Java EE.</p>
+<p>Se puede usar fuera de un contenedor Java EE.</p>
+<p>Cubre tres áreas:</p>
+<ul>
+<li><p>La API en sí misma, definida en <strong>javax.persistence</strong></p></li>
+<li><p>La <strong>J</strong>ava <strong>P</strong>ersistence <strong>Q</strong>uery <strong>L</strong>anguage (<strong>JPQL</strong>)</p></li>
+<li><p>Los <strong>metadatos</strong> para el mapeo objeto/relacional (<strong>ORM</strong>)</p></li>
+</ul>
+<h1 id="implementaciones-jpa"><span class="header-section-number">5</span> Implementaciones JPA</h1>
+<p>JPA es una <strong>especificación</strong> (una serie de Interfaces).</p>
+<p>Para utilizarla necesitas una <strong>implementación</strong> y los <strong>drivers</strong> de la bbdd.</p>
+<p>Las implementaciones más populares son:</p>
+<ul>
+<li><p><strong>Hibernate</strong> (el más conocido/usado y además LGPL)</p></li>
+<li><p><strong>TopLink</strong></p></li>
+<li><p><strong>EclipseLink</strong></p></li>
+<li><p><strong>OpenJPA</strong></p></li>
+<li><p><strong>Kodo</strong></p></li>
+<li><p><strong>DataNucleus</strong></p></li>
+</ul>
+<h1 id="entidades"><span class="header-section-number">6</span> Entidades</h1>
+<p>Una entidad es un clase persistente.</p>
+<p>Una entidad representa una <strong>tabla</strong> en la base de datos.</p>
+<p>Cada instancia (objeto) de la entidad representa un <strong>registro</strong> en la base de datos.</p>
+<h1 id="requerimientos-para-las-entidades"><span class="header-section-number">7</span> Requerimientos para las Entidades</h1>
+<p>La clase debe ser anotada con javax.persistence.<strong>Entity</strong>.</p>
+<p>La clase debe ser pública o protegida, y en ningún caso final.</p>
+<p>La clase debe tener al menos un constructor público o protegido sin argumentos.</p>
+<p>La clase puede implementar la interface Serializable.</p>
+<p>Una clase abstracta puede ser declarada como entidad.</p>
+<p>Todas la entidades deben tener una anotación de PK (Primary Key)</p>
+<p>Los atributos se deben declarar como privados.</p>
+<p>Los atributos no se deben declarar como final.</p>
+<p>Los atributos deben tener <strong>getters/setters</strong> públicos o protegidos.</p>
+<p>Los atributos no persistentes deden de ser anotados con javax.persistence.<strong>Transient</strong>.</p>
+<h1 id="atributos-persistentes"><span class="header-section-number">8</span> Atributos persistentes</h1>
+<p>Tipos primitivos y sus Wrappers.</p>
+<p>Matrices de tipos primitivos.</p>
+<p>java.lang.String</p>
+<p>java.math.BigInteger y java.math.BigDecimal</p>
+<p>java.util.Date y java.util.Calendar</p>
+<p>java.sql.Date, java.sql.Time y java.sql.TimeStamp</p>
+<p>Clases serializables</p>
+<p>Clases tipo Enum</p>
+<p>Otras entidades</p>
+<p>Collecciones de todo lo anterior.</p>
+<h1 id="ejemplo-entidad"><span class="header-section-number">9</span> Ejemplo: Entidad</h1>
+<pre><code>import javax.persistence.*;
+@Entity // obligatorio
+@Table(name = &quot;PERSONAS&quot;)
+public class Persona {
+
+    @Id // obligatorio
+    @Column(name=&quot;ID_PERSONA&quot;)
+    private int id;
+
+    @Column(name=&quot;NOMBRE&quot;) // opcional
+    private String nombre;
+
+    public void setID();
+    public String getID();
+
+    public void setNombre();
+    public String getNombre();
+}</code></pre>
+<h1 id="ejemplo-uno-a-muchos"><span class="header-section-number">10</span> Ejemplo: Uno a Muchos</h1>
+<div style="text-align:center">
+<img src="../img/relacion-uno-a-muchos.png" />
+</div>
+<pre><code>@Entity public class Cliente {
+    ...
+    @OneToMany(cascade=CascadeType.ALL, mappedBy=&quot;cliente&quot;)
+    private Set&lt;Orden&gt; ordenes;
+    ...
+}</code></pre>
+<pre><code>@Entity public class Orden {
+    ...
+    @ManyToOne
+    @JoinColumn (name=&quot;ID_CLIENTE&quot;)
+    private Cliente cliente;
+    ...
+}</code></pre>
+<h1 id="ejemplo-muchos-a-muchos"><span class="header-section-number">11</span> Ejemplo: Muchos a Muchos</h1>
+<div style="text-align:center">
+<img src="../img/relacion-muchos-a-muchos.png" />
+</div>
+<pre><code>@Entity public class Estudiante {
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;CURSO_ESTUDIANTE&quot;,
+        joinColumns={@JoinColumn(name=&quot;ID_ESTUDIANTE&quot;,referencedColumnName=&quot;ID_ESTUDIANTE&quot;)},
+        inverseJoinColumns={@JoinColumn(name=&quot;ID_CURSO&quot;,referencedColumnName=&quot;ID_CURSO&quot;)})
+    private List&lt;Course&gt; cursos;
+}</code></pre>
+<pre><code>@Entity public class Curso {
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;CURSO_ESTUDIANTE&quot;,
+        joinColumns=@JoinColumn(name=&quot;ID_CURSO&quot;,referencedColumnName=&quot;ID_CURSO&quot;))
+        inverseJoinColumns=@JoinColumn(name=&quot;ID_ESTUDIANTE&quot;,referencedColumnName=&quot;ID_ESTUDIANTE&quot;),
+    private List&lt;Student&gt; estudiantes;
+}</code></pre>
+<h1 id="herencia"><span class="header-section-number">12</span> Herencia</h1>
+<p>Se hace de 3 maneras distintas: 1. Una tabla por familia (comportamiento por defecto) 2. Un join de tablas 3. Una tabla por clase concreta</p>
+<pre><code>@Entity public class SuperClase {
+    @Id private Long id;
+    private int propiedadUno;
+    private String propiedadDos;
+    // Getters y Setters
+}</code></pre>
+<pre><code>@Entity public class SubClase extends SuperClase {
+    @Id private Long id;
+    private float propiedadTres;
+    private float propiedadCuatro;
+    // Getters y setters
+}</code></pre>
+<h1 id="herencia-una-tabla"><span class="header-section-number">13</span> Herencia: una tabla</h1>
+<p>Comportamiento <strong>por defecto</strong>.</p>
+<p>Las instancias de SuperClase y de SubClase son almancenadas en una <strong>única tabla</strong>.</p>
+<p>Nombre por defecto de la tabla el de la clase raíz (SuperClase).</p>
+<p>Dentro de esta tabla habrá:</p>
+<ul>
+<li><p>Una columna para el ID (válido para todas las entidades)</p></li>
+<li><p>Una columna para cada propiedad.</p></li>
+<li><p>Una columna discriminatoria que suele contener el nombre de la clase.</p></li>
+</ul>
+<p>Las propiedades de las subclases no deben ser configuradas como not null pues da error.</p>
+<h1 id="herencia-un-join-de-tablas"><span class="header-section-number">14</span> Herencia: un join de tablas</h1>
+<p>Cada clase y subclase será almacenada en su propia tabla.</p>
+<p>La tabla raíz contiene una columna con un <strong>ID compartido</strong> y usado por todas las tablas, y una columna discriminatoria.</p>
+<p>Cada subclase almacenará en su propia tabla únicamente sus atributos propios.</p>
+<p>Las tablas de las subclase tendrán una <strong>PK a la tabla raíz</strong>.</p>
+<p>Es un sistema intuitivo, pero si hay varios niveles de herencia se necesitarán varios JOIN, lo cual puede producir un impacto en el rendimiento.</p>
+<pre><code>@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class SuperClase { ... }</code></pre>
+<h1 id="herencia-una-tabla-por-clase"><span class="header-section-number">15</span> Herencia: una tabla por clase</h1>
+<p>Cada entidad será mapeada a su propia tabla.</p>
+<p>Con este sistema no hay tablas compartidas, columnas compartidas, ni columna discriminatoria.</p>
+<p>Todas las tablas deberán <strong>compartir el ID</strong>.</p>
+<p>Puede provocar problemas de rendimiento, ya que ante determinadas solicitudes, la base de datos tendrá que realizar múltiples JOIN.</p>
+<pre><code>@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class SuperClase { ... }</code></pre>
+<h1 id="el-entitymanager"><span class="header-section-number">16</span> El EntityManager</h1>
+<p>Administra la conexión con la base de datos.</p>
+<p>Administra la persistencia y la recuperación de entidades.</p>
+<p>Puede ser administrada por un contenedor JEE o por la aplicación.</p>
+<p>Puede administrar las transacciones o delegar en el contenedor JEE.</p>
+<p>Soporta la ejecución de consultas (queries)</p>
+<h1 id="arquitectura-jpa"><span class="header-section-number">17</span> Arquitectura JPA</h1>
+<div style="text-align:center">
+<img src="../img/jpa-architecture.jpg" />
+</div>
+<h1 id="persistence.xml"><span class="header-section-number">18</span> persistence.xml</h1>
+<pre><code>&lt;persistence
+    xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;
+    version=&quot;2.0&quot;&gt;
+    &lt;persistence-unit name=&quot;ejemplo-unidad-persistencia&quot; transaction-type=&quot;RESOURCE_LOCAL&quot;&gt;
+        &lt;class&gt;ejemplo.Cliente&lt;/class&gt;
+        &lt;class&gt;ejemplo.Orden&lt;/class&gt;
+        &lt;class&gt;ejemplo.Estudiante&lt;/class&gt;
+        &lt;class&gt;ejemplo.Curso&lt;/class&gt;
+        &lt;properties&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;usuario&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;Pa$.w0rd&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:mysql://192.168.1.1/ejemplo&quot;/&gt;
+            &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.MySQLDialect&quot;/&gt;
+            &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;true&quot;/&gt;
+        &lt;/properties&gt;
+   &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre>
+<h1 id="ejemplo-persistir"><span class="header-section-number">19</span> Ejemplo: persistir</h1>
+<pre><code>EntityManagerFactory emf;
+EntityManager em;
+try {
+    emf = Persistence.createEntityManagerFactory(&quot;ejemplo-unidad-persistencia&quot;);
+    em = emf.createEntityManager();
+    Cliente cliente = new Cliente();
+    cliente.setNombre(&quot;Adolfo&quot;);
+    em.getTransaction().begin()
+    em.persist(cliente);
+    em.getTransaction().commit();
+} catch(Exception e) {
+    em.getTransaction().rollback()
+} finally {
+    if (em != null) em.close();
+    if (emf != null) emf.close();
+}</code></pre>
+<h1 id="otros-ejemplos"><span class="header-section-number">20</span> Otros ejemplos</h1>
+<pre><code>em.flush(); // fuerza a que los cambios pendientes se guarden en la base de datos</code></pre>
+<pre><code>Cliente c = em.find(Cliente.class, id); // recupera cliente de la base de datos por ID</code></pre>
+<pre><code>em.refresh(cliente); // recarga de la base de datos y sobreescribe en memoria</code></pre>
+<pre><code>em.remove(cliente); // borra de la base de datos</code></pre>
+<h1 id="jpql-una-query"><span class="header-section-number">21</span> JPQL: una query</h1>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c&quot;;
+Query query = em.createQuery(jpql);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+<h1 id="jpql-query-con-parámetros"><span class="header-section-number">22</span> JPQL: query con parámetros</h1>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c WHERE c.nombre = ?1 AND c.id &gt; ?2&quot;;
+Query query = em.createQuery(jpql);
+query.setParameter(1, &quot;Pepito&quot;);
+query.setParameter(2, 468);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c WHERE c.nombre = :nombre AND c.id &gt; :id&quot;;
+Query query = em.createQuery(jpql);
+query.setParameter(&quot;nombre&quot;, &quot;Pepito&quot;);
+query.setParameter(&quot;id&quot;, 468);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+</body>
+</html>

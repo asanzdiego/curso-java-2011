@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Utilización avanzada de clases" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Utilización avanzada de clases</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Utilización avanzada de clases</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#diseño-incorrecto"><span class="toc-section-number">1</span> ¿Diseño incorrecto?</a></li>
+<li><a href="#mejorarlo-principios-solid"><span class="toc-section-number">2</span> Mejorarlo: principios SOLID</a></li>
+<li><a href="#cómo-utilizar-nuestras-clases"><span class="toc-section-number">3</span> ¿Cómo utilizar nuestras clases?</a></li>
+<li><a href="#herencia"><span class="toc-section-number">4</span> Herencia</a></li>
+<li><a href="#clases-padre-y-clases-hijas"><span class="toc-section-number">5</span> Clases padre y clases hijas</a></li>
+</ul>
+</nav>
+<h1 id="diseño-incorrecto"><span class="header-section-number">1</span> ¿Diseño incorrecto?</h1>
+<p>¿Cómo sabemos si nuestro diseño es incorrecto?</p>
+<ul>
+<li><p>las clases son difíciles de cambiar</p></li>
+<li><p>las clases son difíciles de reutilizar</p></li>
+<li><p>las clases son difíciles de usar</p></li>
+<li><p>las clases tienen código repetido</p></li>
+<li><p>las clases dejen de funcionar sin motivo aparente</p></li>
+</ul>
+<h1 id="mejorarlo-principios-solid"><span class="header-section-number">2</span> Mejorarlo: principios SOLID</h1>
+<table>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 3%" />
+<col style="width: 3%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 13%" />
+<col style="width: 3%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">S**</td>
+<td style="text-align: left;">SRP</td>
+<td style="text-align: left;">(The <strong>S</strong>ingle Responsibility Principle o <strong>Principio de Responsabilidad Única</strong>)</td>
+<td style="text-align: left;">Las clases se diseñan sólo para un propósito.</td>
+<td style="text-align: left;">Tom DeMarco</td>
+<td style="text-align: left;">1979</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">O**</td>
+<td style="text-align: left;">OCP</td>
+<td style="text-align: left;">(The <strong>O</strong>pen/Closed Principle o <strong>Principio Abierto/Cerrado</strong>)</td>
+<td style="text-align: left;">Las clases debe permitir ser extendidas, sin necesidad de ser modificadas.</td>
+<td style="text-align: left;">Bertrand Meyer</td>
+<td style="text-align: left;">1997</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">L**</td>
+<td style="text-align: left;">LSP</td>
+<td style="text-align: left;">(The <strong>L</strong>iskov Substitution Principle o <strong>Principio de Sustitución de Liskov</strong>)</td>
+<td style="text-align: left;">Las clases padre siempre deben poder ser sustituidas por sus clases hijas y viceversa.</td>
+<td style="text-align: left;">Barbara Liskov</td>
+<td style="text-align: left;">1988</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">I**</td>
+<td style="text-align: left;">ISP</td>
+<td style="text-align: left;">(The <strong>I</strong>nterface Segregation Principle o <strong>Principio de Segregación de Interfaces</strong>)</td>
+<td style="text-align: left;">Las clases no deben ser forzados a depender de interfaces con métodos que no utilizan.</td>
+<td style="text-align: left;">Robert C. Martin</td>
+<td style="text-align: left;">1995</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">D**</td>
+<td style="text-align: left;">DIP</td>
+<td style="text-align: left;">(The <strong>D</strong>ependency Inversion Principle o <strong>Principio de Inversión de Dependencias</strong>)</td>
+<td style="text-align: left;">Los clientes deben delegar la gestión de las instancias de objetos a las librerias.</td>
+<td style="text-align: left;">Martin Fowler</td>
+<td style="text-align: left;">2004</td>
+</tr>
+</tbody>
+</table>
+<h1 id="cómo-utilizar-nuestras-clases"><span class="header-section-number">3</span> ¿Cómo utilizar nuestras clases?</h1>
+<p><strong>Colaboración</strong></p>
+<ul>
+<li>Cuando 2 o más clases colaboran de distintas formas (ver teoría POO)</li>
+</ul>
+<p><strong>Herencia</strong></p>
+<ul>
+<li>Cuando una clase hija extiende una clase padre.</li>
+</ul>
+<p>Error común</p>
+<ul>
+<li>Aplicar herencia para todo.</li>
+</ul>
+<h1 id="herencia"><span class="header-section-number">4</span> Herencia</h1>
+<p>En Java no hay herencia múltiple pero una clase puede implementar varias Interfaces.</p>
+<p>Las <strong>Interfaces</strong> son clases que sólo definen métodos (comportamientos) y que obligan a las clases hijas a implementarlos.</p>
+<p>Las <strong>clases abstractas</strong> son clases que no se pueden instanciar, osea que sólo se pueden heredar. Implementan varios métodos, y definen otros como abstractos, obligando a las clases hijas a implementarlos.</p>
+<h1 id="clases-padre-y-clases-hijas"><span class="header-section-number">5</span> Clases padre y clases hijas</h1>
+<p>El operador <strong>this</strong> hace referencia a la instancia concreta del objeto.</p>
+<p>El operador <strong>super</strong> hace referencia a la clase padre.</p>
+<p>Los métodos no marcados como final y/ como private, se pueden sobreescribir en las clases hijas (<strong>polimorfismo</strong>).</p>
+</body>
+</html>

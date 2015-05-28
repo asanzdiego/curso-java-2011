@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Curso de Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Curso de Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Curso de Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="este-curso-pretende-ser" class="slide level1">
+<h2><span class="header-section-number">1</span> Este curso pretende ser</h2>
+<ul>
+<li>Una introducción al <strong>lenguaje Java</strong></li>
+<li>Una introducción a la POO (<strong>Programación Orientada a Objetos</strong>)</li>
+<li>Una introducción a los aspectos más importantes del <strong>desarrollo de software</strong> hoy en día:
+<ul>
+<li>documentación de código y aplicaciones</li>
+<li>patrones de diseño</li>
+<li>metodologías ágiles</li>
+<li>desarrollo guiado por pruebas</li>
+<li>control de versiones</li>
+<li>empaquetado de aplicaciones</li>
+<li>integración continua</li>
+</ul></li>
+<li>Una introducción a los IDE (<strong>Entornos de Desarrollo Integrado</strong>)</li>
+<li>Una introducción a la <strong>persistencia de datos</strong> en Java.</li>
+</ul>
+</section>
+<section id="este-curso-no-pretende-ser" class="slide level1">
+<h2><span class="header-section-number">2</span> Este curso NO pretende ser</h2>
+<ul>
+<li>Una guía paso a paso sino más bien un <strong>guión</strong>.</li>
+<li>Un curso avanzado de Java, de hecho no veremos muchas cosas:
+<ul>
+<li>ni frameworks</li>
+<li>ni Swing (aplicaciones de escritorio)</li>
+<li>ni JEE (aplicaciones web)</li>
+<li>ni Android (aplicaciones móviles)</li>
+<li>ni etc. etc. etc.</li>
+</ul></li>
+<li>Un curso avanzado de POO.</li>
+<li>Un curso avanzado de desarrollo de software.</li>
+<li>Un curso avanzado de entornos de desarrollo integrado.</li>
+<li>Un curso avanzado de persistencia de datos en Java.</li>
+</ul>
+</section>
+<section id="contenidos-de-curso-i" class="slide level1">
+<h2><span class="header-section-number">3</span> Contenidos de curso (I)</h2>
+<ul>
+<li><strong>Día 1</strong>
+<ul>
+<li>U.T. 1 - Introducción a Java.</li>
+<li>U.T. 2 - Instalación y configuración del entorno.</li>
+<li>U.T. 3 - Sintaxis del lenguaje.</li>
+</ul></li>
+<li><strong>Día 2</strong>
+<ul>
+<li>U.T. 4 - Clases y objetos.</li>
+<li>U.T. 5 - Utilización avanzada de clases.</li>
+</ul></li>
+<li><strong>Día 3</strong>
+<ul>
+<li>U.T. 6 - Estructuras de datos.</li>
+<li>U.T. 7 - Documentación del código.</li>
+</ul></li>
+</ul>
+</section>
+<section id="contenidos-de-curso-ii" class="slide level1">
+<h2><span class="header-section-number">4</span> Contenidos de curso (II)</h2>
+<ul>
+<li><strong>Día 4</strong>
+<ul>
+<li>U.T. 8 - Documentación de las aplicaciones.</li>
+<li>U.T. 9 - Patrones de diseño.</li>
+</ul></li>
+<li><strong>Día 5</strong>
+<ul>
+<li>U.T. 10 - Desarrollo guiado por pruebas.</li>
+<li>U.T. 11 - Desarrollo de aplicaciones en el mundo real.</li>
+</ul></li>
+</ul>
+</section>
+<section id="contenidos-de-curso-iii" class="slide level1">
+<h2><span class="header-section-number">5</span> Contenidos de curso (III)</h2>
+<ul>
+<li><strong>Día 6</strong>
+<ul>
+<li>U.T. 12 - Lectura y escritura de información estándar.</li>
+<li>U.T. 13 - Lectura y escritura de ficheros.</li>
+</ul></li>
+<li><strong>Día 7</strong>
+<ul>
+<li>U.T. 14 - Trabajo con bases de datos mediante JDBC.</li>
+<li>U.T. 15 - Persistencia de objetos con JPA.</li>
+</ul></li>
+</ul>
+</section>
+<section id="resumen-y-conclusiones" class="slide level1">
+<h2><span class="header-section-number">6</span> Resumen y conclusiones</h2>
+<ul>
+<li>Resumen:
+<ul>
+<li><strong>Muchos contenidos</strong>
+<ul>
+<li>podríamos ver incluso más cosas que por falta de tiempo no se van a ver.</li>
+</ul></li>
+<li><strong>Pocas horas</strong></li>
+</ul></li>
+<li>Conclusión
+<ul>
+<li>Se ruega:
+<ul>
+<li><strong>Puntualidad</strong></li>
+<li><strong>Silencio</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

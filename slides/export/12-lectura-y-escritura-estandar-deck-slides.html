@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Lectura y escritura de información estándar con Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Lectura y escritura de información estándar con Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Lectura y escritura de información estándar con Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="entradasalida-en-java" class="slide level1">
+<h2><span class="header-section-number">1</span> Entrada/Salida en Java</h2>
+<ul>
+<li>Todas las clases relacionadas con la Entrada/Salida estén en el paquete <strong>java.io</strong></li>
+<li>Java lo que maneja en realidad son flujos, ya sean de <strong>flujos de bytes o de caracteres</strong>.</li>
+<li>Los <strong>flujos de entrada</strong> son de entrada de datos del exterior hacia el sistema.</li>
+<li>Los <strong>flujos de salida</strong> son de salida de datos del sistema hacia el exterior.</li>
+<li>Esto se hizo así, de forma genérica, para poder <strong>manejar igual</strong> todos los flujos: el de entrada/salida estándar (teclado y monitor), el de los ficheros o el de red, etc.</li>
+<li>Las clases del paquete java.io implementan el <strong>patrón Decorator</strong>.</li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-i" class="slide level1">
+<h2><span class="header-section-number">2</span> Clases del paquete java.io (I)</h2>
+<ul>
+<li><strong>InputStream/OutputStream</strong>
+<ul>
+<li><strong>Clases abstractas</strong> que definen las funciones básicas de lectura y escritura de un <strong>flujo de bytes sin estructurar</strong>.</li>
+</ul></li>
+<li><strong>Reader/Writer</strong>
+<ul>
+<li><strong>Clases abstractas</strong> que definen las funciones básicas de lectura y escritura de un <strong>flujo de caracteres</strong>.</li>
+</ul></li>
+<li><strong>InputStreamReader/OutputStreamWriter</strong>
+<ul>
+<li><strong>Convierten flujos</strong> de bytes en flujos de caracteres.</li>
+</ul></li>
+<li><strong>DataInputStream/DataOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>datos primitivos</strong> (int, long, double ...)</li>
+</ul></li>
+<li><strong>ObjectInputStream/ObjectOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>objetos serializables</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-ii" class="slide level1">
+<h2><span class="header-section-number">3</span> Clases del paquete java.io (II)</h2>
+<ul>
+<li><strong>FileInputStream/FileOutputStream</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>archivos binarios</strong>.</li>
+</ul></li>
+<li><strong>FileReader/FileWriter</strong>
+<ul>
+<li>Pensadas para trabajar con <strong>archivos de texto</strong>.</li>
+</ul></li>
+<li><strong>BufferedInputStream/BufferedOutputStream</strong>
+<ul>
+<li><strong>Decoradores</strong> que añaden un <strong>buffer</strong> a los flujos de bytes.</li>
+</ul></li>
+<li><strong>BufferedReader/BufferedWriter</strong>
+<ul>
+<li><strong>Decoradores</strong> que añaden un <strong>buffer</strong> a los flujos de caracteres.</li>
+</ul></li>
+<li><strong>PrintWriter</strong>
+<ul>
+<li>Posee los métodos <strong>print y println</strong> que otorgan gran potencia a la escritura.</li>
+</ul></li>
+</ul>
+</section>
+<section id="clases-del-paquete-java.io-iii" class="slide level1">
+<h2><span class="header-section-number">4</span> Clases del paquete java.io (III)</h2>
+<figure>
+<img src="../img/java-io.png" />
+</figure>
+</section>
+<section id="es-estándar-en-java" class="slide level1">
+<h2><span class="header-section-number">5</span> E/S estándar en Java</h2>
+<ul>
+<li><strong>System.in</strong>
+<ul>
+<li>es un InputStream que representa la entrada estándar (normalmente el <strong>teclado</strong>)</li>
+</ul></li>
+<li><strong>System.out</strong>
+<ul>
+<li>es un OutputStream que representa la salida estándar (normalmente la <strong>pantalla</strong>)</li>
+</ul></li>
+<li><strong>System.err</strong>
+<ul>
+<li>es un OutputStream que representa la salida estándar para <strong>errores</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="ejemplo-de-es-estándar" class="slide level1">
+<h2><span class="header-section-number">6</span> Ejemplo de E/S estándar</h2>
+<pre><code>String texto = &quot;&quot;;
+try{
+    // Obtención del objeto InputStrem
+    InputStream tecladoBytes = System.in;
+    
+    // Obtención del objeto Reader
+    InputStreamReader tecladoCaracteres = new InputStreamReader(tecladoBytes);
+    
+    // Obtención del objeto BufferedReader
+    BufferedReader tecladoTexto = new BufferedReader(tecladoCaracteres);
+    
+    // Lectura linea
+    texto=tecladoTexto.readLine();
+} catch(Exception e){
+    System.out.println(&quot;Error&quot;+e.toString());
+}
+// salida por pantalla
+System.out.println(texto);</code></pre>
+</section>
+<section id="sistemas-de-log" class="slide level1">
+<h2><span class="header-section-number">7</span> Sistemas de log</h2>
+<ul>
+<li>Permite sacar mensajes por pantalla o fichero en aplicaciones grandes.</li>
+<li>El más conocido es <strong>Log4J</strong>, aunque desde Java 1.4 está el paquete <strong>java.util.logging</strong>.</li>
+<li>Existe también <strong>The Simple Logging Facade for Java or (SLF4J)</strong> que es un wrapper que te permite usar de forma transparente distintos sistemas de log</li>
+<li>Tienen un <strong>fichero de configuración</strong> en donde se indica el <strong>nivel de trazas</strong> para sacar por pantalla, para guardar en un fichero, o en general.</li>
+<li>También se puede indicar distintos niveles de traza, para los <em>nombres de los logs</em>, que se suelen usar los nombres de las clases donde se utiliza.</li>
+</ul>
+</section>
+<section id="niveles-de-trazas" class="slide level1">
+<h2><span class="header-section-number">8</span> Niveles de trazas</h2>
+<ul>
+<li><strong>OFF</strong>: No se genera traza alguna.</li>
+<li><strong>FATAL</strong>: Se usa para trazar errores catastróficos, que son aquellos de los que no hay recuperación posible.</li>
+<li><strong>ERROR</strong>: Se usa para trazar errores peligrosos, para los que hay previsto un mecanismo de supervivencia.</li>
+<li><strong>WARN</strong>: Se usa para trazar errores sin peligro, o posibles errores.</li>
+<li><strong>INFO</strong>: Trazas normales: para ir viendo lo que pasa.</li>
+<li><strong>DEBUG</strong>: Información de detalle, típicamente útil para localizar errores (depuración).</li>
+<li><strong>TRACE</strong>: Información de más detalle, típicamente útil para localizar errores (depuración).</li>
+<li><strong>ALL</strong>: Se traza todo, a cualquier nivel.</li>
+</ul>
+</section>
+<section id="ejemplo-con-jcl" class="slide level1">
+<h2><span class="header-section-number">9</span> Ejemplo con JCL</h2>
+<pre><code>import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+...
+private Logger log = LogFactory.getLog(this.getClass()); 
+...
+if ( log.isFatalEnabled() ) log.debug(&quot;error fatal&quot;);
+if ( log.isErrorEnabled() ) log.error(&quot;error&quot;);
+if ( log.isWarnEnabled() )  log.warn(&quot;atencion&quot;);
+if ( log.isInfoEnabled() )  log.info(&quot;informacion&quot;);
+if ( log.isDebugEnabled() ) log.debug(&quot;depurando&quot;);
+if ( log.isTraceEnabled() ) log.trace(&quot;depurando mucho&quot;);</code></pre>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

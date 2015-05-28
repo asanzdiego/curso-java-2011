@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Persistencia de objetos con JPA" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Persistencia de objetos con JPA</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Persistencia de objetos con JPA</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="persistencia-de-objetos" class="slide level1">
+<h2><span class="header-section-number">1</span> Persistencia de objetos</h2>
+<ul>
+<li>Acción de preservar la información de un objeto de forma permanente (<strong>guardar</strong>), para poder recuperar la información del mismo (<strong>leer</strong>) en un futuro.</li>
+<li>En el caso de objetos la información que persiste son los valores que contienen los <strong>atributos</strong> en ese momento, no la funcionalidad de sus métodos.</li>
+</ul>
+</section>
+<section id="técnicas-de-persistencia" class="slide level1">
+<h2><span class="header-section-number">2</span> Técnicas de persistencia</h2>
+<ul>
+<li><strong>Serialización</strong>:
+<ul>
+<li>Objeto -&gt; bytes -&gt; (fichero, red, campo tabla bbdd, etc.) -&gt; bytes -&gt; Objeto</li>
+<li>Proceso manual.</li>
+</ul></li>
+<li><strong>Motores de persistencia</strong>:
+<ul>
+<li>Objeto -&gt; Motor -&gt; (XML, JSON, tabla bbdd, etc.) -&gt; Motor -&gt; Objeto</li>
+<li>Proceso semi-autotico.</li>
+</ul></li>
+<li><strong>Bases de datos orientadas a objetos</strong>:
+<ul>
+<li>Objeto -&gt; Objeto bbdd -&gt; Objeto</li>
+<li>Proceso automático, pero bbdddoo no han terminado de despegar.</li>
+</ul></li>
+</ul>
+</section>
+<section id="orm" class="slide level1">
+<h2><span class="header-section-number">3</span> ORM</h2>
+<ul>
+<li><strong>O</strong>bject-<strong>R</strong>elational <strong>M</strong>apping o <strong>mapeo objeto/relacional</strong></li>
+<li>Técnica para <strong>persistir objetos en bases de datos relacionales</strong>.</li>
+<li>Persigue no perder las ventajas de la orientación a objetos al interactuar con una base de datos relacional.</li>
+</ul>
+</section>
+<section id="jpa" class="slide level1">
+<h2><span class="header-section-number">4</span> JPA</h2>
+<ul>
+<li><strong>J</strong>ava <strong>P</strong>ersistence <strong>A</strong>PI.</li>
+<li>API de persistencia desarrollada para la plataforma Java EE.</li>
+<li>Se puede usar fuera de un contenedor Java EE.</li>
+<li>Cubre tres áreas:
+<ul>
+<li>La API en sí misma, definida en <strong>javax.persistence</strong></li>
+<li>La <strong>J</strong>ava <strong>P</strong>ersistence <strong>Q</strong>uery <strong>L</strong>anguage (<strong>JPQL</strong>)</li>
+<li>Los <strong>metadatos</strong> para el mapeo objeto/relacional (<strong>ORM</strong>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="implementaciones-jpa" class="slide level1">
+<h2><span class="header-section-number">5</span> Implementaciones JPA</h2>
+<ul>
+<li>JPA es una <strong>especificación</strong> (una serie de Interfaces).</li>
+<li>Para utilizarla necesitas una <strong>implementación</strong> y los <strong>drivers</strong> de la bbdd.</li>
+<li>Las implementaciones más populares son:
+<ul>
+<li><strong>Hibernate</strong> (el más conocido/usado y además LGPL)</li>
+<li><strong>TopLink</strong></li>
+<li><strong>EclipseLink</strong></li>
+<li><strong>OpenJPA</strong></li>
+<li><strong>Kodo</strong></li>
+<li><strong>DataNucleus</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="entidades" class="slide level1">
+<h2><span class="header-section-number">6</span> Entidades</h2>
+<ul>
+<li>Una entidad es un clase persistente.</li>
+<li>Una entidad representa una <strong>tabla</strong> en la base de datos.</li>
+<li>Cada instancia (objeto) de la entidad representa un <strong>registro</strong> en la base de datos.</li>
+</ul>
+</section>
+<section id="requerimientos-para-las-entidades" class="slide level1">
+<h2><span class="header-section-number">7</span> Requerimientos para las Entidades</h2>
+<ul>
+<li>La clase debe ser anotada con javax.persistence.<strong>Entity</strong>.</li>
+<li>La clase debe ser pública o protegida, y en ningún caso final.</li>
+<li>La clase debe tener al menos un constructor público o protegido sin argumentos.</li>
+<li>La clase puede implementar la interface Serializable.</li>
+<li>Una clase abstracta puede ser declarada como entidad.</li>
+<li>Todas la entidades deben tener una anotación de PK (Primary Key)</li>
+<li>Los atributos se deben declarar como privados.</li>
+<li>Los atributos no se deben declarar como final.</li>
+<li>Los atributos deben tener <strong>getters/setters</strong> públicos o protegidos.</li>
+<li>Los atributos no persistentes deden de ser anotados con javax.persistence.<strong>Transient</strong>.</li>
+</ul>
+</section>
+<section id="atributos-persistentes" class="slide level1">
+<h2><span class="header-section-number">8</span> Atributos persistentes</h2>
+<ul>
+<li>Tipos primitivos y sus Wrappers.</li>
+<li>Matrices de tipos primitivos.</li>
+<li>java.lang.String</li>
+<li>java.math.BigInteger y java.math.BigDecimal</li>
+<li>java.util.Date y java.util.Calendar</li>
+<li>java.sql.Date, java.sql.Time y java.sql.TimeStamp</li>
+<li>Clases serializables</li>
+<li>Clases tipo Enum</li>
+<li>Otras entidades</li>
+<li>Collecciones de todo lo anterior.</li>
+</ul>
+</section>
+<section id="ejemplo-entidad" class="slide level1">
+<h2><span class="header-section-number">9</span> Ejemplo: Entidad</h2>
+<pre><code>import javax.persistence.*;
+@Entity // obligatorio
+@Table(name = &quot;PERSONAS&quot;)
+public class Persona {
+
+    @Id // obligatorio
+    @Column(name=&quot;ID_PERSONA&quot;)
+    private int id;
+
+    @Column(name=&quot;NOMBRE&quot;) // opcional
+    private String nombre;
+
+    public void setID();
+    public String getID();
+
+    public void setNombre();
+    public String getNombre();
+}</code></pre>
+</section>
+<section id="ejemplo-uno-a-muchos" class="slide level1">
+<h2><span class="header-section-number">10</span> Ejemplo: Uno a Muchos</h2>
+<figure>
+<img src="../img/relacion-uno-a-muchos.png" />
+</figure>
+<pre><code>@Entity public class Cliente {
+    ...
+    @OneToMany(cascade=CascadeType.ALL, mappedBy=&quot;cliente&quot;)
+    private Set&lt;Orden&gt; ordenes;
+    ...
+}</code></pre>
+<pre><code>@Entity public class Orden {
+    ...
+    @ManyToOne
+    @JoinColumn (name=&quot;ID_CLIENTE&quot;)
+    private Cliente cliente;
+    ...
+}</code></pre>
+</section>
+<section id="ejemplo-muchos-a-muchos" class="slide level1">
+<h2><span class="header-section-number">11</span> Ejemplo: Muchos a Muchos</h2>
+<figure>
+<img src="../img/relacion-muchos-a-muchos.png" />
+</figure>
+<pre><code>@Entity public class Estudiante {
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;CURSO_ESTUDIANTE&quot;,
+        joinColumns={@JoinColumn(name=&quot;ID_ESTUDIANTE&quot;,referencedColumnName=&quot;ID_ESTUDIANTE&quot;)},
+        inverseJoinColumns={@JoinColumn(name=&quot;ID_CURSO&quot;,referencedColumnName=&quot;ID_CURSO&quot;)})
+    private List&lt;Course&gt; cursos;
+}</code></pre>
+<pre><code>@Entity public class Curso {
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name=&quot;CURSO_ESTUDIANTE&quot;,
+        joinColumns=@JoinColumn(name=&quot;ID_CURSO&quot;,referencedColumnName=&quot;ID_CURSO&quot;))
+        inverseJoinColumns=@JoinColumn(name=&quot;ID_ESTUDIANTE&quot;,referencedColumnName=&quot;ID_ESTUDIANTE&quot;),
+    private List&lt;Student&gt; estudiantes;
+}</code></pre>
+</section>
+<section id="herencia" class="slide level1">
+<h2><span class="header-section-number">12</span> Herencia</h2>
+<ul>
+<li>Se hace de 3 maneras distintas:
+<ol type="1">
+<li>Una tabla por familia (comportamiento por defecto)</li>
+<li>Un join de tablas</li>
+<li>Una tabla por clase concreta</li>
+</ol></li>
+</ul>
+<pre><code>@Entity public class SuperClase {
+    @Id private Long id;
+    private int propiedadUno;
+    private String propiedadDos;
+    // Getters y Setters
+}</code></pre>
+<pre><code>@Entity public class SubClase extends SuperClase {
+    @Id private Long id;
+    private float propiedadTres;
+    private float propiedadCuatro;
+    // Getters y setters
+}</code></pre>
+</section>
+<section id="herencia-una-tabla" class="slide level1">
+<h2><span class="header-section-number">13</span> Herencia: una tabla</h2>
+<ul>
+<li>Comportamiento <strong>por defecto</strong>.</li>
+<li>Las instancias de SuperClase y de SubClase son almancenadas en una <strong>única tabla</strong>.</li>
+<li>Nombre por defecto de la tabla el de la clase raíz (SuperClase).</li>
+<li>Dentro de esta tabla habrá:
+<ul>
+<li>Una columna para el ID (válido para todas las entidades)</li>
+<li>Una columna para cada propiedad.</li>
+<li>Una columna discriminatoria que suele contener el nombre de la clase.</li>
+</ul></li>
+<li>Las propiedades de las subclases no deben ser configuradas como not null pues da error.</li>
+</ul>
+</section>
+<section id="herencia-un-join-de-tablas" class="slide level1">
+<h2><span class="header-section-number">14</span> Herencia: un join de tablas</h2>
+<ul>
+<li>Cada clase y subclase será almacenada en su propia tabla.</li>
+<li>La tabla raíz contiene una columna con un <strong>ID compartido</strong> y usado por todas las tablas, y una columna discriminatoria.</li>
+<li>Cada subclase almacenará en su propia tabla únicamente sus atributos propios.</li>
+<li>Las tablas de las subclase tendrán una <strong>PK a la tabla raíz</strong>.</li>
+<li>Es un sistema intuitivo, pero si hay varios niveles de herencia se necesitarán varios JOIN, lo cual puede producir un impacto en el rendimiento.</li>
+</ul>
+<pre><code>@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class SuperClase { ... }</code></pre>
+</section>
+<section id="herencia-una-tabla-por-clase" class="slide level1">
+<h2><span class="header-section-number">15</span> Herencia: una tabla por clase</h2>
+<ul>
+<li>Cada entidad será mapeada a su propia tabla.</li>
+<li>Con este sistema no hay tablas compartidas, columnas compartidas, ni columna discriminatoria.</li>
+<li>Todas las tablas deberán <strong>compartir el ID</strong>.</li>
+<li>Puede provocar problemas de rendimiento, ya que ante determinadas solicitudes, la base de datos tendrá que realizar múltiples JOIN.</li>
+</ul>
+<pre><code>@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class SuperClase { ... }</code></pre>
+</section>
+<section id="el-entitymanager" class="slide level1">
+<h2><span class="header-section-number">16</span> El EntityManager</h2>
+<ul>
+<li>Administra la conexión con la base de datos.</li>
+<li>Administra la persistencia y la recuperación de entidades.</li>
+<li>Puede ser administrada por un contenedor JEE o por la aplicación.</li>
+<li>Puede administrar las transacciones o delegar en el contenedor JEE.</li>
+<li>Soporta la ejecución de consultas (queries)</li>
+</ul>
+</section>
+<section id="arquitectura-jpa" class="slide level1">
+<h2><span class="header-section-number">17</span> Arquitectura JPA</h2>
+<figure>
+<img src="../img/jpa-architecture.jpg" />
+</figure>
+</section>
+<section id="persistence.xml" class="slide level1">
+<h2><span class="header-section-number">18</span> persistence.xml</h2>
+<pre><code>&lt;persistence
+    xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd&quot;
+    version=&quot;2.0&quot;&gt;
+    &lt;persistence-unit name=&quot;ejemplo-unidad-persistencia&quot; transaction-type=&quot;RESOURCE_LOCAL&quot;&gt;
+        &lt;class&gt;ejemplo.Cliente&lt;/class&gt;
+        &lt;class&gt;ejemplo.Orden&lt;/class&gt;
+        &lt;class&gt;ejemplo.Estudiante&lt;/class&gt;
+        &lt;class&gt;ejemplo.Curso&lt;/class&gt;
+        &lt;properties&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;usuario&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;Pa$.w0rd&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:mysql://192.168.1.1/ejemplo&quot;/&gt;
+            &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.MySQLDialect&quot;/&gt;
+            &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;true&quot;/&gt;
+        &lt;/properties&gt;
+   &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre>
+</section>
+<section id="ejemplo-persistir" class="slide level1">
+<h2><span class="header-section-number">19</span> Ejemplo: persistir</h2>
+<pre><code>EntityManagerFactory emf;
+EntityManager em;
+try {
+    emf = Persistence.createEntityManagerFactory(&quot;ejemplo-unidad-persistencia&quot;);
+    em = emf.createEntityManager();
+    Cliente cliente = new Cliente();
+    cliente.setNombre(&quot;Adolfo&quot;);
+    em.getTransaction().begin()
+    em.persist(cliente);
+    em.getTransaction().commit();
+} catch(Exception e) {
+    em.getTransaction().rollback()
+} finally {
+    if (em != null) em.close();
+    if (emf != null) emf.close();
+}</code></pre>
+</section>
+<section id="otros-ejemplos" class="slide level1">
+<h2><span class="header-section-number">20</span> Otros ejemplos</h2>
+<pre><code>em.flush(); // fuerza a que los cambios pendientes se guarden en la base de datos</code></pre>
+<pre><code>Cliente c = em.find(Cliente.class, id); // recupera cliente de la base de datos por ID</code></pre>
+<pre><code>em.refresh(cliente); // recarga de la base de datos y sobreescribe en memoria</code></pre>
+<pre><code>em.remove(cliente); // borra de la base de datos</code></pre>
+</section>
+<section id="jpql-una-query" class="slide level1">
+<h2><span class="header-section-number">21</span> JPQL: una query</h2>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c&quot;;
+Query query = em.createQuery(jpql);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+</section>
+<section id="jpql-query-con-parámetros-i" class="slide level1">
+<h2><span class="header-section-number">22</span> JPQL: query con parámetros (I)</h2>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c WHERE c.nombre = ?1 AND c.id &gt; ?2&quot;;
+Query query = em.createQuery(jpql);
+query.setParameter(1, &quot;Pepito&quot;);
+query.setParameter(2, 468);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+</section>
+<section id="jpql-query-con-parámetros-ii" class="slide level1">
+<h2><span class="header-section-number">23</span> JPQL: query con parámetros (II)</h2>
+<pre><code>String jpql = &quot;SELECT c FROM Cliente c WHERE c.nombre = :nombre AND c.id &gt; :id&quot;;
+Query query = em.createQuery(jpql);
+query.setParameter(&quot;nombre&quot;, &quot;Pepito&quot;);
+query.setParameter(&quot;id&quot;, 468);
+List&lt;Cliente&gt; clientes = query.getResultList();
+for(Cliente c : clientes) {
+    // ...
+}</code></pre>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

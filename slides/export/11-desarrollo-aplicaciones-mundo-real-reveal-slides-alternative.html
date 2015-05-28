@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Desarrollo aplicaciones mundo real" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Desarrollo aplicaciones mundo real</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 300% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 350% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Desarrollo aplicaciones mundo real</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="desarrollo-en-cascada" class="slide level1">
+<h2><span class="header-section-number">1</span> Desarrollo en cascada</h2>
+<ul>
+<li>En <strong>declive</strong>.</li>
+<li>Enfoque metodológico que ordena <strong>rigurosamente</strong> las etapas del ciclo de vida del software, de tal forma que el inicio de cada etapa debe esperar a la finalización de la inmediatamente anterior.</li>
+<li><strong>Etapas</strong>:
+<ol type="1">
+<li>Análisis de requisitos</li>
+<li>Diseño del Sistema</li>
+<li>Diseño del Programa</li>
+<li>Codificación</li>
+<li>Pruebas</li>
+<li>Implantación</li>
+<li>Mantenimiento</li>
+</ol></li>
+</ul>
+</section>
+<section id="desarrollos-ágiles" class="slide level1">
+<h2><span class="header-section-number">2</span> Desarrollos ágiles</h2>
+<ul>
+<li>En <strong>auge</strong>.</li>
+<li>Promueve <strong>iteraciones</strong> en el desarrollo a lo largo de todo el ciclo de vida del proyecto.</li>
+<li>Cada iteración del ciclo de vida incluye: planificación, análisis, diseño, codificación, revisión y documentación.</li>
+<li>Una iteración no debe agregar demasiada funcionalidad pues la meta es tener un demo (sin errores) al final de cada iteración.</li>
+<li>Al final de cada iteración el equipo vuelve a evaluar las prioridades del proyecto.</li>
+<li>Los métodos ágiles enfatizan las comunicaciones cara a cara en vez de la documentación.</li>
+<li>Muy ligado con <strong>TDD</strong>.</li>
+</ul>
+</section>
+<section id="control-de-versiones-i" class="slide level1">
+<h2><span class="header-section-number">3</span> Control de versiones (I)</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Gestionan los diversos <strong>cambios</strong> que se realizan sobre el código.</li>
+<li>Posibilitan el acceso al <strong>histórico</strong> de un determinado elemento o un conjunto de ellos, pudiendo normalmente volver a un estado anterior.</li>
+<li>Facilitan la administración de las distintas <strong>versiones</strong> de cada producto desarrollado.</li>
+</ul></li>
+<li>Funcionamiento
+<ul>
+<li>Disponen de un <strong>repositorio</strong>, que contiene el historial de todos los elementos.</li>
+<li>Para trabajar, los usuarios se crean una copia local de la versión con la que quieren trabajar (<strong>checkout</strong>).</li>
+<li>Cuando el usuario termina, sube los cambios de nuevo al repositorio (<strong>commit</strong>)</li>
+</ul></li>
+<li>Ventajas
+<ul>
+<li>Control del código a lo largo del tiempo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="control-de-versiones-ii" class="slide level1">
+<h2><span class="header-section-number">4</span> Control de versiones (II)</h2>
+<ul>
+<li>Tipos
+<ul>
+<li><strong>Centralizados</strong>: existe un repositorio centralizado de todo el código, del cual es responsable un único usuario (o conjunto de ellos).
+<ul>
+<li>Ejemplo: <strong>Subversion</strong></li>
+</ul></li>
+<li><strong>Distribuidos</strong>: cada usuario tiene su propio repositorio.
+<ul>
+<li>Ejemplo: <strong>Git</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="construcción-de-proyectos-ant" class="slide level1">
+<h2><span class="header-section-number">5</span> Construcción de proyectos: Ant</h2>
+<ul>
+<li>Herramienta <strong>simple y multi-propósito</strong> usada para la realización de tareas mecánicas y repetitivas</li>
+<li>Hecha en Java, tiene la ventaja de no depender de las órdenes del shell de cada sistema operativo, sino que se basa en archivos de configuración XML y clases Java para la realización de las distintas tareas, siendo idónea como solución <strong>multi-plataforma</strong>.</li>
+<li>Usada normalmente durante la fase de compilación y construcción de proyectos de software.</li>
+</ul>
+</section>
+<section id="construcción-de-proyectos-maven" class="slide level1">
+<h2><span class="header-section-number">6</span> Construcción de proyectos: Maven</h2>
+<ul>
+<li>Herramienta de software para la <strong>gestión y construcción de proyectos Java</strong>.</li>
+<li>Es capaz de gestionar <strong>dependencias</strong> entre proyectos.</li>
+<li>Hay <strong>plugins</strong> para generar el JavaDoc, ejecutar los tests, lanzar métricas, etc.</li>
+<li>Está pensado para usarse en red, para la gestión de dependencias y plugins.</li>
+<li>El ciclo de vida de un proyecto Maven se divide en <strong>metas</strong>, de tal forma que para ejecutar cualquier meta, todas las anteriores han debido ser completadas satisfactoriamente.</li>
+<li>Las metas del ciclo de vida principal (existen otras) de un proyecto son:
+<ol type="1">
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+<li>deploy</li>
+</ol></li>
+</ul>
+</section>
+<section id="métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">7</span> Métricas de código</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Son un conjunto de <strong>medidas de software</strong> que proporcionan una mejor visión del código que se está desarrollando.</li>
+</ul></li>
+<li>Algunos tipos
+<ul>
+<li>Errores potenciales</li>
+<li>Reglas de codificación</li>
+<li>Número de comentarios</li>
+<li>Número de líneas de código (por método, clase, paquete)</li>
+<li>Complejidad ciclomática</li>
+<li>Duplicidad del código</li>
+<li>Cobertura de pruebas del código</li>
+<li>Profundidad de las herencias de las clases</li>
+<li>Acoplamiento de clases</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="herramientas-de-métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">8</span> Herramientas de métricas de código</h2>
+<ul>
+<li>Herramientas (muchas tienen plugins para eclipse y/o maven)
+<ul>
+<li><strong>Checkstyle</strong> (convenciones de codificación)</li>
+<li><strong>PMD</strong> (busca en el código ciertos patrones de error)</li>
+<li><strong>Findbugs</strong> (realiza análisis estático de código en busca de errores)</li>
+<li><strong>JDepend</strong> (proporciona métricas de cálidad entre los paquetes de un proyecto en términos de su extensibilidad, reusabilidad, y mantenibilidad.)</li>
+<li><strong>JavaNCSS</strong> (permite recoger métricas sobre el código fuente, como el número de líneas, paquetes, clases o métodos.)</li>
+<li><strong>Cobertura</strong> (permite calcular la cantidad de código al que acceden los tests)</li>
+</ul></li>
+<li>Plataformas
+<ul>
+<li><strong>Sonar</strong> integra todos las anteriores herramientas en una.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ventajas-de-las-métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">9</span> Ventajas de las métricas de código</h2>
+<ul>
+<li>Cómo desarrollador:
+<ul>
+<li>Aprendes a <strong>programar mejor</strong>.</li>
+<li>Aprendes a <strong>detectar errores comunes</strong>.</li>
+<li>Aprendes <strong>las reglas de codificación</strong>.</li>
+<li><strong>Cuantificas la calidad</strong> de tú software.</li>
+</ul></li>
+<li>Cómo docente:
+<ul>
+<li>Se pueden pasar métricas al código entregado por los alumnos para <strong>corregir prácticas y exámenes automáticamente</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="integración-continua" class="slide level1">
+<h2><span class="header-section-number">10</span> Integración Continua</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Consiste en hacer <strong>integraciones automáticas</strong> de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes.</li>
+<li>Cada cierto tiempo, o cada vez que se hace un commit:
+<ol type="1">
+<li><strong>descargarse las fuentes</strong> desde el gestor de control de versiones,</li>
+<li><strong>compilar el código</strong>,</li>
+<li><strong>ejecutar los tests</strong></li>
+<li>y <strong>generar informes</strong>.</li>
+</ol></li>
+</ul></li>
+<li>Los servidores de Integración Continua más conocidos actualmente para Java son <strong>Hudson y Jenkins</strong>.</li>
+</ul>
+</section>
+<section id="esquema-integración-continua" class="slide level1">
+<h2><span class="header-section-number">11</span> Esquema Integración Continua</h2>
+<figure>
+<img src="../img/integracion-continua.png" />
+</figure>
+</section>
+<section id="ventajas-de-la-integración-continua" class="slide level1">
+<h2><span class="header-section-number">12</span> Ventajas de la Integración Continua</h2>
+<ul>
+<li>Los desarrolladores pueden <strong>detectar y solucionar problemas</strong> de integración de forma continua, evitando el caos de última hora cuando se acercan las fechas de entrega.</li>
+<li>Disponibilidad constante de un <strong>empaquetado</strong> para pruebas, demos o lanzamientos anticipados.</li>
+<li>Ejecución inmediata de los <strong>tests unitarias</strong>.</li>
+<li>Monitorización continua de las <strong>métricas de calidad</strong> del proyecto.</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

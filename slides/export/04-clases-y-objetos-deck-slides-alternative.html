@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Clases y objetos" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Clases y objetos</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Clases y objetos</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="conceptos" class="slide level1">
+<h2><span class="header-section-number">1</span> Conceptos</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>Conjunto propiedades y métodos que modifican (o no) dichas propiedades.</li>
+</ul></li>
+<li><strong>Objeto</strong>
+<ul>
+<li>Instancia de una clase.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-static" class="slide level1">
+<h2><span class="header-section-number">2</span> El modificador 'static'</h2>
+<ul>
+<li>Asocia una propiedad o un método a la clase, y no al objeto.</li>
+<li>La propiedad o método marcado como <strong>static</strong> se 'comparte' entre todas las instancias de la clase.</li>
+</ul>
+</section>
+<section id="el-modificador-final" class="slide level1">
+<h2><span class="header-section-number">3</span> El modificador 'final'</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>No permite que se herede de ella.</li>
+</ul></li>
+<li><strong>Propiedad</strong>
+<ul>
+<li>No permite que se modifique.</li>
+</ul></li>
+<li><strong>Método</strong>
+<ul>
+<li>No permite que se sobrescriba en clases hijas.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-abstract" class="slide level1">
+<h2><span class="header-section-number">4</span> El modificador 'abstract'</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>La convierte en abstracta obligando a sus clases hijas a sobrescribirlos métodos abstractos.</li>
+</ul></li>
+<li><strong>Método</strong>
+<ul>
+<li>Dentro de una clase abstracta los distintos métodos que las clases hijas deben de sobreescribir obligatoriamente.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-transient" class="slide level1">
+<h2><span class="header-section-number">5</span> El modificador 'transient'</h2>
+<ul>
+<li><strong>Propiedad</strong>
+<ul>
+<li>Indica que no es parte persistente del objeto (serialización).</li>
+</ul></li>
+</ul>
+</section>
+<section id="modificadores-de-visibilidad" class="slide level1">
+<h2><span class="header-section-number">6</span> Modificadores de visibilidad</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">La misma</td>
+<td style="text-align: center;">Otra clase del</td>
+<td style="text-align: center;">Subclase de</td>
+<td style="text-align: center;">Otra clase de</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">clase</td>
+<td style="text-align: center;">mismo paquete</td>
+<td style="text-align: center;">otro paquete</td>
+<td style="text-align: center;">otro paquete</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>protected</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>default</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>private</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constructores" class="slide level1">
+<h2><span class="header-section-number">7</span> Constructores</h2>
+<ul>
+<li>Métodos que se llaman igual que la propia clase.</li>
+<li>Si no hay ninguno se aplica el por defecto.</li>
+<li>Puede haber uno o varios.</li>
+<li>Pueden tener o no parámetros.</li>
+<li>Para instanciar:
+<ul>
+<li>Objeto o = new Objeto();</li>
+</ul></li>
+<li>Las clases abstractas no se pueden instanciar.</li>
+</ul>
+</section>
+<section id="destructores" class="slide level1">
+<h2><span class="header-section-number">8</span> Destructores</h2>
+<ul>
+<li>No existen destructores.</li>
+<li>El <strong>recolector de basura</strong>:
+<ul>
+<li>Es quien se encarga de destruir objetos.</li>
+<li>Es un mecanismo complicado.</li>
+<li>De forma sencilla: destruye los objetos que ya no son referenciados en ningún sitio.</li>
+<li>Problemas: ej. referenciar en un Array objetos que ya no se usan.</li>
+<li>Soluciones: ej. Objeto o = null; (pero con esto sólo borras una referencia y puede haber más)</li>
+</ul></li>
+</ul>
+</section>
+<section id="inversión-de-dependencias" class="slide level1">
+<h2><span class="header-section-number">9</span> Inversión de Dependencias</h2>
+<ul>
+<li>Los términos fueron acuñados por <strong>Martin Fowler</strong> en el 2004.</li>
+<li>Intentan reducir el acoplamiento entre componentes.<br /></li>
+<li><strong>Inyección de dependencias</strong>
+<ul>
+<li>Es un <strong>patrón de diseño</strong> orientado a objetos, en el que se suministran objetos a una clase en lugar de ser la propia clase quien cree el objeto.</li>
+</ul></li>
+<li><strong>Inversión de control</strong>
+<ul>
+<li>Implementación del <strong>Principio de Hollywood</strong> cuyo nombre proviene de las típicas respuestas que se les dan a los actores amateurs: <strong>no nos llames; nosotros te llamaremos</strong>.</li>
+<li>En este caso es la libreria la que llama al código y no al revés.</li>
+<li>Consiste en delegar la gestión de las instancias en un <strong>contenedor</strong>.</li>
+<li>Ejemplos: <strong>Spring</strong> y <strong>Google Guice</strong>.</li>
+</ul></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" href="./Calificacion.html" title="curso.java.app.clase.pojos.Calificacion" alt="" coords="581,11,768,155"/>
+<area shape="rect" href="./Alumno.html" title="curso.java.app.clase.pojos.Alumno" alt="" coords="345,241,564,337"/>
+<area shape="rect" href="./Evaluacion.html" title="curso.java.app.clase.pojos.Evaluacion" alt="" coords="609,213,740,365"/>
+<area shape="rect" href="./Modulo.html" title="curso.java.app.clase.pojos.Modulo" alt="" coords="485,472,603,536"/>
+<area shape="rect" href="./Turno.html" title="curso.java.app.clase.pojos.Turno" alt="" coords="416,675,520,779"/>
+<area shape="rect" href="./Asignatura.html" title="curso.java.app.clase.pojos.Asignatura" alt="" coords="167,241,300,337"/>
+<area shape="rect" href="./Clase.html" title="curso.java.app.clase.pojos.Clase" alt="" coords="256,424,440,584"/>
+<area shape="rect" href="./Profesor.html" title="curso.java.app.clase.pojos.Profesor" alt="" coords="16,687,221,767"/>
+<area shape="rect" href="./Anios.html" title="curso.java.app.clase.pojos.Anios" alt="" coords="565,687,672,767"/>
+<area shape="rect" href="./Ciclo.html" title="curso.java.app.clase.pojos.Ciclo" alt="" coords="717,643,821,811"/>
+<area shape="rect" href="./Curso.html" title="curso.java.app.clase.pojos.Curso" alt="" coords="267,675,371,779"/>
+<area shape="rect" href="./Persona.html" title="curso.java.app.clase.pojos.Persona" alt="" coords="224,43,349,123"/>
+</map>

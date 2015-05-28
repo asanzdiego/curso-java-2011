@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Lectura y escritura de ficheros con Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Lectura y escritura de ficheros con Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Lectura y escritura de ficheros con Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="ficheros-en-java" class="slide level1">
+<h2><span class="header-section-number">1</span> Ficheros en Java</h2>
+<ul>
+<li>Java es multiplataforma, e intenta aislarse del sistema de ficheros, aunque no consigue evitarlo del todo.</li>
+<li>Utiliza el clase <strong>File</strong> del paquete java.io:
+<ul>
+<li>Está pensada para realizar operaciones de <strong>información</strong> sobre archivos.</li>
+<li>No proporciona métodos de acceso a los archivos.</li>
+<li>Sólo proporciona operaciones a nivel de sistema de archivos:
+<ul>
+<li>listado de archivos,</li>
+<li>crear carpetas,</li>
+<li>borrar ficheros,</li>
+<li>cambiar nombre,</li>
+<li>etc.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="uso-de-la-clase-file" class="slide level1">
+<h2><span class="header-section-number">2</span> Uso de la clase File</h2>
+<ul>
+<li>Utiliza como único argumento una cadena que representa una <strong>ruta</strong> (ya sea absoluta o relativa) en el sistema de archivos. El problema es que a veces se utiliza / otras \ etc.</li>
+<li>La clase File tiene variables estáticas que nos facilitan la tarea:
+<ul>
+<li><strong>separator</strong>: El carácter separador de nombres de archivo y carpetas.
+<ul>
+<li>/ para Linux</li>
+<li>\ para Windows (que debe escribirse \\).</li>
+</ul></li>
+<li><strong>pathSeparator</strong>: El carácter separador de rutas de archivo que permite poner más de un archivo en una ruta.
+<ul>
+<li>: para Linux</li>
+<li>; para Windows.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="métodos-de-file-i" class="slide level1">
+<h2><span class="header-section-number">3</span> Métodos de File (I)</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean isDirectory()</strong></td>
+<td style="text-align: left;">Devuelve true si es una carpeta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>boolean isFile()</strong></td>
+<td style="text-align: left;">Devuelve true si es un archivo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean exists()</strong></td>
+<td style="text-align: left;">Devuelve true si existe la carpeta o archivo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>boolean canRead()</strong></td>
+<td style="text-align: left;">Devuelve true si se puede leer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean canWrite()</strong></td>
+<td style="text-align: left;">Devuelve true si se puede escribir</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>boolean isHidden()</strong></td>
+<td style="text-align: left;">Devuelve true si es oculto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean isAbsolute()</strong></td>
+<td style="text-align: left;">Devuelve true si la ruta es absoluta</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="métodos-de-file-ii" class="slide level1">
+<h2><span class="header-section-number">4</span> Métodos de File (II)</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>String getAbsolutePath()</strong></td>
+<td style="text-align: left;">Devuelve una cadena con la ruta absoluta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>File getAbsoluteFile()</strong></td>
+<td style="text-align: left;">Devuelve un objeto File con la ruta absoluta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>String getName()</strong></td>
+<td style="text-align: left;">Devuelve una cadena con el nombre de la carpeta o archivo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>String getParent()</strong></td>
+<td style="text-align: left;">Devuelve el nombre de la carpeta superior o null si no tiene</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>File getParentFile()</strong></td>
+<td style="text-align: left;">Devuelve un objeto File la carpeta superior o null si no tiene</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>boolean setReadOnly()</strong></td>
+<td style="text-align: left;">Activa el atributo de sólo lectura</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean delete()</strong></td>
+<td style="text-align: left;">Devuelve true si borra la carpeta o archivo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="métodos-de-file-iii" class="slide level1">
+<h2><span class="header-section-number">5</span> Métodos de File (III)</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean mkdir()</strong></td>
+<td style="text-align: left;">Devuelve true si consigue crear una carpeta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>boolean mkdirs()</strong></td>
+<td style="text-align: left;">Devuelve true si consigue crear una carpeta y si hace falta toda la estructura</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>String[] list()</strong></td>
+<td style="text-align: left;">Devuelve un array con los nombres de los ficheros</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>File[] listfiles()</strong></td>
+<td style="text-align: left;">Devuelve un array de objetos File con los ficheros del directorio</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>static File[] listRoots()</strong></td>
+<td style="text-align: left;">Devuelve un array de objetos File con los ficheros de la carpeta raíz</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="métodos-de-file-iv" class="slide level1">
+<h2><span class="header-section-number">6</span> Métodos de File (IV)</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean renameTo(File f2)</strong></td>
+<td style="text-align: left;">Devuelve true si consigue cambiar el nombre por el de f2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>long length()</strong></td>
+<td style="text-align: left;">Devuelve el tamaño del archivo en bytes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>boolean createNewFile()</strong></td>
+<td style="text-align: left;">Devuelve true si consigue crear el archivo,</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">false si ya estaba creado, y IOEXception si falla</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>void deleteOnExit()</strong></td>
+<td style="text-align: left;">Borra el archivo cuando finaliza la ejecución del programa</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplo-lectura-fichero" class="slide level1">
+<h2><span class="header-section-number">7</span> Ejemplo lectura fichero</h2>
+<pre><code>BufferedReader fichero = null;
+StringBuilder texto = null;
+try{
+    fichero = new BufferedReader(new FileReader(&quot;texto.txt&quot;));
+    String linea = fichero.readLine();
+    while (linea != null) {
+        texto.append(linea);
+        linea = fichero.readLine();
+    }
+} catch(Exception e){
+    System.out.println(&quot;Error&quot;+e.toString());
+} finally {
+    try {
+        if (fichero != null) fichero.close();
+    } catch(Exception e){
+        System.out.println(&quot;Error&quot;+e.toString());
+    }
+}
+// salida por pantalla
+System.out.println(texto);</code></pre>
+</section>
+<section id="ejemplo-escritura-fichero" class="slide level1">
+<h2><span class="header-section-number">8</span> Ejemplo escritura fichero</h2>
+<pre><code>PrintWriter fichero = null;
+try
+{
+    // si append == true  escribe al final del fichero
+    // si append == false sobrescribe el fichero
+    boolean append = false;
+    fichero = new PrintWriter(new FileWriter(&quot;texto.txt&quot;, append));
+    for (int i = 0; i &lt; 10; i++) {
+        fichero.println(&quot;Linea &quot; + i);
+    }
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+   try {
+     if (null != fichero) fichero.close();
+   } catch (Exception e) {
+      e.printStackTrace();
+   }
+}</code></pre>
+</section>
+<section id="xml-en-java" class="slide level1">
+<h2><span class="header-section-number">9</span> XML en Java</h2>
+<ul>
+<li>Existen numerosas librerías para procesar XML en Java.</li>
+<li><strong>XStream</strong> nos permite parsear <strong>POJO</strong> (Plain Old Java Objects) a XML y viceversa.</li>
+<li>Caracteristicas de XStream:
+<ul>
+<li><strong>Fácil de usar</strong>.</li>
+<li><strong>No requiere mapeos</strong>.</li>
+<li><strong>Alto rendimiento</strong>.</li>
+<li><strong>XML Limpio</strong>.</li>
+<li><strong>No requiere modificar los objetos</strong>.</li>
+<li><strong>Soporte completo para objetos complejos</strong>.</li>
+<li><strong>Integración con otras API de XML</strong>.</li>
+<li><strong>Estrategias de conversión personalizables</strong>.</li>
+<li><strong>Mensajes de error detallados</strong>.</li>
+<li><strong>Permite otros formatos de salida como JSON</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ejemplo-xstream-pojo" class="slide level1">
+<h2><span class="header-section-number">10</span> Ejemplo XStream: POJO</h2>
+<pre><code>public class PhoneNumber {
+  private int code;
+  private String number;
+  // ... constructores y métodos
+}
+public class Person {
+  private String firstname;
+  private String lastname;
+  private PhoneNumber phone;
+  private PhoneNumber fax;
+  // ... constructores y métodos
+}</code></pre>
+</section>
+<section id="ejemplo-xstream-xml" class="slide level1">
+<h2><span class="header-section-number">11</span> Ejemplo XStream: XML</h2>
+<pre><code>&lt;person&gt;
+    &lt;firstname&gt;Joe&lt;/firstname&gt;
+    &lt;lastname&gt;Walnes&lt;/lastname&gt;
+    &lt;phone&gt;
+      &lt;code&gt;123&lt;/code&gt;
+      &lt;number&gt;1234-456&lt;/number&gt;
+    &lt;/phone&gt;
+    &lt;fax&gt;
+      &lt;code&gt;123&lt;/code&gt;
+      &lt;number&gt;9999-999&lt;/number&gt;
+    &lt;/fax&gt;
+&lt;/person&gt;</code></pre>
+</section>
+<section id="ejemplo-xstream-conversión" class="slide level1">
+<h2><span class="header-section-number">12</span> Ejemplo XStream: Conversión</h2>
+<ul>
+<li>POJO to XML</li>
+</ul>
+<pre><code>XStream xstream = new XStream();
+xstream.alias(&quot;person&quot;, Person.class);
+Person joe = new Person(&quot;Joe&quot;, &quot;Walnes&quot;);
+joe.setPhone(new PhoneNumber(123, &quot;1234-456&quot;));
+joe.setFax(new PhoneNumber(123, &quot;9999-999&quot;));
+String xml = xstream.toXML(joe);</code></pre>
+<ul>
+<li>XML to POJO</li>
+</ul>
+<pre><code>Person newJoe = (Person) xstream.fromXML(xml);</code></pre>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

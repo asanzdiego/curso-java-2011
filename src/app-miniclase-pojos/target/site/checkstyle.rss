@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>app-miniclase-pojos - Checkstyle report</title>
+    <link>http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html</link>
+    <description>app-miniclase-pojos - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2011</copyright>
+    <item>
+      <title>File: 7,
+             Errors: 135,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Persona.java">curso/java/app/miniclase/pojos/Persona.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Modulo.java">curso/java/app/miniclase/pojos/Modulo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  17
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Calificacion.java">curso/java/app/miniclase/pojos/Calificacion.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Evaluacion.java">curso/java/app/miniclase/pojos/Evaluacion.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Alumno.java">curso/java/app/miniclase/pojos/Alumno.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Profesor.java">curso/java/app/miniclase/pojos/Profesor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://localhost:8080/workspace/app-miniclase-pojos/target/site/project-reports.html/checkstyle.html#curso.java.app.miniclase.pojos.Clase.java">curso/java/app/miniclase/pojos/Clase.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

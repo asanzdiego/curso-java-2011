@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Documentación del código Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Documentación del código Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Documentación del código Java</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#el-javadoc"><span class="toc-section-number">1</span> El Javadoc</a></li>
+<li><a href="#etiquetas-javadoc"><span class="toc-section-number">2</span> Etiquetas Javadoc</a></li>
+<li><a href="#ejemplo"><span class="toc-section-number">3</span> Ejemplo</a></li>
+<li><a href="#diagramas-uml-automáticos"><span class="toc-section-number">4</span> Diagramas UML automáticos</a></li>
+</ul>
+</nav>
+<h1 id="el-javadoc"><span class="header-section-number">1</span> El Javadoc</h1>
+<p>Es una utilidad de para la generación de documentación de APIs en formato HTML.</p>
+<p>Es el estándar para documentar clases de Java.</p>
+<p>La mayoría de los IDEs los generan automáticamente.</p>
+<p><a href="http://download.oracle.com/javase/6/docs/api/">http://download.oracle.com/javase/6/docs/api/</a></p>
+<p>Han de usarse etiquetas HTML o ciertas palabras reservadas precedidas por &quot;@&quot;.</p>
+<p>Estas etiquetas se escriben al principio de cada clase, propiedad o método.</p>
+<p>Dentro de un comentario iniciado con /** y acabado con */.</p>
+<h1 id="etiquetas-javadoc"><span class="header-section-number">2</span> Etiquetas Javadoc</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 17%" />
+<col style="width: 57%" />
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ta</td>
+<td style="text-align: left;">g</td>
+<td style="text-align: left;">Descripción</td>
+<td style="text-align: left;">Uso</td>
+</tr>
+</tbody>
+</table>
+<p><strong><span class="citation" data-cites="author">@author</span></strong> Nombre del desarrollador. nombre_autor</p>
+<p><strong><span class="citation" data-cites="deprecated">@deprecated</span></strong> Indica que no se recomienda su uso porque descripción puede desaparecer en versiones futuras.</p>
+<p><strong><span class="citation" data-cites="param">@param</span></strong> Definición de un parámetro de un método. nombre_parámetro descripción_parámetro</p>
+<p><strong><span class="citation" data-cites="return">@return</span></strong> Informa de lo que devuelve el método. descripción_retorno No usar en constructores o métodos &quot;void&quot;.</p>
+<p><strong><span class="citation" data-cites="see">@see</span></strong> Enlace a otro método o clase. referencia (#método(); clase#método(); paquete.clase; paquete.clase#método())</p>
+<p><strong><span class="citation" data-cites="throws">@throws</span></strong> Excepción lanzada por el método. nombre_clase_excepción descripción_excepción</p>
+<hr />
+<h1 id="ejemplo"><span class="header-section-number">3</span> Ejemplo</h1>
+<pre><code>/**
+ * Retorna un &quot;Hola + nombre&quot;.
+ * Al ser el nombre obligatorio, si es nulo o vacío se lanzará una excepción.
+ *
+ * @author Adolfo Sanz De Diego (asanzdiego@gmail.com)
+ * @param nombre El nombre que queremos retornar con un &quot;Hola + nombre&quot;.
+ * @return Retorna &quot;Hola + nombre&quot;.
+ * @throws IllegalArgumentException Si nombre es null, está vacío o contiene solo espacios.
+ */
+public String retornaHolaNombre(final String nombre) throws IllegalArgumentException {
+  if (nombre == null || nombre.trim().equals(&quot;&quot;)) {
+     throw new Exception (&quot;El nombre no puede ser nulo o vacío&quot;);
+  } else {
+     this.titulo = titulo;
+  }
+}</code></pre>
+<h1 id="diagramas-uml-automáticos"><span class="header-section-number">4</span> Diagramas UML automáticos</h1>
+<p><strong>GraphViz</strong></p>
+<ul>
+<li>Librería de software libre y multiplataforma para creación de <strong>gráficos</strong> a partir de textos simples.</li>
+</ul>
+<p><strong>UMLGraph</strong></p>
+<ul>
+<li><p>Permite la definición declarativa de <strong>diagramas UML de clases y de secuencia</strong>.</p></li>
+<li><p>Se puede integrar con Javadoc.</p></li>
+<li>Dos proyectos interesantes basados en UMLGraph:
+<ul>
+<li><strong>DotUML</strong> que integra UMLGraph en <strong>Maven</strong>.</li>
+<li><strong>LightUML</strong> que integra UMLGraph en <strong>Eclipse</strong>.</li>
+</ul></li>
+</ul>
+</body>
+</html>

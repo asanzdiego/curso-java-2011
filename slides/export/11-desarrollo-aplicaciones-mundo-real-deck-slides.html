@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Desarrollo aplicaciones mundo real" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Desarrollo aplicaciones mundo real</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Desarrollo aplicaciones mundo real</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="desarrollo-en-cascada" class="slide level1">
+<h2><span class="header-section-number">1</span> Desarrollo en cascada</h2>
+<ul>
+<li>En <strong>declive</strong>.</li>
+<li>Enfoque metodológico que ordena <strong>rigurosamente</strong> las etapas del ciclo de vida del software, de tal forma que el inicio de cada etapa debe esperar a la finalización de la inmediatamente anterior.</li>
+<li><strong>Etapas</strong>:
+<ol type="1">
+<li>Análisis de requisitos</li>
+<li>Diseño del Sistema</li>
+<li>Diseño del Programa</li>
+<li>Codificación</li>
+<li>Pruebas</li>
+<li>Implantación</li>
+<li>Mantenimiento</li>
+</ol></li>
+</ul>
+</section>
+<section id="desarrollos-ágiles" class="slide level1">
+<h2><span class="header-section-number">2</span> Desarrollos ágiles</h2>
+<ul>
+<li>En <strong>auge</strong>.</li>
+<li>Promueve <strong>iteraciones</strong> en el desarrollo a lo largo de todo el ciclo de vida del proyecto.</li>
+<li>Cada iteración del ciclo de vida incluye: planificación, análisis, diseño, codificación, revisión y documentación.</li>
+<li>Una iteración no debe agregar demasiada funcionalidad pues la meta es tener un demo (sin errores) al final de cada iteración.</li>
+<li>Al final de cada iteración el equipo vuelve a evaluar las prioridades del proyecto.</li>
+<li>Los métodos ágiles enfatizan las comunicaciones cara a cara en vez de la documentación.</li>
+<li>Muy ligado con <strong>TDD</strong>.</li>
+</ul>
+</section>
+<section id="control-de-versiones-i" class="slide level1">
+<h2><span class="header-section-number">3</span> Control de versiones (I)</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Gestionan los diversos <strong>cambios</strong> que se realizan sobre el código.</li>
+<li>Posibilitan el acceso al <strong>histórico</strong> de un determinado elemento o un conjunto de ellos, pudiendo normalmente volver a un estado anterior.</li>
+<li>Facilitan la administración de las distintas <strong>versiones</strong> de cada producto desarrollado.</li>
+</ul></li>
+<li>Funcionamiento
+<ul>
+<li>Disponen de un <strong>repositorio</strong>, que contiene el historial de todos los elementos.</li>
+<li>Para trabajar, los usuarios se crean una copia local de la versión con la que quieren trabajar (<strong>checkout</strong>).</li>
+<li>Cuando el usuario termina, sube los cambios de nuevo al repositorio (<strong>commit</strong>)</li>
+</ul></li>
+<li>Ventajas
+<ul>
+<li>Control del código a lo largo del tiempo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="control-de-versiones-ii" class="slide level1">
+<h2><span class="header-section-number">4</span> Control de versiones (II)</h2>
+<ul>
+<li>Tipos
+<ul>
+<li><strong>Centralizados</strong>: existe un repositorio centralizado de todo el código, del cual es responsable un único usuario (o conjunto de ellos).
+<ul>
+<li>Ejemplo: <strong>Subversion</strong></li>
+</ul></li>
+<li><strong>Distribuidos</strong>: cada usuario tiene su propio repositorio.
+<ul>
+<li>Ejemplo: <strong>Git</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="construcción-de-proyectos-ant" class="slide level1">
+<h2><span class="header-section-number">5</span> Construcción de proyectos: Ant</h2>
+<ul>
+<li>Herramienta <strong>simple y multi-propósito</strong> usada para la realización de tareas mecánicas y repetitivas</li>
+<li>Hecha en Java, tiene la ventaja de no depender de las órdenes del shell de cada sistema operativo, sino que se basa en archivos de configuración XML y clases Java para la realización de las distintas tareas, siendo idónea como solución <strong>multi-plataforma</strong>.</li>
+<li>Usada normalmente durante la fase de compilación y construcción de proyectos de software.</li>
+</ul>
+</section>
+<section id="construcción-de-proyectos-maven" class="slide level1">
+<h2><span class="header-section-number">6</span> Construcción de proyectos: Maven</h2>
+<ul>
+<li>Herramienta de software para la <strong>gestión y construcción de proyectos Java</strong>.</li>
+<li>Es capaz de gestionar <strong>dependencias</strong> entre proyectos.</li>
+<li>Hay <strong>plugins</strong> para generar el JavaDoc, ejecutar los tests, lanzar métricas, etc.</li>
+<li>Está pensado para usarse en red, para la gestión de dependencias y plugins.</li>
+<li>El ciclo de vida de un proyecto Maven se divide en <strong>metas</strong>, de tal forma que para ejecutar cualquier meta, todas las anteriores han debido ser completadas satisfactoriamente.</li>
+<li>Las metas del ciclo de vida principal (existen otras) de un proyecto son:
+<ol type="1">
+<li>compile</li>
+<li>test</li>
+<li>package</li>
+<li>install</li>
+<li>deploy</li>
+</ol></li>
+</ul>
+</section>
+<section id="métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">7</span> Métricas de código</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Son un conjunto de <strong>medidas de software</strong> que proporcionan una mejor visión del código que se está desarrollando.</li>
+</ul></li>
+<li>Algunos tipos
+<ul>
+<li>Errores potenciales</li>
+<li>Reglas de codificación</li>
+<li>Número de comentarios</li>
+<li>Número de líneas de código (por método, clase, paquete)</li>
+<li>Complejidad ciclomática</li>
+<li>Duplicidad del código</li>
+<li>Cobertura de pruebas del código</li>
+<li>Profundidad de las herencias de las clases</li>
+<li>Acoplamiento de clases</li>
+<li>etc.</li>
+</ul></li>
+</ul>
+</section>
+<section id="herramientas-de-métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">8</span> Herramientas de métricas de código</h2>
+<ul>
+<li>Herramientas (muchas tienen plugins para eclipse y/o maven)
+<ul>
+<li><strong>Checkstyle</strong> (convenciones de codificación)</li>
+<li><strong>PMD</strong> (busca en el código ciertos patrones de error)</li>
+<li><strong>Findbugs</strong> (realiza análisis estático de código en busca de errores)</li>
+<li><strong>JDepend</strong> (proporciona métricas de cálidad entre los paquetes de un proyecto en términos de su extensibilidad, reusabilidad, y mantenibilidad.)</li>
+<li><strong>JavaNCSS</strong> (permite recoger métricas sobre el código fuente, como el número de líneas, paquetes, clases o métodos.)</li>
+<li><strong>Cobertura</strong> (permite calcular la cantidad de código al que acceden los tests)</li>
+</ul></li>
+<li>Plataformas
+<ul>
+<li><strong>Sonar</strong> integra todos las anteriores herramientas en una.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ventajas-de-las-métricas-de-código" class="slide level1">
+<h2><span class="header-section-number">9</span> Ventajas de las métricas de código</h2>
+<ul>
+<li>Cómo desarrollador:
+<ul>
+<li>Aprendes a <strong>programar mejor</strong>.</li>
+<li>Aprendes a <strong>detectar errores comunes</strong>.</li>
+<li>Aprendes <strong>las reglas de codificación</strong>.</li>
+<li><strong>Cuantificas la calidad</strong> de tú software.</li>
+</ul></li>
+<li>Cómo docente:
+<ul>
+<li>Se pueden pasar métricas al código entregado por los alumnos para <strong>corregir prácticas y exámenes automáticamente</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="integración-continua" class="slide level1">
+<h2><span class="header-section-number">10</span> Integración Continua</h2>
+<ul>
+<li>Definición
+<ul>
+<li>Consiste en hacer <strong>integraciones automáticas</strong> de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes.</li>
+<li>Cada cierto tiempo, o cada vez que se hace un commit:
+<ol type="1">
+<li><strong>descargarse las fuentes</strong> desde el gestor de control de versiones,</li>
+<li><strong>compilar el código</strong>,</li>
+<li><strong>ejecutar los tests</strong></li>
+<li>y <strong>generar informes</strong>.</li>
+</ol></li>
+</ul></li>
+<li>Los servidores de Integración Continua más conocidos actualmente para Java son <strong>Hudson y Jenkins</strong>.</li>
+</ul>
+</section>
+<section id="esquema-integración-continua" class="slide level1">
+<h2><span class="header-section-number">11</span> Esquema Integración Continua</h2>
+<figure>
+<img src="../img/integracion-continua.png" />
+</figure>
+</section>
+<section id="ventajas-de-la-integración-continua" class="slide level1">
+<h2><span class="header-section-number">12</span> Ventajas de la Integración Continua</h2>
+<ul>
+<li>Los desarrolladores pueden <strong>detectar y solucionar problemas</strong> de integración de forma continua, evitando el caos de última hora cuando se acercan las fechas de entrega.</li>
+<li>Disponibilidad constante de un <strong>empaquetado</strong> para pruebas, demos o lanzamientos anticipados.</li>
+<li>Ejecución inmediata de los <strong>tests unitarias</strong>.</li>
+<li>Monitorización continua de las <strong>métricas de calidad</strong> del proyecto.</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

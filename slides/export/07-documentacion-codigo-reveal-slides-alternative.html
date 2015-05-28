@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Documentación del código Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Documentación del código Java</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 300% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 350% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Documentación del código Java</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="el-javadoc" class="slide level1">
+<h2><span class="header-section-number">1</span> El Javadoc</h2>
+<ul>
+<li>Es una utilidad de para la generación de documentación de APIs en formato HTML.</li>
+<li>Es el estándar para documentar clases de Java.</li>
+<li>La mayoría de los IDEs los generan automáticamente.</li>
+<li><a href="http://download.oracle.com/javase/6/docs/api/">http://download.oracle.com/javase/6/docs/api/</a></li>
+<li>Han de usarse etiquetas HTML o ciertas palabras reservadas precedidas por &quot;@&quot;.</li>
+<li>Estas etiquetas se escriben al principio de cada clase, propiedad o método.</li>
+<li>Dentro de un comentario iniciado con /** y acabado con */.</li>
+</ul>
+</section>
+<section id="etiquetas-javadoc" class="slide level1">
+<h2><span class="header-section-number">2</span> Etiquetas Javadoc</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 57%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tag</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="author">@author</span></strong></td>
+<td style="text-align: left;">Nombre del desarrollador.</td>
+<td style="text-align: left;">nombre_autor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="deprecated">@deprecated</span></strong></td>
+<td style="text-align: left;">Indica que no se recomienda su uso porque puede desaparecer en versiones futuras.</td>
+<td style="text-align: left;">descripción</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="param">@param</span></strong></td>
+<td style="text-align: left;">Definición de un parámetro de un método.</td>
+<td style="text-align: left;">nombre_parámetro descripción_parámetro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="return">@return</span></strong></td>
+<td style="text-align: left;">Informa de lo que devuelve el método. No usar en constructores o métodos &quot;void&quot;.</td>
+<td style="text-align: left;">descripción_retorno</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="see">@see</span></strong></td>
+<td style="text-align: left;">Enlace a otro método o clase.</td>
+<td style="text-align: left;">referencia (#método(); clase#método(); paquete.clase; paquete.clase#método())</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="throws">@throws</span></strong></td>
+<td style="text-align: left;">Excepción lanzada por el método.</td>
+<td style="text-align: left;">nombre_clase_excepción descripción_excepción</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplo" class="slide level1">
+<h2><span class="header-section-number">3</span> Ejemplo</h2>
+<pre><code>/**
+ * Retorna un &quot;Hola + nombre&quot;.
+ * Al ser el nombre obligatorio, si es nulo o vacío se lanzará una excepción.
+ *
+ * @author Adolfo Sanz De Diego (asanzdiego@gmail.com)
+ * @param nombre El nombre que queremos retornar con un &quot;Hola + nombre&quot;.
+ * @return Retorna &quot;Hola + nombre&quot;.
+ * @throws IllegalArgumentException Si nombre es null, está vacío o contiene solo espacios.
+ */
+public String retornaHolaNombre(final String nombre) throws IllegalArgumentException {
+  if (nombre == null || nombre.trim().equals(&quot;&quot;)) {
+     throw new Exception (&quot;El nombre no puede ser nulo o vacío&quot;);
+  } else {
+     this.titulo = titulo;
+  }
+}</code></pre>
+</section>
+<section id="diagramas-uml-automáticos" class="slide level1">
+<h2><span class="header-section-number">4</span> Diagramas UML automáticos</h2>
+<ul>
+<li><strong>GraphViz</strong>
+<ul>
+<li>Librería de software libre y multiplataforma para creación de <strong>gráficos</strong> a partir de textos simples.</li>
+</ul></li>
+<li><strong>UMLGraph</strong>
+<ul>
+<li>Permite la definición declarativa de <strong>diagramas UML de clases y de secuencia</strong>.</li>
+<li>Se puede integrar con Javadoc.</li>
+<li>Dos proyectos interesantes basados en UMLGraph:
+<ul>
+<li><strong>DotUML</strong> que integra UMLGraph en <strong>Maven</strong>.</li>
+<li><strong>LightUML</strong> que integra UMLGraph en <strong>Eclipse</strong>.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

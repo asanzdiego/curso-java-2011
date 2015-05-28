@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" href="./ModuloJPADAO.html" title="curso.java.app.miniclase.dao.jpa.ModuloJPADAO" alt="" coords="16,35,323,123"/>
+<area shape="rect" href="./ProfesorJPADAO.html" title="curso.java.app.miniclase.dao.jpa.ProfesorJPADAO" alt="" coords="368,43,651,115"/>
+<area shape="rect" href="./AlumnoJPADAO.html" title="curso.java.app.miniclase.dao.jpa.AlumnoJPADAO" alt="" coords="696,35,976,123"/>
+<area shape="rect" href="./JPADAOFactory.html" title="curso.java.app.miniclase.dao.jpa.JPADAOFactory" alt="" coords="1021,11,1280,147"/>
+<area shape="rect" href="./CalificacionJPADAO.html" title="curso.java.app.miniclase.dao.jpa.CalificacionJPADAO" alt="" coords="1325,43,1648,115"/>
+<area shape="rect" href="./ClaseJPADAO.html" title="curso.java.app.miniclase.dao.jpa.ClaseJPADAO" alt="" coords="1693,35,1893,123"/>
+</map>

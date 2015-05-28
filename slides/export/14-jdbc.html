@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Trabajo con bases de datos mediante JDBC" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Trabajo con bases de datos mediante JDBC</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Trabajo con bases de datos mediante JDBC</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#la-api-jdbc"><span class="toc-section-number">1</span> La API JDBC</a></li>
+<li><a href="#crear-una-conexión"><span class="toc-section-number">2</span> Crear una conexión</a></li>
+<li><a href="#cerrar-una-conexión"><span class="toc-section-number">3</span> Cerrar una conexión</a></li>
+<li><a href="#actualizaciones"><span class="toc-section-number">4</span> Actualizaciones</a></li>
+<li><a href="#actualizaciones-con-parámetros"><span class="toc-section-number">5</span> Actualizaciones con parámetros</a></li>
+<li><a href="#consultas"><span class="toc-section-number">6</span> Consultas</a></li>
+<li><a href="#consultas-con-parámetros"><span class="toc-section-number">7</span> Consultas con parámetros</a></li>
+<li><a href="#imprimir-consulta-con-metadata"><span class="toc-section-number">8</span> Imprimir consulta con MetaData</a></li>
+</ul>
+</nav>
+<h1 id="la-api-jdbc"><span class="header-section-number">1</span> La API JDBC</h1>
+<p><strong>J</strong>ava <strong>D</strong>ata<strong>B</strong>ase <strong>C</strong>onnectivity es una API que permite la ejecución de operaciones sobre casi cualquier bases de datos.</p>
+<p>Es una <strong>especificación</strong> (una serie de Interfaces).</p>
+<p>Para utilizar una base de datos en particular, el usuario necesita tener los <strong>drivers</strong> (la implementación) específicos de esa base de datos.</p>
+<p>Una vez establecida una conexión con la base de datos el usuario puede realizar cualquier tipo de tarea con la base de datos a las que tenga permiso:</p>
+<ul>
+<li><p><strong>consultas</strong> (SELECT),</p></li>
+<li><p><strong>creación, modificación y borrado de tablas</strong>,</p></li>
+<li><p><strong>ejecución de procedimientos almacenados</strong>,</p></li>
+<li><p>etc.</p></li>
+</ul>
+<h1 id="crear-una-conexión"><span class="header-section-number">2</span> Crear una conexión</h1>
+<pre><code>// Parámetros de conexión
+String driver   = &quot;com.mysql.jdbc.Driver&quot;;
+String url      = &quot;jdbc:mysql://localhost/ejemplo&quot;;
+String user     = &quot;root&quot;;
+String password = &quot;Pa$.w0rd&quot;;
+
+// Registramos la clase con la que nos vamos a conectar (depende de la BD)
+Class.forName(driver);
+
+// Establecemos una conexión con la base de datos
+conexion = DriverManager.getConnection(url, user, password);
+
+// Si no queremos que se ejecute el commit automáticamente
+conexion.setAutoCommit(false);</code></pre>
+<h1 id="cerrar-una-conexión"><span class="header-section-number">3</span> Cerrar una conexión</h1>
+<p>Antes de cerrar, si queremos hacer un <strong>commit</strong>:</p>
+<pre><code>conexion.commit();</code></pre>
+<p>Antes de cerrar, si queremos hacer un <strong>rollback</strong>:</p>
+<pre><code>conexion.rollback();</code></pre>
+<p>Cerrar siembre en una clausula <strong>finally</strong></p>
+<pre><code>conexion.close();</code></pre>
+<h1 id="actualizaciones"><span class="header-section-number">4</span> Actualizaciones</h1>
+<pre><code>Statement sentencia = null;
+try {
+    sentencia = conexion.createStatement();
+    int numeroDeFilasActualizadas = sentencia.executeUpdate(
+        &quot;INSERT... o UPDATE... o DELETE...&quot;);
+} catch (Exception e) {
+    throw e;
+} finally {
+    try {
+        if (sentencia != null) sentencia.close();
+    } catch(Exception e) {
+        log.warn(&quot;error cerrando sentencia&quot;, e);
+    }
+}</code></pre>
+<h1 id="actualizaciones-con-parámetros"><span class="header-section-number">5</span> Actualizaciones con parámetros</h1>
+<pre><code>PreparedStatement sentencia = null;
+try {
+    sentencia = conexion.preparedStatement(
+        &quot;INSERT... o UPDATE... o DELETE...&quot; +
+        &quot;WHERE COLUMNA1 = ? AND COLUMNA2 = ?&quot;);
+    sentencia.setInt(1, numeroParaColumna1);
+    sentencia.setString(2, cadenaParaColumna2);
+    int numeroDeFilasActualizadas = sentencia.executeUpdate();
+} catch (Exception e) {
+    throw e;
+} finally {
+    try {
+        if (sentencia != null) sentencia.close();
+    } catch(Exception e) {
+        log.warn(&quot;error cerrando sentencia&quot;, e);
+    }
+}</code></pre>
+<h1 id="consultas"><span class="header-section-number">6</span> Consultas</h1>
+<pre><code>Statement sentencia = null;
+ResultSet cursor = null
+try {
+    sentencia = conexion.createStatement();
+    cursor = sentencia.executeQuery(&quot;SELECT...&quot;);
+      while(cursor.next()) {
+            String fila = cursor.getString(&quot;nombreColumna1&quot;) + &quot;, &quot; 
+                        + cursor.getString(&quot;nombreColumna2&quot;) ...;
+            System.out.println(fila);
+      }
+} catch (Exception e) {
+    throw e;
+} finally {
+    // cerrar cursor
+    // cerrar consulta
+}</code></pre>
+<h1 id="consultas-con-parámetros"><span class="header-section-number">7</span> Consultas con parámetros</h1>
+<pre><code>PreparedStatement sentencia = null;
+ResultSet cursor = null
+try {
+    sentencia = conexion.preparedStatement(
+        &quot;SELECT... WHERE COLUMNA1 = ? AND COLUMNA2 = ?&quot;);
+    sentencia.setInt(1, numeroParaColumna1);
+    sentencia.setString(2, cadenaParaColumna2);
+    cursor = sentencia.executeQuery();
+      while(cursor.next()) {
+          String fila = cursor.getString(&quot;nombreColumna1&quot;) + &quot;, &quot; 
+                      + cursor.getString(&quot;nombreColumna2&quot;) ...;
+          System.out.println(fila);
+      }
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+    // cerrar cursor
+    // cerrar consulta
+}</code></pre>
+<h1 id="imprimir-consulta-con-metadata"><span class="header-section-number">8</span> Imprimir consulta con MetaData</h1>
+<pre><code>ResultSetMetaData rsmd = resultSet.getMetaData();
+while(cursor.next()) {
+    StringBuilder fila = new StringBuilder(&quot;&quot;);
+    for (int i = 1; i &lt;= rsmd.getColumnCount(); i++) {
+        fila.append(rsmd.getColumnName());
+        fila.append(&quot;=&quot;);
+        fila.append(resultSet.getString(i));
+        fila.append(&quot;\t&quot;);
+    }
+    System.out.println(fila);
+}</code></pre>
+</body>
+</html>

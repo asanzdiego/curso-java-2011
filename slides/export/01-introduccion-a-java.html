@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Introducción a Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Introducción a Java</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Introducción a Java</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#historia-de-java"><span class="toc-section-number">1</span> Historia de Java</a></li>
+<li><a href="#versiones-de-java"><span class="toc-section-number">2</span> Versiones de Java</a></li>
+<li><a href="#entorno-de-java"><span class="toc-section-number">3</span> Entorno de Java</a></li>
+<li><a href="#ejecución-de-java"><span class="toc-section-number">4</span> Ejecución de Java</a></li>
+<li><a href="#ejecución-de-otros-lenguajes"><span class="toc-section-number">5</span> Ejecución de otros lenguajes</a></li>
+<li><a href="#distintas-plataformas-java"><span class="toc-section-number">6</span> Distintas plataformas Java</a></li>
+<li><a href="#características-de-java"><span class="toc-section-number">7</span> Características de Java</a></li>
+<li><a href="#apis-y-herramientas-de-java"><span class="toc-section-number">8</span> APIs y herramientas de Java</a></li>
+<li><a href="#apis-y-herramientas"><span class="toc-section-number">9</span> APIs y herramientas</a></li>
+</ul>
+</nav>
+<h1 id="historia-de-java"><span class="header-section-number">1</span> Historia de Java</h1>
+<p>En 1991 <strong>James Gosling</strong> creó una plataforma para ser usada en <strong>pequeños dispositivos</strong>.</p>
+<p>En 1994 se reorientó hacia la <strong>web</strong>.</p>
+<p>En 1995 <strong>Netscape</strong> anunció que sería soportado en sus <strong>navegadores</strong>.</p>
+<p>En 1996 aparece <strong>JDK 1.0</strong>.</p>
+<p>En 2001 ya es el lenguaje de programación más popular según el <strong>índice TIOBE</strong>.</p>
+<p>En 2006 cambia su licencia a <strong>GPL</strong>.</p>
+<p>En 2009 <strong>Oracle Corporation compra Sun Microsystems</strong>.</p>
+<h1 id="versiones-de-java"><span class="header-section-number">2</span> Versiones de Java</h1>
+<p>En 1997 aparece <strong>JDK 1.1</strong> (<strong>AWT</strong>, inner classes, <strong>JDBC</strong>, etc.).</p>
+<p>En 1998 aparece <strong>J2SE 1.2</strong> (<strong>Swing</strong>, reflexión, <strong>compilador JIT</strong>, collections, etc.).</p>
+<p>En 2000 aparece <strong>J2SE 1.3</strong> (<strong>recompilación dinámica</strong>, JNDI, <strong>debugger</strong>, etc.).</p>
+<p>En 2002 aparece <strong>J2SE 1.4</strong> (assert, expresiones regulares, logging, parser XML, JAAS, etc.).</p>
+<p>En 2004 aparece <strong>J2SE 5.0</strong> (<strong>genéricos</strong>, autoboxing, <strong>anotaciones</strong>, enumeraciones, <strong>varargs</strong>, for mejorado, etc.).</p>
+<p>En 2006 aparece <strong>JSE 6.0</strong> (combinación con <strong>lenguajes dinámicos</strong>, Rhino, etc.).</p>
+<p>Previsto para 2011 <strong>JSE 7.0</strong> (<strong>superpaquetes</strong>, soporte XML nativo, <strong>closures</strong>, etc.).</p>
+<h1 id="entorno-de-java"><span class="header-section-number">3</span> Entorno de Java</h1>
+<div style="text-align:center">
+<img src="../img/java-entorno.png" />
+</div>
+<h1 id="ejecución-de-java"><span class="header-section-number">4</span> Ejecución de Java</h1>
+<div style="text-align:center">
+<img src="../img/java-bytecode.png" />
+</div>
+<h1 id="ejecución-de-otros-lenguajes"><span class="header-section-number">5</span> Ejecución de otros lenguajes</h1>
+<div style="text-align:center">
+<img src="../img/java-groovy-scala-bytecode.png" />
+</div>
+<h1 id="distintas-plataformas-java"><span class="header-section-number">6</span> Distintas plataformas Java</h1>
+<div style="text-align:center">
+<img src="../img/java-plataformas.gif" />
+</div>
+<h1 id="características-de-java"><span class="header-section-number">7</span> Características de Java</h1>
+<p>Java: el lenguaje</p>
+<ul>
+<li><p><strong>Sintaxis parecida a la C++</strong> pero sin elementos de errores (punteros, destructores, etc.).</p></li>
+<li><p>Lenguaje <strong>Orientado a Objetos</strong> aunque con tipos primitivos (int, char, long, etc.).</p></li>
+<li><p>Soporta sincronización de múltiples hilos de ejecución (<strong>multithreading</strong>).</p></li>
+<li><p><strong>Gran cantidad de herramientas y APIs</strong> tanto estándar como de terceros.</p></li>
+</ul>
+<p>Java: la máquina virtual</p>
+<ul>
+<li><p>El <strong>recolector de basura</strong> evita fugas de memoria.</p></li>
+<li><p><strong>Multiplataforma</strong> &quot;Write Once, Run Anywhere&quot; (Escríbelo una vez, ejecútalo en cualquier lugar).</p></li>
+<li><p><strong>Robusto</strong> pues realiza numerosas comprobaciones en compilación y en tiempo de ejecución.</p></li>
+<li><p><strong>Alto rendimiento</strong> con la compilación JIT y con la recompilación dinámica.</p></li>
+</ul>
+<h1 id="apis-y-herramientas-de-java"><span class="header-section-number">8</span> APIs y herramientas de Java</h1>
+<div style="text-align:center">
+<img src="../img/java-apis.png" />
+</div>
+<h1 id="apis-y-herramientas"><span class="header-section-number">9</span> APIs y herramientas</h1>
+<p><strong>IDEs</strong>: Eclipse, NetBeans</p>
+<p><strong>Empaquetamiento</strong>: Ant, Maven, Hudson, Jenkins</p>
+<p><strong>MVC</strong>: GWT, Struts, JSF, JSP</p>
+<p><strong>Frameworks</strong>: Spring, Seam</p>
+<p><strong>Web</strong>: Grails, Play</p>
+<p><strong>Persistencia</strong>: Hibernate, JPA</p>
+<p><strong>Testing</strong>: JUnit, TestNG</p>
+<p><strong>Chequeos</strong>: FindBugs, CheckStyle, PMD, Cobertura, Sonar</p>
+<p><strong>Móviles</strong>: Android</p>
+<p><strong>Cloud</strong>: Google APP Engine</p>
+<p><strong>Certificación</strong>: BlackBeltFactory</p>
+</body>
+</html>

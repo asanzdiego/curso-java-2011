@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Introducción a Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Introducción a Java</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Introducción a Java</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="historia-de-java" class="slide level1">
+<h2><span class="header-section-number">1</span> Historia de Java</h2>
+<ul>
+<li>En 1991 <strong>James Gosling</strong> creó una plataforma para ser usada en <strong>pequeños dispositivos</strong>.</li>
+<li>En 1994 se reorientó hacia la <strong>web</strong>.</li>
+<li>En 1995 <strong>Netscape</strong> anunció que sería soportado en sus <strong>navegadores</strong>.</li>
+<li>En 1996 aparece <strong>JDK 1.0</strong>.</li>
+<li>En 2001 ya es el lenguaje de programación más popular según el <strong>índice TIOBE</strong>.</li>
+<li>En 2006 cambia su licencia a <strong>GPL</strong>.</li>
+<li>En 2009 <strong>Oracle Corporation compra Sun Microsystems</strong>.</li>
+</ul>
+</section>
+<section id="versiones-de-java" class="slide level1">
+<h2><span class="header-section-number">2</span> Versiones de Java</h2>
+<ul>
+<li>En 1997 aparece <strong>JDK 1.1</strong> (<strong>AWT</strong>, inner classes, <strong>JDBC</strong>, etc.).</li>
+<li>En 1998 aparece <strong>J2SE 1.2</strong> (<strong>Swing</strong>, reflexión, <strong>compilador JIT</strong>, collections, etc.).</li>
+<li>En 2000 aparece <strong>J2SE 1.3</strong> (<strong>recompilación dinámica</strong>, JNDI, <strong>debugger</strong>, etc.).</li>
+<li>En 2002 aparece <strong>J2SE 1.4</strong> (assert, expresiones regulares, logging, parser XML, JAAS, etc.).</li>
+<li>En 2004 aparece <strong>J2SE 5.0</strong> (<strong>genéricos</strong>, autoboxing, <strong>anotaciones</strong>, enumeraciones, <strong>varargs</strong>, for mejorado, etc.).</li>
+<li>En 2006 aparece <strong>JSE 6.0</strong> (combinación con <strong>lenguajes dinámicos</strong>, Rhino, etc.).</li>
+<li>Previsto para 2011 <strong>JSE 7.0</strong> (<strong>superpaquetes</strong>, soporte XML nativo, <strong>closures</strong>, etc.).</li>
+</ul>
+</section>
+<section id="entorno-de-java" class="slide level1">
+<h2><span class="header-section-number">3</span> Entorno de Java</h2>
+<figure>
+<img src="../img/java-entorno.png" />
+</figure>
+</section>
+<section id="ejecución-de-java" class="slide level1">
+<h2><span class="header-section-number">4</span> Ejecución de Java</h2>
+<figure>
+<img src="../img/java-bytecode.png" />
+</figure>
+</section>
+<section id="ejecución-de-otros-lenguajes" class="slide level1">
+<h2><span class="header-section-number">5</span> Ejecución de otros lenguajes</h2>
+<figure>
+<img src="../img/java-groovy-scala-bytecode.png" />
+</figure>
+</section>
+<section id="distintas-plataformas-java" class="slide level1">
+<h2><span class="header-section-number">6</span> Distintas plataformas Java</h2>
+<figure>
+<img src="../img/java-plataformas.gif" />
+</figure>
+</section>
+<section id="características-de-java-i" class="slide level1">
+<h2><span class="header-section-number">7</span> Características de Java (I)</h2>
+<ul>
+<li>Java: el lenguaje
+<ul>
+<li><strong>Sintaxis parecida a la C++</strong> pero sin elementos de errores (punteros, destructores, etc.).</li>
+<li>Lenguaje <strong>Orientado a Objetos</strong> aunque con tipos primitivos (int, char, long, etc.).</li>
+<li>Soporta sincronización de múltiples hilos de ejecución (<strong>multithreading</strong>).</li>
+<li><strong>Gran cantidad de herramientas y APIs</strong> tanto estándar como de terceros.</li>
+</ul></li>
+</ul>
+</section>
+<section id="características-de-java-ii" class="slide level1">
+<h2><span class="header-section-number">8</span> Características de Java (II)</h2>
+<ul>
+<li>Java: la máquina virtual
+<ul>
+<li>El <strong>recolector de basura</strong> evita fugas de memoria.</li>
+<li><strong>Multiplataforma</strong> &quot;Write Once, Run Anywhere&quot; (Escríbelo una vez, ejecútalo en cualquier lugar).</li>
+<li><strong>Robusto</strong> pues realiza numerosas comprobaciones en compilación y en tiempo de ejecución.</li>
+<li><strong>Alto rendimiento</strong> con la compilación JIT y con la recompilación dinámica.</li>
+</ul></li>
+</ul>
+</section>
+<section id="apis-y-herramientas-de-java" class="slide level1">
+<h2><span class="header-section-number">9</span> APIs y herramientas de Java</h2>
+<figure>
+<img src="../img/java-apis.png" />
+</figure>
+</section>
+<section id="apis-y-herramientas" class="slide level1">
+<h2><span class="header-section-number">10</span> APIs y herramientas</h2>
+<ul>
+<li><strong>IDEs</strong>: Eclipse, NetBeans</li>
+<li><strong>Empaquetamiento</strong>: Ant, Maven, Hudson, Jenkins</li>
+<li><strong>MVC</strong>: GWT, Struts, JSF, JSP</li>
+<li><strong>Frameworks</strong>: Spring, Seam</li>
+<li><strong>Web</strong>: Grails, Play</li>
+<li><strong>Persistencia</strong>: Hibernate, JPA</li>
+<li><strong>Testing</strong>: JUnit, TestNG</li>
+<li><strong>Chequeos</strong>: FindBugs, CheckStyle, PMD, Cobertura, Sonar</li>
+<li><strong>Móviles</strong>: Android</li>
+<li><strong>Cloud</strong>: Google APP Engine</li>
+<li><strong>Certificación</strong>: BlackBeltFactory</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

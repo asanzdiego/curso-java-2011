@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.0" branch-rate="1.0" lines-covered="0" lines-valid="19" branches-covered="0" branches-valid="0" complexity="1.0" version="1.9.4.1" timestamp="1308395545787">
+	<sources>
+		<source>--source</source>
+		<source>/home/alumno/workspace/app-miniclase-dao-jpa/src/main/java</source>
+	</sources>
+	<packages>
+		<package name="curso.java.app.miniclase.dao.jpa" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+			<classes>
+				<class name="curso.java.app.miniclase.dao.jpa.AlumnoJPADAO" filename="curso/java/app/miniclase/dao/jpa/AlumnoJPADAO.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdAlumno" signature="(I)Lcurso/java/app/miniclase/pojosanotados/Alumno;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdClase" signature="(I)Ljava/util/Set;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="curso.java.app.miniclase.dao.jpa.CalificacionJPADAO" filename="curso/java/app/miniclase/dao/jpa/CalificacionJPADAO.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdAlumno" signature="(I)Ljava/util/Set;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="curso.java.app.miniclase.dao.jpa.ClaseJPADAO" filename="curso/java/app/miniclase/dao/jpa/ClaseJPADAO.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findAll" signature="()Ljava/util/List;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findById" signature="(I)Lcurso/java/app/miniclase/pojosanotados/Clase;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="curso.java.app.miniclase.dao.jpa.JPADAOFactory" filename="curso/java/app/miniclase/dao/jpa/JPADAOFactory.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="19" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getAlumnoDAO" signature="()Lcurso/java/app/miniclase/dao/AlumnoDAO;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="22" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCalificacionDAO" signature="()Lcurso/java/app/miniclase/dao/CalificacionDAO;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getClaseDAO" signature="()Lcurso/java/app/miniclase/dao/ClaseDAO;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getModuloDAO" signature="()Lcurso/java/app/miniclase/dao/ModuloDAO;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="34" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getProfesorDAO" signature="()Lcurso/java/app/miniclase/dao/ProfesorDAO;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="38" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="19" hits="0" branch="false"/>
+						<line number="22" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+						<line number="34" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="curso.java.app.miniclase.dao.jpa.ModuloJPADAO" filename="curso/java/app/miniclase/dao/jpa/ModuloJPADAO.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdModulo" signature="(I)Lcurso/java/app/miniclase/pojosanotados/Modulo;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdProfesor" signature="(I)Ljava/util/Set;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="curso.java.app.miniclase.dao.jpa.ProfesorJPADAO" filename="curso/java/app/miniclase/dao/jpa/ProfesorJPADAO.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findByIdClase" signature="(I)Ljava/util/Set;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="17" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>

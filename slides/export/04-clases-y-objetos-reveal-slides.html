@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Clases y objetos" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Clases y objetos</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Clases y objetos</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="conceptos" class="slide level1">
+<h2><span class="header-section-number">1</span> Conceptos</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>Conjunto propiedades y métodos que modifican (o no) dichas propiedades.</li>
+</ul></li>
+<li><strong>Objeto</strong>
+<ul>
+<li>Instancia de una clase.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-static" class="slide level1">
+<h2><span class="header-section-number">2</span> El modificador 'static'</h2>
+<ul>
+<li>Asocia una propiedad o un método a la clase, y no al objeto.</li>
+<li>La propiedad o método marcado como <strong>static</strong> se 'comparte' entre todas las instancias de la clase.</li>
+</ul>
+</section>
+<section id="el-modificador-final" class="slide level1">
+<h2><span class="header-section-number">3</span> El modificador 'final'</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>No permite que se herede de ella.</li>
+</ul></li>
+<li><strong>Propiedad</strong>
+<ul>
+<li>No permite que se modifique.</li>
+</ul></li>
+<li><strong>Método</strong>
+<ul>
+<li>No permite que se sobrescriba en clases hijas.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-abstract" class="slide level1">
+<h2><span class="header-section-number">4</span> El modificador 'abstract'</h2>
+<ul>
+<li><strong>Clase</strong>
+<ul>
+<li>La convierte en abstracta obligando a sus clases hijas a sobrescribirlos métodos abstractos.</li>
+</ul></li>
+<li><strong>Método</strong>
+<ul>
+<li>Dentro de una clase abstracta los distintos métodos que las clases hijas deben de sobreescribir obligatoriamente.</li>
+</ul></li>
+</ul>
+</section>
+<section id="el-modificador-transient" class="slide level1">
+<h2><span class="header-section-number">5</span> El modificador 'transient'</h2>
+<ul>
+<li><strong>Propiedad</strong>
+<ul>
+<li>Indica que no es parte persistente del objeto (serialización).</li>
+</ul></li>
+</ul>
+</section>
+<section id="modificadores-de-visibilidad" class="slide level1">
+<h2><span class="header-section-number">6</span> Modificadores de visibilidad</h2>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">La misma</td>
+<td style="text-align: center;">Otra clase del</td>
+<td style="text-align: center;">Subclase de</td>
+<td style="text-align: center;">Otra clase de</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: center;">clase</td>
+<td style="text-align: center;">mismo paquete</td>
+<td style="text-align: center;">otro paquete</td>
+<td style="text-align: center;">otro paquete</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>public</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>protected</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>default</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>private</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="constructores" class="slide level1">
+<h2><span class="header-section-number">7</span> Constructores</h2>
+<ul>
+<li>Métodos que se llaman igual que la propia clase.</li>
+<li>Si no hay ninguno se aplica el por defecto.</li>
+<li>Puede haber uno o varios.</li>
+<li>Pueden tener o no parámetros.</li>
+<li>Para instanciar:
+<ul>
+<li>Objeto o = new Objeto();</li>
+</ul></li>
+<li>Las clases abstractas no se pueden instanciar.</li>
+</ul>
+</section>
+<section id="destructores" class="slide level1">
+<h2><span class="header-section-number">8</span> Destructores</h2>
+<ul>
+<li>No existen destructores.</li>
+<li>El <strong>recolector de basura</strong>:
+<ul>
+<li>Es quien se encarga de destruir objetos.</li>
+<li>Es un mecanismo complicado.</li>
+<li>De forma sencilla: destruye los objetos que ya no son referenciados en ningún sitio.</li>
+<li>Problemas: ej. referenciar en un Array objetos que ya no se usan.</li>
+<li>Soluciones: ej. Objeto o = null; (pero con esto sólo borras una referencia y puede haber más)</li>
+</ul></li>
+</ul>
+</section>
+<section id="inversión-de-dependencias" class="slide level1">
+<h2><span class="header-section-number">9</span> Inversión de Dependencias</h2>
+<ul>
+<li>Los términos fueron acuñados por <strong>Martin Fowler</strong> en el 2004.</li>
+<li>Intentan reducir el acoplamiento entre componentes.<br /></li>
+<li><strong>Inyección de dependencias</strong>
+<ul>
+<li>Es un <strong>patrón de diseño</strong> orientado a objetos, en el que se suministran objetos a una clase en lugar de ser la propia clase quien cree el objeto.</li>
+</ul></li>
+<li><strong>Inversión de control</strong>
+<ul>
+<li>Implementación del <strong>Principio de Hollywood</strong> cuyo nombre proviene de las típicas respuestas que se les dan a los actores amateurs: <strong>no nos llames; nosotros te llamaremos</strong>.</li>
+<li>En este caso es la libreria la que llama al código y no al revés.</li>
+<li>Consiste en delegar la gestión de las instancias en un <strong>contenedor</strong>.</li>
+<li>Ejemplos: <strong>Spring</strong> y <strong>Google Guice</strong>.</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

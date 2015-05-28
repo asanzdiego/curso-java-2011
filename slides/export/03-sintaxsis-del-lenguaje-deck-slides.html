@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Sintaxis del Lenguaje Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Sintaxis del Lenguaje Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Sintaxis del Lenguaje Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="tipos-de-datos" class="slide level1">
+<h2><span class="header-section-number">1</span> Tipos de Datos</h2>
+<ul>
+<li>Java no es orientado a objetos puro, tiene <strong>tipos primitivos</strong>.</li>
+<li>Para cada tipo primitivo hay una clase envoltorio (<strong>wrapper</strong>) que le añade funcionalidad, entre ellas la posibilidad de convertir cadenas al tipo primitivo y viceversa.</li>
+<li>Las clases envoltorio se llaman igual que el tipo primitivo, empezando por mayúscula en vez de minúscula.</li>
+<li>Hay 2 excepciones a la regla anterior: el wrapper de int es Integer y el de char es Character.</li>
+</ul>
+</section>
+<section id="tipos-primitivos" class="slide level1">
+<h2><span class="header-section-number">2</span> Tipos Primitivos</h2>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 11%" />
+<col style="width: 59%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Nombre</th>
+<th style="text-align: left;">Rango de valores</th>
+<th style="text-align: left;">Wrapper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Enteros</td>
+<td style="text-align: left;">byte</td>
+<td style="text-align: left;">[-128 a 127]</td>
+<td style="text-align: left;">Byte</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">short</td>
+<td style="text-align: left;">[-32768 a 32767]</td>
+<td style="text-align: left;">Short</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">int</td>
+<td style="text-align: left;">[-2147483648 a 2147483647]</td>
+<td style="text-align: left;">Integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">long</td>
+<td style="text-align: left;">[-9223372036854775808 a 9223372036854775807]</td>
+<td style="text-align: left;">Long</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Coma Flotante</td>
+<td style="text-align: left;">float</td>
+<td style="text-align: left;">[32 bits, precisión simple; 3,4E-38 a 3,4E38]</td>
+<td style="text-align: left;">Float</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">[64 bits, precisión doble; 1,7E-308 a 1,7E308]</td>
+<td style="text-align: left;">Double</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Booleano</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">[true o false]</td>
+<td style="text-align: left;">Boolean</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Carácter</td>
+<td style="text-align: left;">char</td>
+<td style="text-align: left;">[carácter alfanumérico]</td>
+<td style="text-align: left;">Character</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="matrices" class="slide level1">
+<h2><span class="header-section-number">3</span> Matrices</h2>
+<ul>
+<li>En Java se pueden crear <strong>matrices</strong> multidimensionales.</li>
+<li>Pero por lo general se usan las <strong>estructuras de datos</strong> de Java que veremos más adelante.</li>
+</ul>
+</section>
+<section id="cadenas" class="slide level1">
+<h2><span class="header-section-number">4</span> Cadenas</h2>
+<ul>
+<li>Las cadenas se representan con la clase <strong>String</strong>.</li>
+<li>Es una clase envoltorio de una matriz de chars.</li>
+<li>Es una clase especial:
+<ul>
+<li>permite &quot;&quot; como constructor.</li>
+<li>permite el operador + para concatenar.</li>
+</ul></li>
+</ul>
+</section>
+<section id="operadores" class="slide level1">
+<h2><span class="header-section-number">5</span> Operadores</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 23%" />
+<col style="width: 5%" />
+<col style="width: 27%" />
+<col style="width: 4%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Aritméticos</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Lógicos</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Condicionales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">+</td>
+<td style="text-align: left;">[adición]</td>
+<td style="text-align: left;">&gt;</td>
+<td style="text-align: left;">[mayor que]</td>
+<td style="text-align: left;">&amp;&amp;</td>
+<td style="text-align: left;">[ambos ciertos]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">[sustracción]</td>
+<td style="text-align: left;">&gt;=</td>
+<td style="text-align: left;">[mayor o igual que]</td>
+<td style="text-align: left;">||</td>
+<td style="text-align: left;">[cierto al menos uno]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">[multiplicación]</td>
+<td style="text-align: left;">&lt;</td>
+<td style="text-align: left;">[menor que]</td>
+<td style="text-align: left;">!</td>
+<td style="text-align: left;">[negación]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">/</td>
+<td style="text-align: left;">[división]</td>
+<td style="text-align: left;">&lt;=</td>
+<td style="text-align: left;">[menor o igual que]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">%</td>
+<td style="text-align: left;">[resto]</td>
+<td style="text-align: left;">==</td>
+<td style="text-align: left;">[igual a]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">++</td>
+<td style="text-align: left;">[incremento]</td>
+<td style="text-align: left;">!=</td>
+<td style="text-align: left;">[distinto de]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">--</td>
+<td style="text-align: left;">[decremento]</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="llamadas-a-métodos" class="slide level1">
+<h2><span class="header-section-number">6</span> Llamadas a métodos</h2>
+<ul>
+<li>En Java todos los pasos se hacen <strong>por valor</strong>.
+<ul>
+<li>Si es un tipo primitivo (int, double, char, etc.) -&gt; se pasa el valor.</li>
+<li>Si es una referencia a un objeto -&gt; se pasa el valor de dicha referencia (un puntero a un objeto)</li>
+</ul></li>
+<li>Así mismo el operador == compara valores.
+<ul>
+<li>Si comparamos tipos primitivos (int, double, char, etc.) -&gt; compara que tengan el mismo valor.</li>
+<li>Si comparamos referencias de objetos -&gt; compara que apunten al mismo objeto (mismos punteros)</li>
+</ul></li>
+</ul>
+</section>
+<section id="sintaxis-general" class="slide level1">
+<h2><span class="header-section-number">7</span> Sintaxis General</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Comentarios</strong></td>
+<td style="text-align: left;">// comentario de una línea</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">/* comentario multilínea */</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">/** javadoc */</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Variables</strong></td>
+<td style="text-align: left;">[modificadores] tipo nombreVariable1 [,nombreVariable2,...];</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Clase</strong></td>
+<td style="text-align: left;">[modificadores] class NombreClase [extends Clase] [implements Interfaz] { ... }</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Clase abstacta</strong></td>
+<td style="text-align: left;">[modificadores] abstract class NombreClaseAbstracta [extends Clase] [implements Interfaz] { ... }</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Interfaz</strong></td>
+<td style="text-align: left;">[modificadores] interface NombreInterfaz [implements Interfaz] { ... }</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Métodos</strong></td>
+<td style="text-align: left;">[modificadores] tipoRetorno|void nombreMetodo ( parámetros ) [throws Excepcion] { ... }</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="estructuras-de-control" class="slide level1">
+<h2><span class="header-section-number">8</span> Estructuras de Control</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>for</strong></td>
+<td style="text-align: left;">for ( inicio; condición; post ) { ... }</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>while</strong></td>
+<td style="text-align: left;">while ( condición ) { ... }</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>do..while</strong></td>
+<td style="text-align: left;">do { ... } while ( condición );</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>if..else</strong></td>
+<td style="text-align: left;">if ( condición ) { ... } else if ( condición ) { ... } else { ... }</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>switch</strong></td>
+<td style="text-align: left;">switch ( variable ) { case n1: ... break; case n2: ... break; default: ... }</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="convenciones-nomenclatura-i" class="slide level1">
+<h2><span class="header-section-number">9</span> Convenciones nomenclatura (I)</h2>
+<ul>
+<li>En general, los nombres deben ser <strong>simples y descriptivos</strong>.</li>
+<li>Se utilizan <strong>palabras completas</strong>, en mayúsculas y minúsculas, con la primera letra de cada palabra en mayúscula.</li>
+<li>Los nombres no pueden empezar por números aunque si contenerlos.</li>
+<li>No se permiten caracteres extraños (salvo guión '-' y guión bajo '_')</li>
+</ul>
+</section>
+<section id="convenciones-nomenclatura-ii" class="slide level1">
+<h2><span class="header-section-number">10</span> Convenciones nomenclatura (II)</h2>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 64%" />
+<col style="width: 19%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Clases</strong></td>
+<td style="text-align: left;">Primera letra también en mayúscula. Nombres comunes.</td>
+<td style="text-align: left;">CocheDeCarreras</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Interfaces</strong></td>
+<td style="text-align: left;">Primera letra también en mayúscula. Nombres comunes aunque también adjetivos. Suelen empezar por I.</td>
+<td style="text-align: left;">IDesmontable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Métodos</strong></td>
+<td style="text-align: left;">Primera letra en minúsculas. Verbos o preguntas con 'is' si devuelven un boolean.</td>
+<td style="text-align: left;">.acelerarConTurbo() .isDesmontable()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Variables</strong></td>
+<td style="text-align: left;">Primera letra en minúsculas. Evitar variables de una sola letra excepto (i, j, k, etc.).</td>
+<td style="text-align: left;">numeroDeRuedas isDesmontable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Constantes</strong></td>
+<td style="text-align: left;">Todas en mayúsculas, con las palabras internas separadas por el signo de subrayado</td>
+<td style="text-align: left;">MAXIMA_VELOCIDAD</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="jerarquía-de-excepciones" class="slide level1">
+<h2><span class="header-section-number">11</span> Jerarquía de Excepciones</h2>
+<figure>
+<img src="../img/jerarquia-excepciones.jpg" />
+</figure>
+</section>
+<section id="control-de-excepciones" class="slide level1">
+<h2><span class="header-section-number">12</span> Control de Excepciones</h2>
+<ul>
+<li>Tipos
+<ul>
+<li><strong>Error</strong>: indican problemas muy graves, que suelen ser no recuperables y no deberían ser capturadas.</li>
+<li><strong>Exception</strong>: problemas no definitivos, que se pueden capturar y tratar (te obligan a capturarlas o relanzarlas).</li>
+<li><strong>RuntimeException</strong>: problemas que se dan durante la ejecución del programa (no te obligan a capturarlas o relanzarlas).</li>
+</ul></li>
+<li>Tratamiento</li>
+</ul>
+<pre><code>try {
+  // Código posiblemente problemático
+} catch( tipo_de_excepcion e1) {
+  // Código para solucionar la excepción e1
+} catch( tipo_de_excepcion_mas_general e2) {
+  // Código para solucionar la excepción e2
+} finally {
+  // se ejecuta siempre
+}</code></pre>
+</section>
+<section id="novedades-java-5.0-i" class="slide level1">
+<h2><span class="header-section-number">13</span> Novedades Java 5.0 (I)</h2>
+<ul>
+<li><strong>Genéricos</strong>
+<ul>
+<li>Permite no concretar en la definición con que tipo de objetos van a trabajar sus instancias.
+<ul>
+<li>[modificadores] class NombreClase&lt;A,B,C... &gt; [extends Clase] [implements Interfaz] { ... }
+<ul>
+<li>pudiendo sustituir &lt;A&gt; por &lt;A [[extends Clase] [&amp; Interfaz1] [&amp; Interfaz1] ... ]&gt;</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>Enumeraciones</strong>
+<ul>
+<li>Se caracterizan por tener un número finito y normalmente bajo de posibles valores.
+<ul>
+<li>[modificadores] enum NombreTipoEnumerado { valor1, valor2, ... }</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="novedades-java-5.0-ii" class="slide level1">
+<h2><span class="header-section-number">14</span> Novedades Java 5.0 (II)</h2>
+<ul>
+<li><strong>Anotaciones</strong>
+<ul>
+<li>Nos dan información sobre el código (clase, propiedad o método)
+<ul>
+<li><span class="citation" data-cites="TipoAnotacion">@TipoAnotacion</span> (nombre1=valor1, nombre2=valor2, ... )</li>
+<li>Sirven para:
+<ul>
+<li>que el compilador compruebe posibles errores,</li>
+<li>generar documentación y/o código</li>
+<li>programar con <strong>AOP</strong> (Aspect Oriented Programming o Programación Orientada a Aspectos)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>Autoboxing</strong>
+<ul>
+<li>Utilizar indistintamente un tipo primitivo o su wrapper.
+<ul>
+<li>Aunque resulta muy cómodo las conversiones tienen un alto coste computacional.</li>
+<li>Además hay que tener mucho cuidado con el operador de igualdad &quot;==&quot;.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="novedades-java-5.0-iii" class="slide level1">
+<h2><span class="header-section-number">15</span> Novedades Java 5.0 (III)</h2>
+<ul>
+<li><strong>varargs</strong>
+<ul>
+<li>Posibilidad de declarar que un método admita varios argumentos de un mismo tipo sin determinar la cantidad exacta.
+<ul>
+<li>Se añaden tres puntos al último parámetro.</li>
+</ul></li>
+</ul></li>
+<li><strong>for-each</strong>
+<ul>
+<li>for (tipo nombreVariableIteracion: nombreContenedorIterable) { ... }</li>
+</ul></li>
+<li><strong>static imports</strong>
+<ul>
+<li>Permite importar propiedades o métodos estáticos de una clase, interfaz o enumeración, para evitar anteponer el nombre de la clase, interfaz o enumeración en cada aparición.</li>
+</ul></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

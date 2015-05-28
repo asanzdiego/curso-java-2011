@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Patrones de diseño" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Patrones de diseño</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Patrones de diseño</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#introducción"><span class="toc-section-number">1</span> Introducción</a></li>
+<li><a href="#objetivos"><span class="toc-section-number">2</span> Objetivos</a></li>
+<li><a href="#de-creación-singleton"><span class="toc-section-number">3</span> De creación: Singleton</a></li>
+<li><a href="#de-creación-factory"><span class="toc-section-number">4</span> De creación: Factory</a></li>
+<li><a href="#estructurales-decorator"><span class="toc-section-number">5</span> Estructurales: Decorator</a></li>
+<li><a href="#estructurales-adapter"><span class="toc-section-number">6</span> Estructurales: Adapter</a></li>
+<li><a href="#estructurales-proxy"><span class="toc-section-number">7</span> Estructurales: Proxy</a></li>
+<li><a href="#de-comportamiento-observer"><span class="toc-section-number">8</span> De comportamiento: Observer</a></li>
+<li><a href="#de-comportamiento-strategy"><span class="toc-section-number">9</span> De comportamiento: Strategy</a></li>
+<li><a href="#de-comportamiento-template"><span class="toc-section-number">10</span> De comportamiento: Template</a></li>
+<li><a href="#los-antipatrones"><span class="toc-section-number">11</span> Los antipatrones</a></li>
+<li><a href="#algunos-antipatrones"><span class="toc-section-number">12</span> Algunos antipatrones</a></li>
+</ul>
+</nav>
+<h1 id="introducción"><span class="header-section-number">1</span> Introducción</h1>
+<p>Un patrón de diseño es una <strong>solución a un problema</strong> de diseño concreto.</p>
+<p>1995 publicación del libro <strong>Design Patterns</strong></p>
+<p><strong>Gang of Four</strong> (GoF): Erich Gamma, Richard Helm, Ralph Johnson y John Vlisides</p>
+<h1 id="objetivos"><span class="header-section-number">2</span> Objetivos</h1>
+<p>Los patrones de diseño <strong>pretenden</strong>:</p>
+<ul>
+<li><p>Proporcionar catálogos de elementos reusables en el diseño de sistemas software.</p></li>
+<li><p>Evitar la reiteración en la búsqueda de soluciones a problemas ya conocidos y solucionados anteriormente.</p></li>
+<li><p>Formalizar un vocabulario común entre diseñadores.</p></li>
+<li><p>Estandarizar el modo en que se realiza el diseño.</p></li>
+<li><p>Facilitar el aprendizaje de las nuevas generaciones de diseñadores condensando conocimiento ya existente.</p></li>
+</ul>
+<p>Asimismo, <strong>no pretenden</strong>:</p>
+<ul>
+<li><p>Imponer ciertas alternativas de diseño frente a otras.</p></li>
+<li><p>Eliminar la creatividad inherente al proceso de diseño.</p></li>
+</ul>
+<p>A continuación se mostrarán <strong>algunos</strong> patrones de diseño (no todos).</p>
+<h1 id="de-creación-singleton"><span class="header-section-number">3</span> De creación: Singleton</h1>
+<p>Garantiza la existencia de una única instancia para una clase.</p>
+<pre><code>public class Singleton {
+
+    private static Singleton INSTANCE = new Singleton();
+
+    // El constructor privado no permite que se genere un constructor por defecto
+    private Singleton() {}
+
+    public static Singleton getInstance() { return INSTANCE; }
+}</code></pre>
+<h1 id="de-creación-factory"><span class="header-section-number">4</span> De creación: Factory</h1>
+<p>Una clase es la encargada de decidir que objeto crear dependiendo de algún parámetro.</p>
+<div style="text-align:center">
+<img src="../img/patron-factory.png" />
+</div>
+<h1 id="estructurales-decorator"><span class="header-section-number">5</span> Estructurales: Decorator</h1>
+<p>Nos permite no tener que crear sucesivas clases que hereden de la primera incorporando una nueva funcionalidad, sino otras que la implementan y se asocian a la primera.</p>
+<div style="text-align:center">
+<img src="../img/patron-decorator.png" />
+</div>
+<h1 id="estructurales-adapter"><span class="header-section-number">6</span> Estructurales: Adapter</h1>
+<p>Su finalidad es transformar la interfaz de programación de una clase en otra.</p>
+<div style="text-align:center">
+<img src="../img/patron-adapter.png" />
+</div>
+<h1 id="estructurales-proxy"><span class="header-section-number">7</span> Estructurales: Proxy</h1>
+<p>Un proxy hace de intermediario de otro objeto controlando su acceso (carga remota, verifica permisos, tareas adicionales, etc.).</p>
+<div style="text-align:center">
+<img src="../img/patron-proxy.png" />
+</div>
+<h1 id="de-comportamiento-observer"><span class="header-section-number">8</span> De comportamiento: Observer</h1>
+<p>La clase <strong>Sujeto</strong> contiene métodos mediante los cuales cualquier objeto <strong>Observador</strong> puede suscribirse pasándole una referencia a sí mismo. El objeto sujeto guarda una referencia de estos últimos a quienes notifica los cambios sucedidos.</p>
+<div style="text-align:center">
+<img src="../img/patron-observer.png" />
+</div>
+<h1 id="de-comportamiento-strategy"><span class="header-section-number">9</span> De comportamiento: Strategy</h1>
+<p>Permite mantener un conjunto de algoritmos de entre los cuales el objeto cliente puede elegir aquel que le conviene.</p>
+<div style="text-align:center">
+<img src="../img/patron-strategy.png" />
+</div>
+<h1 id="de-comportamiento-template"><span class="header-section-number">10</span> De comportamiento: Template</h1>
+<p>Define una serie de pasos en un método de la clase padre, pasos que deberán ser definidos en las clases hijas.</p>
+<div style="text-align:center">
+<img src="../img/patron-template.png" />
+</div>
+<h1 id="los-antipatrones"><span class="header-section-number">11</span> Los antipatrones</h1>
+<p>Un antipatrón es una solución comúnmente usada que suele ser ineficiente y/o contraproducente.</p>
+<p>Un buen programador procurará <strong>evitar los</strong> siempre que sea posible.</p>
+<p>Lo anterior requiere su reconocimiento e identificación tan pronto como sea posible.</p>
+<h1 id="algunos-antipatrones"><span class="header-section-number">12</span> Algunos antipatrones</h1>
+<p><strong>Acoplamiento secuencial</strong> (sequential coupling): Construir una clase que necesita que sus métodos se invoquen en un orden determinado</p>
+<p><strong>Código espagueti</strong> (spaghetti code): Construir sistemas cuya estructura es difícilmente comprensible.</p>
+<p><strong>Código ravioli</strong> (ravioli code): Construir sistemas con multitud de objetos muy débilmente conectados.</p>
+<p><strong>Complejidad no indispensable</strong> (accidental complexity): Dotar de complejidad innecesaria a una solución.</p>
+<p><strong>Números mágicos</strong> (magic numbers): Incluir en los algoritmos números concretos sin explicación aparente.</p>
+<p><strong>Cadenas mágicas</strong> (magic strings): Incluir cadenas de caracteres determinadas en el código fuente para hacer comparaciones.</p>
+<p><strong>Objeto todopoderoso</strong> (god object): Concentrar demasiada funcionalidad en una única clase.</p>
+<p><strong>Desarrollo conducido por quien prueba</strong> (tester driven development): Permitir que un proyecto software avance a base de extraer sus nuevos requisitos de los bugs.</p>
+<p><strong>Manejo de excepciones</strong> (exception handling): Emplear el mecanismo de manejo de excepciones del lenguaje para implementar la lógica general del programa.</p>
+<p><strong>Manejo de excepciones inútil</strong> (useless exception handling): Introducir condiciones para evitar que se produzcan excepciones en tiempo de ejecución, pero lanzar manualmente una excepción si dicha condición falla.</p>
+<p><strong>Ocultación de errores</strong> (error hiding): Capturar un error antes de que se muestre al usuario, y reemplazarlo por un mensaje sin importancia o ningún mensaje en absoluto.</p>
+<p><strong>Programación por excepción</strong> (coding by exception): Añadir trozos de código para tratar casos especiales a medida que se identifican.</p>
+<p><strong>Bala de plata</strong> (silver bullet): Asumir que nuestra solución técnica favorita puede resolver cualquier problema.</p>
+<p><strong>Martillo de oro</strong> (golden hammer): Asumir que nuestra solución favorita es universalmente aplicable, haciendo bueno el refrán a un martillo, todo son clavos.</p>
+<p><strong>Programación de copiar y pegar</strong> (copy and paste programming): Programar copiando y pegando código.</p>
+<p><strong>Programación por permutación</strong> (programming by permutation): Tratar de aproximarse a una solución modificando el código una y otra vez para ver si acaba por funcionar.</p>
+<p><strong>Reinventar la rueda</strong> (reinventing the wheel): Enfrentarse a las situaciones buscando soluciones desde cero, sin tener en cuenta que puedan existir ya otras soluciones para afrontar los mismos problemas.</p>
+<p><strong>Reinventar la rueda cuadrada</strong> (reinventing the square wheel): Crear una solución pobre cuando ya existe una buena.</p>
+</body>
+</html>

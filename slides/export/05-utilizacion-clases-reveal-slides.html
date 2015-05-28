@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Utilización avanzada de clases" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Utilización avanzada de clases</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 350% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    h3 {
+      font-size: 100% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 400% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+      h3 { font-size: 150% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Utilización avanzada de clases</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="diseño-incorrecto" class="slide level1">
+<h2><span class="header-section-number">1</span> ¿Diseño incorrecto?</h2>
+<ul>
+<li>¿Cómo sabemos si nuestro diseño es incorrecto?
+<ul>
+<li>las clases son difíciles de cambiar</li>
+<li>las clases son difíciles de reutilizar</li>
+<li>las clases son difíciles de usar</li>
+<li>las clases tienen código repetido</li>
+<li>las clases dejen de funcionar sin motivo aparente</li>
+</ul></li>
+</ul>
+</section>
+<section id="mejorarlo-principios-solid" class="slide level1">
+<h2><span class="header-section-number">2</span> Mejorarlo: principios SOLID</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 3%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 13%" />
+<col style="width: 3%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>S</strong></td>
+<td style="text-align: left;">SRP</td>
+<td style="text-align: left;">(The <strong>S</strong>ingle Responsibility Principle o <strong>Principio de Responsabilidad Única</strong>)</td>
+<td style="text-align: left;">Las clases se diseñan sólo para un propósito.</td>
+<td style="text-align: left;">Tom DeMarco</td>
+<td style="text-align: left;">1979</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>O</strong></td>
+<td style="text-align: left;">OCP</td>
+<td style="text-align: left;">(The <strong>O</strong>pen/Closed Principle o <strong>Principio Abierto/Cerrado</strong>)</td>
+<td style="text-align: left;">Las clases debe permitir ser extendidas, sin necesidad de ser modificadas.</td>
+<td style="text-align: left;">Bertrand Meyer</td>
+<td style="text-align: left;">1997</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>L</strong></td>
+<td style="text-align: left;">LSP</td>
+<td style="text-align: left;">(The <strong>L</strong>iskov Substitution Principle o <strong>Principio de Sustitución de Liskov</strong>)</td>
+<td style="text-align: left;">Las clases padre siempre deben poder ser sustituidas por sus clases hijas y viceversa.</td>
+<td style="text-align: left;">Barbara Liskov</td>
+<td style="text-align: left;">1988</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>I</strong></td>
+<td style="text-align: left;">ISP</td>
+<td style="text-align: left;">(The <strong>I</strong>nterface Segregation Principle o <strong>Principio de Segregación de Interfaces</strong>)</td>
+<td style="text-align: left;">Las clases no deben ser forzados a depender de interfaces con métodos que no utilizan.</td>
+<td style="text-align: left;">Robert C. Martin</td>
+<td style="text-align: left;">1995</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>D</strong></td>
+<td style="text-align: left;">DIP</td>
+<td style="text-align: left;">(The <strong>D</strong>ependency Inversion Principle o <strong>Principio de Inversión de Dependencias</strong>)</td>
+<td style="text-align: left;">Los clientes deben delegar la gestión de las instancias de objetos a las librerias.</td>
+<td style="text-align: left;">Martin Fowler</td>
+<td style="text-align: left;">2004</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cómo-utilizar-nuestras-clases" class="slide level1">
+<h2><span class="header-section-number">3</span> ¿Cómo utilizar nuestras clases?</h2>
+<ul>
+<li><strong>Colaboración</strong>
+<ul>
+<li>Cuando 2 o más clases colaboran de distintas formas (ver teoría POO)</li>
+</ul></li>
+<li><strong>Herencia</strong>
+<ul>
+<li>Cuando una clase hija extiende una clase padre.</li>
+</ul></li>
+<li>Error común
+<ul>
+<li>Aplicar herencia para todo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="herencia" class="slide level1">
+<h2><span class="header-section-number">4</span> Herencia</h2>
+<ul>
+<li>En Java no hay herencia múltiple pero una clase puede implementar varias Interfaces.</li>
+<li>Las <strong>Interfaces</strong> son clases que sólo definen métodos (comportamientos) y que obligan a las clases hijas a implementarlos.</li>
+<li>Las <strong>clases abstractas</strong> son clases que no se pueden instanciar, osea que sólo se pueden heredar. Implementan varios métodos, y definen otros como abstractos, obligando a las clases hijas a implementarlos.</li>
+</ul>
+</section>
+<section id="clases-padre-y-clases-hijas" class="slide level1">
+<h2><span class="header-section-number">5</span> Clases padre y clases hijas</h2>
+<ul>
+<li>El operador <strong>this</strong> hace referencia a la instancia concreta del objeto.</li>
+<li>El operador <strong>super</strong> hace referencia a la clase padre.</li>
+<li>Los métodos no marcados como final y/ como private, se pueden sobreescribir en las clases hijas (<strong>polimorfismo</strong>).</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

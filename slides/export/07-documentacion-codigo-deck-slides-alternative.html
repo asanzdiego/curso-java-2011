@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Documentación del código Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Documentación del código Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Documentación del código Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="el-javadoc" class="slide level1">
+<h2><span class="header-section-number">1</span> El Javadoc</h2>
+<ul>
+<li>Es una utilidad de para la generación de documentación de APIs en formato HTML.</li>
+<li>Es el estándar para documentar clases de Java.</li>
+<li>La mayoría de los IDEs los generan automáticamente.</li>
+<li><a href="http://download.oracle.com/javase/6/docs/api/">http://download.oracle.com/javase/6/docs/api/</a></li>
+<li>Han de usarse etiquetas HTML o ciertas palabras reservadas precedidas por &quot;@&quot;.</li>
+<li>Estas etiquetas se escriben al principio de cada clase, propiedad o método.</li>
+<li>Dentro de un comentario iniciado con /** y acabado con */.</li>
+</ul>
+</section>
+<section id="etiquetas-javadoc" class="slide level1">
+<h2><span class="header-section-number">2</span> Etiquetas Javadoc</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 57%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tag</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="author">@author</span></strong></td>
+<td style="text-align: left;">Nombre del desarrollador.</td>
+<td style="text-align: left;">nombre_autor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="deprecated">@deprecated</span></strong></td>
+<td style="text-align: left;">Indica que no se recomienda su uso porque puede desaparecer en versiones futuras.</td>
+<td style="text-align: left;">descripción</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="param">@param</span></strong></td>
+<td style="text-align: left;">Definición de un parámetro de un método.</td>
+<td style="text-align: left;">nombre_parámetro descripción_parámetro</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="return">@return</span></strong></td>
+<td style="text-align: left;">Informa de lo que devuelve el método. No usar en constructores o métodos &quot;void&quot;.</td>
+<td style="text-align: left;">descripción_retorno</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><span class="citation" data-cites="see">@see</span></strong></td>
+<td style="text-align: left;">Enlace a otro método o clase.</td>
+<td style="text-align: left;">referencia (#método(); clase#método(); paquete.clase; paquete.clase#método())</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><span class="citation" data-cites="throws">@throws</span></strong></td>
+<td style="text-align: left;">Excepción lanzada por el método.</td>
+<td style="text-align: left;">nombre_clase_excepción descripción_excepción</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplo" class="slide level1">
+<h2><span class="header-section-number">3</span> Ejemplo</h2>
+<pre><code>/**
+ * Retorna un &quot;Hola + nombre&quot;.
+ * Al ser el nombre obligatorio, si es nulo o vacío se lanzará una excepción.
+ *
+ * @author Adolfo Sanz De Diego (asanzdiego@gmail.com)
+ * @param nombre El nombre que queremos retornar con un &quot;Hola + nombre&quot;.
+ * @return Retorna &quot;Hola + nombre&quot;.
+ * @throws IllegalArgumentException Si nombre es null, está vacío o contiene solo espacios.
+ */
+public String retornaHolaNombre(final String nombre) throws IllegalArgumentException {
+  if (nombre == null || nombre.trim().equals(&quot;&quot;)) {
+     throw new Exception (&quot;El nombre no puede ser nulo o vacío&quot;);
+  } else {
+     this.titulo = titulo;
+  }
+}</code></pre>
+</section>
+<section id="diagramas-uml-automáticos" class="slide level1">
+<h2><span class="header-section-number">4</span> Diagramas UML automáticos</h2>
+<ul>
+<li><strong>GraphViz</strong>
+<ul>
+<li>Librería de software libre y multiplataforma para creación de <strong>gráficos</strong> a partir de textos simples.</li>
+</ul></li>
+<li><strong>UMLGraph</strong>
+<ul>
+<li>Permite la definición declarativa de <strong>diagramas UML de clases y de secuencia</strong>.</li>
+<li>Se puede integrar con Javadoc.</li>
+<li>Dos proyectos interesantes basados en UMLGraph:
+<ul>
+<li><strong>DotUML</strong> que integra UMLGraph en <strong>Maven</strong>.</li>
+<li><strong>LightUML</strong> que integra UMLGraph en <strong>Eclipse</strong>.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

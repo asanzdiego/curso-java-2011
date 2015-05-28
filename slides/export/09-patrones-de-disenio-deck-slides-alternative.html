@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Patrones de diseño" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Patrones de diseño</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Patrones de diseño</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="introducción" class="slide level1">
+<h2><span class="header-section-number">1</span> Introducción</h2>
+<ul>
+<li>Un patrón de diseño es una <strong>solución a un problema</strong> de diseño concreto.</li>
+<li>1995 publicación del libro <strong>Design Patterns</strong></li>
+<li><strong>Gang of Four</strong> (GoF): Erich Gamma, Richard Helm, Ralph Johnson y John Vlisides</li>
+</ul>
+</section>
+<section id="objetivos" class="slide level1">
+<h2><span class="header-section-number">2</span> Objetivos</h2>
+<ul>
+<li>Los patrones de diseño <strong>pretenden</strong>:
+<ul>
+<li>Proporcionar catálogos de elementos reusables en el diseño de sistemas software.</li>
+<li>Evitar la reiteración en la búsqueda de soluciones a problemas ya conocidos y solucionados anteriormente.</li>
+<li>Formalizar un vocabulario común entre diseñadores.</li>
+<li>Estandarizar el modo en que se realiza el diseño.</li>
+<li>Facilitar el aprendizaje de las nuevas generaciones de diseñadores condensando conocimiento ya existente.</li>
+</ul></li>
+<li>Asimismo, <strong>no pretenden</strong>:
+<ul>
+<li>Imponer ciertas alternativas de diseño frente a otras.</li>
+<li>Eliminar la creatividad inherente al proceso de diseño.</li>
+</ul></li>
+<li>A continuación se mostrarán <strong>algunos</strong> patrones de diseño (no todos).</li>
+</ul>
+</section>
+<section id="de-creación-singleton" class="slide level1">
+<h2><span class="header-section-number">3</span> De creación: Singleton</h2>
+<ul>
+<li>Garantiza la existencia de una única instancia para una clase.</li>
+</ul>
+<pre><code>public class Singleton {
+
+    private static Singleton INSTANCE = new Singleton();
+
+    // El constructor privado no permite que se genere un constructor por defecto
+    private Singleton() {}
+
+    public static Singleton getInstance() { return INSTANCE; }
+}</code></pre>
+</section>
+<section id="de-creación-factory" class="slide level1">
+<h2><span class="header-section-number">4</span> De creación: Factory</h2>
+<ul>
+<li>Una clase es la encargada de decidir que objeto crear dependiendo de algún parámetro.</li>
+</ul>
+<figure>
+<img src="../img/patron-factory.png" />
+</figure>
+</section>
+<section id="estructurales-decorator" class="slide level1">
+<h2><span class="header-section-number">5</span> Estructurales: Decorator</h2>
+<ul>
+<li>Nos permite no tener que crear sucesivas clases que hereden de la primera incorporando una nueva funcionalidad, sino otras que la implementan y se asocian a la primera.</li>
+</ul>
+<figure>
+<img src="../img/patron-decorator.png" />
+</figure>
+</section>
+<section id="estructurales-adapter" class="slide level1">
+<h2><span class="header-section-number">6</span> Estructurales: Adapter</h2>
+<ul>
+<li>Su finalidad es transformar la interfaz de programación de una clase en otra.</li>
+</ul>
+<figure>
+<img src="../img/patron-adapter.png" />
+</figure>
+</section>
+<section id="estructurales-proxy" class="slide level1">
+<h2><span class="header-section-number">7</span> Estructurales: Proxy</h2>
+<ul>
+<li>Un proxy hace de intermediario de otro objeto controlando su acceso (carga remota, verifica permisos, tareas adicionales, etc.).</li>
+</ul>
+<figure>
+<img src="../img/patron-proxy.png" />
+</figure>
+</section>
+<section id="de-comportamiento-observer" class="slide level1">
+<h2><span class="header-section-number">8</span> De comportamiento: Observer</h2>
+<ul>
+<li>La clase <strong>Sujeto</strong> contiene métodos mediante los cuales cualquier objeto <strong>Observador</strong> puede suscribirse pasándole una referencia a sí mismo. El objeto sujeto guarda una referencia de estos últimos a quienes notifica los cambios sucedidos.</li>
+</ul>
+<figure>
+<img src="../img/patron-observer.png" />
+</figure>
+</section>
+<section id="de-comportamiento-strategy" class="slide level1">
+<h2><span class="header-section-number">9</span> De comportamiento: Strategy</h2>
+<ul>
+<li>Permite mantener un conjunto de algoritmos de entre los cuales el objeto cliente puede elegir aquel que le conviene.</li>
+</ul>
+<figure>
+<img src="../img/patron-strategy.png" />
+</figure>
+</section>
+<section id="de-comportamiento-template" class="slide level1">
+<h2><span class="header-section-number">10</span> De comportamiento: Template</h2>
+<ul>
+<li>Define una serie de pasos en un método de la clase padre, pasos que deberán ser definidos en las clases hijas.</li>
+</ul>
+<figure>
+<img src="../img/patron-template.png" />
+</figure>
+</section>
+<section id="los-antipatrones" class="slide level1">
+<h2><span class="header-section-number">11</span> Los antipatrones</h2>
+<ul>
+<li>Un antipatrón es una solución comúnmente usada que suele ser ineficiente y/o contraproducente.</li>
+<li>Un buen programador procurará <strong>evitar los</strong> siempre que sea posible.</li>
+<li>Lo anterior requiere su reconocimiento e identificación tan pronto como sea posible.</li>
+</ul>
+</section>
+<section id="algunos-antipatrones-i" class="slide level1">
+<h2><span class="header-section-number">12</span> Algunos antipatrones (I)</h2>
+<ul>
+<li><strong>Acoplamiento secuencial</strong> (sequential coupling): Construir una clase que necesita que sus métodos se invoquen en un orden determinado</li>
+<li><strong>Código espagueti</strong> (spaghetti code): Construir sistemas cuya estructura es difícilmente comprensible.</li>
+<li><strong>Código ravioli</strong> (ravioli code): Construir sistemas con multitud de objetos muy débilmente conectados.</li>
+<li><strong>Complejidad no indispensable</strong> (accidental complexity): Dotar de complejidad innecesaria a una solución.</li>
+<li><strong>Números mágicos</strong> (magic numbers): Incluir en los algoritmos números concretos sin explicación aparente.</li>
+<li><strong>Cadenas mágicas</strong> (magic strings): Incluir cadenas de caracteres determinadas en el código fuente para hacer comparaciones.</li>
+<li><strong>Objeto todopoderoso</strong> (god object): Concentrar demasiada funcionalidad en una única clase.</li>
+</ul>
+</section>
+<section id="algunos-antipatrones-ii" class="slide level1">
+<h2><span class="header-section-number">13</span> Algunos antipatrones (II)</h2>
+<ul>
+<li><strong>Desarrollo conducido por quien prueba</strong> (tester driven development): Permitir que un proyecto software avance a base de extraer sus nuevos requisitos de los bugs.</li>
+<li><strong>Manejo de excepciones</strong> (exception handling): Emplear el mecanismo de manejo de excepciones del lenguaje para implementar la lógica general del programa.</li>
+<li><strong>Manejo de excepciones inútil</strong> (useless exception handling): Introducir condiciones para evitar que se produzcan excepciones en tiempo de ejecución, pero lanzar manualmente una excepción si dicha condición falla.</li>
+<li><strong>Ocultación de errores</strong> (error hiding): Capturar un error antes de que se muestre al usuario, y reemplazarlo por un mensaje sin importancia o ningún mensaje en absoluto.</li>
+<li><strong>Programación por excepción</strong> (coding by exception): Añadir trozos de código para tratar casos especiales a medida que se identifican.</li>
+</ul>
+</section>
+<section id="algunos-antipatrones-iii" class="slide level1">
+<h2><span class="header-section-number">14</span> Algunos antipatrones (III)</h2>
+<ul>
+<li><strong>Bala de plata</strong> (silver bullet): Asumir que nuestra solución técnica favorita puede resolver cualquier problema.</li>
+<li><strong>Martillo de oro</strong> (golden hammer): Asumir que nuestra solución favorita es universalmente aplicable, haciendo bueno el refrán a un martillo, todo son clavos.</li>
+<li><strong>Programación de copiar y pegar</strong> (copy and paste programming): Programar copiando y pegando código.</li>
+<li><strong>Programación por permutación</strong> (programming by permutation): Tratar de aproximarse a una solución modificando el código una y otra vez para ver si acaba por funcionar.</li>
+<li><strong>Reinventar la rueda</strong> (reinventing the wheel): Enfrentarse a las situaciones buscando soluciones desde cero, sin tener en cuenta que puedan existir ya otras soluciones para afrontar los mismos problemas.</li>
+<li><strong>Reinventar la rueda cuadrada</strong> (reinventing the square wheel): Crear una solución pobre cuando ya existe una buena.</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

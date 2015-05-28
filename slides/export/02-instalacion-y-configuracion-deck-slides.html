@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Instalación y configuración del entorno Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Instalación y configuración del entorno Java</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Instalación y configuración del entorno Java</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="requisitos-hardware-ram" class="slide level1">
+<h2><span class="header-section-number">1</span> Requisitos hardware (RAM)</h2>
+<ul>
+<li>Si queremos utilizar un IDE como Eclipse:
+<ul>
+<li>Windows: mínimo 2 GB, recomendable 3 GB</li>
+<li>Linux: mínimo 1 GB, recomendable 2 GB</li>
+</ul></li>
+</ul>
+</section>
+<section id="requisitos-mínimos" class="slide level1">
+<h2><span class="header-section-number">2</span> Requisitos mínimos</h2>
+<ul>
+<li><strong>JDK</strong> (Java Development Kit)
+<ul>
+<li>Imprescindible</li>
+</ul></li>
+<li><strong>IDE</strong> (Integrated Development Environment)
+<ul>
+<li>Muy recomendable
+<ul>
+<li>Compilador</li>
+<li>Autocompletado</li>
+<li>Refactoring</li>
+<li>Plugins
+<ul>
+<li>Chequeos</li>
+<li>Testing</li>
+<li>Control de versiones</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="requisitos-recomendados" class="slide level1">
+<h2><span class="header-section-number">3</span> Requisitos recomendados</h2>
+<ul>
+<li>Control de versiones (SVN, Git)
+<ul>
+<li>Historial del código</li>
+<li>Crear y unir ramas</li>
+<li>Versionado</li>
+</ul></li>
+<li>Gestión y empaquetamiento (Ant, Maven)
+<ul>
+<li>Compilación</li>
+<li>Chequeo</li>
+<li>Testing</li>
+<li>Empaquetamiento</li>
+</ul></li>
+<li>Integración continua (Hudson, Jenkins)
+<ul>
+<li>Lo anterior, cada vez que hay un cambio</li>
+</ul></li>
+</ul>
+</section>
+<section id="instalación-en-windows" class="slide level1">
+<h2><span class="header-section-number">4</span> Instalación en Windows</h2>
+<ul>
+<li>Descargar el JDK de:
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+</ul></li>
+<li>Instalar el JDK de:
+<ul>
+<li>Siguiente, siguiente, siguiente...</li>
+</ul></li>
+<li>Descargar Eclipse:
+<ul>
+<li><a href="http://eclipse.org/downloads/">http://eclipse.org/downloads/</a></li>
+</ul></li>
+<li>Descomprimir Eclipse en una carpeta:
+<ul>
+<li>Botón derecho, descomprimir...</li>
+</ul></li>
+</ul>
+</section>
+<section id="instalación-en-linux" class="slide level1">
+<h2><span class="header-section-number">5</span> Instalación en Linux</h2>
+<ul>
+<li>Abrir gestor de paquetes</li>
+<li>Instalar Eclipse (con sus dependencias)</li>
+<li><strong>Así de fácil</strong></li>
+</ul>
+</section>
+<section id="configuración" class="slide level1">
+<h2><span class="header-section-number">6</span> Configuración</h2>
+<ul>
+<li>Hoy en día, en principio, no hay que hacer nada.</li>
+<li>Único problema: tener varías JDK, JRE instaladas.</li>
+<li>En este último caso comprobar las variables de entorno:
+<ul>
+<li><strong>PATH</strong>: dónde busca los ejecutables el sistema</li>
+<li><strong>CLASSPATH</strong>: dónde busca la MV las clases del sistema</li>
+</ul></li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

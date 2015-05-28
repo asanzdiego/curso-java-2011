@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Curso de Java" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Curso de Java</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/reveal.css">
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" id="theme">
+  -->
+
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<link rel="stylesheet" href="../lib/reveal.js-master/css/print/pdf.css" type="text/css" media="print">
+
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <!--
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/black.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/beige.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/blood.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/league.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/moon.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/night.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/serif.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/simple.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/sky.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/solarized.css" type="text/css" media="print">
+  <link rel="stylesheet" href="../lib/reveal.js-master/css/theme/white.css" type="text/css" media="print">
+  -->
+
+  <!-- Overwrite images -->
+  <style type="text/css">
+    .reveal pre code {
+      background: rgba(255, 255, 255, 0.7);
+      color: rgba(0, 0, 0, 0.7);
+    }
+    .reveal section img {
+      margin: 15px 0px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    strong {
+      color: #777
+    }
+    a:hover {
+      text-decoration: underline !important;
+    }
+    h1.title {
+      font-size: 300% !important;
+    }
+    h1 {
+      font-size: 250% !important;
+    }
+    h2 {
+      font-size: 150% !important;
+    }
+    @media print { 
+      #only-print-parent { display: table !important; } 
+      #only-print-child { display: table-cell !important; vertical-align: middle;}
+      h1.title { font-size: 350% !important;}
+      h1 { font-size: 300% !important; }
+      h2 { font-size: 200% !important; }
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="only-print-parent">
+    <div id="only-print-child">
+      <h1 class="title">Curso de Java</h2>
+      <h2 class="author">Adolfo Sanz De Diego</h2>
+      <h3 class="date">Junio de 2011</h3>
+    </div>
+</section>
+
+<section id="este-curso-pretende-ser" class="slide level1">
+<h2><span class="header-section-number">1</span> Este curso pretende ser</h2>
+<ul>
+<li>Una introducción al <strong>lenguaje Java</strong></li>
+<li>Una introducción a la POO (<strong>Programación Orientada a Objetos</strong>)</li>
+<li>Una introducción a los aspectos más importantes del <strong>desarrollo de software</strong> hoy en día:
+<ul>
+<li>documentación de código y aplicaciones</li>
+<li>patrones de diseño</li>
+<li>metodologías ágiles</li>
+<li>desarrollo guiado por pruebas</li>
+<li>control de versiones</li>
+<li>empaquetado de aplicaciones</li>
+<li>integración continua</li>
+</ul></li>
+<li>Una introducción a los IDE (<strong>Entornos de Desarrollo Integrado</strong>)</li>
+<li>Una introducción a la <strong>persistencia de datos</strong> en Java.</li>
+</ul>
+</section>
+<section id="este-curso-no-pretende-ser" class="slide level1">
+<h2><span class="header-section-number">2</span> Este curso NO pretende ser</h2>
+<ul>
+<li>Una guía paso a paso sino más bien un <strong>guión</strong>.</li>
+<li>Un curso avanzado de Java, de hecho no veremos muchas cosas:
+<ul>
+<li>ni frameworks</li>
+<li>ni Swing (aplicaciones de escritorio)</li>
+<li>ni JEE (aplicaciones web)</li>
+<li>ni Android (aplicaciones móviles)</li>
+<li>ni etc. etc. etc.</li>
+</ul></li>
+<li>Un curso avanzado de POO.</li>
+<li>Un curso avanzado de desarrollo de software.</li>
+<li>Un curso avanzado de entornos de desarrollo integrado.</li>
+<li>Un curso avanzado de persistencia de datos en Java.</li>
+</ul>
+</section>
+<section id="contenidos-de-curso-i" class="slide level1">
+<h2><span class="header-section-number">3</span> Contenidos de curso (I)</h2>
+<ul>
+<li><strong>Día 1</strong>
+<ul>
+<li>U.T. 1 - Introducción a Java.</li>
+<li>U.T. 2 - Instalación y configuración del entorno.</li>
+<li>U.T. 3 - Sintaxis del lenguaje.</li>
+</ul></li>
+<li><strong>Día 2</strong>
+<ul>
+<li>U.T. 4 - Clases y objetos.</li>
+<li>U.T. 5 - Utilización avanzada de clases.</li>
+</ul></li>
+<li><strong>Día 3</strong>
+<ul>
+<li>U.T. 6 - Estructuras de datos.</li>
+<li>U.T. 7 - Documentación del código.</li>
+</ul></li>
+</ul>
+</section>
+<section id="contenidos-de-curso-ii" class="slide level1">
+<h2><span class="header-section-number">4</span> Contenidos de curso (II)</h2>
+<ul>
+<li><strong>Día 4</strong>
+<ul>
+<li>U.T. 8 - Documentación de las aplicaciones.</li>
+<li>U.T. 9 - Patrones de diseño.</li>
+</ul></li>
+<li><strong>Día 5</strong>
+<ul>
+<li>U.T. 10 - Desarrollo guiado por pruebas.</li>
+<li>U.T. 11 - Desarrollo de aplicaciones en el mundo real.</li>
+</ul></li>
+</ul>
+</section>
+<section id="contenidos-de-curso-iii" class="slide level1">
+<h2><span class="header-section-number">5</span> Contenidos de curso (III)</h2>
+<ul>
+<li><strong>Día 6</strong>
+<ul>
+<li>U.T. 12 - Lectura y escritura de información estándar.</li>
+<li>U.T. 13 - Lectura y escritura de ficheros.</li>
+</ul></li>
+<li><strong>Día 7</strong>
+<ul>
+<li>U.T. 14 - Trabajo con bases de datos mediante JDBC.</li>
+<li>U.T. 15 - Persistencia de objetos con JPA.</li>
+</ul></li>
+</ul>
+</section>
+<section id="resumen-y-conclusiones" class="slide level1">
+<h2><span class="header-section-number">6</span> Resumen y conclusiones</h2>
+<ul>
+<li>Resumen:
+<ul>
+<li><strong>Muchos contenidos</strong>
+<ul>
+<li>podríamos ver incluso más cosas que por falta de tiempo no se van a ver.</li>
+</ul></li>
+<li><strong>Pocas horas</strong></li>
+</ul></li>
+<li>Conclusión
+<ul>
+<li>Se ruega:
+<ul>
+<li><strong>Puntualidad</strong></li>
+<li><strong>Silencio</strong></li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="../lib/reveal.js-master/lib/js/head.min.js"></script>
+  <script src="../lib/reveal.js-master/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+      });
+    </script>
+  </body>
+</html>

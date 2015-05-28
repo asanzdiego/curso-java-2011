@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="APENDICE I - Guión desarrollo aplicación Java en Linux" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>APENDICE I - Guión desarrollo aplicación Java en Linux</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">APENDICE I - Guión desarrollo aplicación Java en Linux</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#instalar-java"><span class="toc-section-number">1</span> Instalar Java</a></li>
+<li><a href="#instalar-mysql"><span class="toc-section-number">2</span> Instalar MySQL</a></li>
+<li><a href="#otras-instalaciones"><span class="toc-section-number">3</span> Otras instalaciones</a></li>
+<li><a href="#maven"><span class="toc-section-number">4</span> Maven</a></li>
+<li><a href="#maven-y-eclipse"><span class="toc-section-number">5</span> Maven y Eclipse</a></li>
+<li><a href="#plugins-de-eclipse"><span class="toc-section-number">6</span> Plugins de Eclipse</a></li>
+<li><a href="#plugins-de-maven"><span class="toc-section-number">7</span> Plugins de Maven</a></li>
+<li><a href="#sonar"><span class="toc-section-number">8</span> Sonar</a></li>
+<li><a href="#sonar-y-maven"><span class="toc-section-number">9</span> Sonar y Maven</a></li>
+<li><a href="#sonar-y-eclipse"><span class="toc-section-number">10</span> Sonar y Eclipse</a></li>
+<li><a href="#enlazar-url-proyectos-con-sonar"><span class="toc-section-number">11</span> Enlazar URL proyectos con Sonar:</a></li>
+</ul>
+</nav>
+<h1 id="instalar-java"><span class="header-section-number">1</span> Instalar Java</h1>
+<p>Eclipse (con su dependencia de Java)</p>
+<pre><code>apt-get install eclipse</code></pre>
+<p>Los fuentes de Java</p>
+<ul>
+<li><p>Se instalan en /usr/lib/jvm/java-6-openjdk/srz.zip</p></li>
+<li><p>Utiles para debug en el Eclipse</p></li>
+</ul>
+<pre><code>apt-get install openjdk-6-source</code></pre>
+<h1 id="instalar-mysql"><span class="header-section-number">2</span> Instalar MySQL</h1>
+<p>MySQL Server</p>
+<pre><code>apt-get install mysql-server</code></pre>
+<p>MySQL Workbench</p>
+<ul>
+<li>Descargar e instalar el paquete DEB para ubuntu:
+<ul>
+<li><a href="http://dev.mysql.com/downloads/workbench/">http://dev.mysql.com/downloads/workbench/</a></li>
+</ul></li>
+</ul>
+<h1 id="otras-instalaciones"><span class="header-section-number">3</span> Otras instalaciones</h1>
+<p>GraphViz y PlotUtils (necesarios para UMLGraph)</p>
+<pre><code>apt-get install graphviz
+apt-get install plotutils</code></pre>
+<h1 id="maven"><span class="header-section-number">4</span> Maven</h1>
+<p>Instalar maven2</p>
+<pre><code>apt-get install maven2</code></pre>
+<p>Crear un proyecto:</p>
+<pre><code>mvn archetype:generate</code></pre>
+<p>Construir un proyecto:</p>
+<pre><code>mvn clean install site</code></pre>
+<h1 id="maven-y-eclipse"><span class="header-section-number">5</span> Maven y Eclipse</h1>
+<p>Para instalar un plugin en Eclipse:</p>
+<ul>
+<li><p><strong>Help &gt; Install New Software...</strong></p></li>
+<li><p><a href="http://m2eclipse.sonatype.org/installing-m2eclipse.html">http://m2eclipse.sonatype.org/installing-m2eclipse.html</a></p></li>
+</ul>
+<p>Nos permite:</p>
+<ul>
+<li><p>crear/importar proyectos maven</p></li>
+<li><p>descarga y actualiza dependencias automaticamente</p></li>
+<li><p>editor visual de pom.xml</p></li>
+<li><p>presentación gráfica de dependencias</p></li>
+</ul>
+<h1 id="plugins-de-eclipse"><span class="header-section-number">6</span> Plugins de Eclipse</h1>
+<p>Para instalar un plugin en Eclipse:</p>
+<ul>
+<li><strong>Help &gt; Install New Software...</strong></li>
+</ul>
+<p>Plugins:</p>
+<ul>
+<li><strong>PDM</strong>:
+<ul>
+<li><a href="http://pmd.sourceforge.net/eclipse/">http://pmd.sourceforge.net/eclipse/</a></li>
+</ul></li>
+<li><strong>CheckStyle</strong>:
+<ul>
+<li><a href="http://eclipse-cs.sf.net/update/">http://eclipse-cs.sf.net/update/</a></li>
+</ul></li>
+<li><strong>FindBugs</strong>:
+<ul>
+<li><a href="http://findbugs.cs.umd.edu/eclipse/">http://findbugs.cs.umd.edu/eclipse/</a></li>
+</ul></li>
+</ul>
+<h1 id="plugins-de-maven"><span class="header-section-number">7</span> Plugins de Maven</h1>
+<p>pom.xml</p>
+<pre><code>&lt;reporting&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      ...
+    &lt;/plugin&gt;
+    &lt;plugin&gt;
+      ...
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/reporting&gt;</code></pre>
+<p>UmlGraphDoc</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+  &lt;configuration&gt;
+    &lt;show&gt;private&lt;/show&gt;
+    &lt;doclet&gt;org.umlgraph.doclet.UmlGraphDoc&lt;/doclet&gt;
+    &lt;docletArtifact&gt;
+      &lt;groupId&gt;org.umlgraph&lt;/groupId&gt;
+      &lt;artifactId&gt;doclet&lt;/artifactId&gt;
+      &lt;version&gt;5.1&lt;/version&gt;
+    &lt;/docletArtifact&gt;
+    &lt;additionalparam&gt;
+  -attributes -operations -visibility -types -enumerations -enumconstants -views -hide java.*
+  -inferdep -inferdepinpackage -inferdepvis -inferrel -inferreltype
+    &lt;/additionalparam&gt;
+    &lt;useStandardDocletOptions&gt;true&lt;/useStandardDocletOptions&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+<p>PMD</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-pmd-plugin&lt;/artifactId&gt;
+  &lt;version&gt;2.5&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;targetJdk&gt;1.5&lt;/targetJdk&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+<p>CheckStyle</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-checkstyle-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;</code></pre>
+<p>FindBugs</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+  &lt;artifactId&gt;findbugs-maven-plugin&lt;/artifactId&gt;
+&lt;/plugin&gt;</code></pre>
+<p>Cobertura</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+  &lt;artifactId&gt;cobertura-maven-plugin&lt;/artifactId&gt;
+  &lt;configuration&gt;
+    &lt;formats&gt;
+      &lt;format&gt;html&lt;/format&gt;
+      &lt;format&gt;xml&lt;/format&gt;
+    &lt;/formats&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+<h1 id="sonar"><span class="header-section-number">8</span> Sonar</h1>
+<p>Descargar desde:</p>
+<ul>
+<li><a href="http://www.sonarsource.org/downloads/">http://www.sonarsource.org/downloads/</a></li>
+</ul>
+<p>Descomprimir donde guste:</p>
+<ul>
+<li><strong>$SONAR/</strong></li>
+</ul>
+<p>Ejecutar sql para crear esquema:</p>
+<ul>
+<li><strong>$SONAR/extras/database/mysql/create_database.sql</strong></li>
+</ul>
+<p>Comentar derby y descomentar mysql en fichero de propiedades:</p>
+<ul>
+<li><strong>$SONAR/conf/sonar.properties</strong></li>
+</ul>
+<p>Arrancar/Parar/Reiniciar el servidor:</p>
+<ul>
+<li><strong>$SONAR/bin/[OS]/sonar.sh start|stop|restart</strong></li>
+</ul>
+<h1 id="sonar-y-maven"><span class="header-section-number">9</span> Sonar y Maven</h1>
+<p>Crear: <strong>$HOME/.m2/settings.xml</strong></p>
+<pre><code>&lt;settings&gt;
+    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;sonar&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+            &lt;/activation&gt;
+            &lt;properties&gt;
+                 &lt;sonar.jdbc.url&gt;
+                  jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;amp;characterEncoding=utf8
+                &lt;/sonar.jdbc.url&gt;
+                &lt;sonar.jdbc.driverClassName&gt;com.mysql.jdbc.Driver&lt;/sonar.jdbc.driverClassName&gt;
+                &lt;sonar.jdbc.username&gt;sonar&lt;/sonar.jdbc.username&gt;
+                &lt;sonar.jdbc.password&gt;sonar&lt;/sonar.jdbc.password&gt;
+                &lt;sonar.host.url&gt;http://localhost:9000&lt;/sonar.host.url&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+     &lt;/profiles&gt;
+&lt;/settings&gt;</code></pre>
+<p>En la carpeta del proyecto</p>
+<pre><code>mvn sonar:sonar</code></pre>
+<p>Ir a un navegador:</p>
+<ul>
+<li><a href="http://localhost:9000">http://localhost:9000</a></li>
+</ul>
+<h1 id="sonar-y-eclipse"><span class="header-section-number">10</span> Sonar y Eclipse</h1>
+<p>Para instalar un plugin en Eclipse:</p>
+<ul>
+<li><p><strong>Help &gt; Install New Software...</strong></p></li>
+<li><p><a href="http://dist.sonar-ide.codehaus.org/eclipse/">http://dist.sonar-ide.codehaus.org/eclipse/</a></p></li>
+</ul>
+<p>Enlazar un proyecto:</p>
+<ul>
+<li>Botón derecho en la carpeta del proyecto: <strong>Configure &gt; Associate with Sonar...</strong></li>
+</ul>
+<h1 id="enlazar-url-proyectos-con-sonar"><span class="header-section-number">11</span> Enlazar URL proyectos con Sonar:</h1>
+<p>Instalar <strong>Tomcat</strong>: (valdría también Apache)</p>
+<pre><code>apt-get install tomcat6</code></pre>
+<p>Enlace simbólico del workspace de <strong>Eclipse</strong> al webapps de Tomcat:</p>
+<pre><code>sudo ln -s $HOME/workspace /var/lib/tomcat6/webapps/</code></pre>
+<p>modificar URL del proyecto en su <strong>pom.xml</strong></p>
+<pre><code>&lt;url&gt;http://localhost:8080/workspace/NOMBRE-PROYECTO/target/site/...html&lt;/url&gt;</code></pre>
+</body>
+</html>

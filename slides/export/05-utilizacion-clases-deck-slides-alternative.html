@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="Utilización avanzada de clases" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Utilización avanzada de clases</title>
+
+  <!-- deck core css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/core/deck.core.css">
+
+  <!-- deck extensions css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/extensions/status/deck.status.css">
+
+  <!-- deck slide theme css -->
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/neon.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/swiss.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/style/web-2.0.css">
+  -->
+
+  <!-- deck slide transition css -->
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <!--
+  <link rel="stylesheet" href="../lib/deck.js-transition-cube-master/cube.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/fade.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/horizontal-slide.css">
+  <link rel="stylesheet" href="../lib/deck.js-master/themes/transition/vertical-slide.css">
+  -->
+
+  <!-- custom css just for this page -->
+  <style>
+    figcaption {
+      display: none;
+      visibility:hidden;
+    }
+
+    #titlepage, #documentauthor, #documentdate {
+      text-align: center;
+    }
+
+    #titlepage {
+      font-size: 5.25em;
+      padding-top: 15%;
+    }
+
+    #documentauthor {
+      font-size: 2.25em;
+    }
+
+    #documentdate {
+      font-size: 1.25em;
+    }
+  </style>
+
+  <!-- modernizr deck js  -->
+  <script src="../lib/deck.js-master/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container">
+<section class="slide">
+  <h2 id="titlepage">Utilización avanzada de clases</h2>
+  <h3 id="documentauthor">Adolfo Sanz De Diego</h3>
+  <h4 id="documentdate">Junio de 2011</h4>
+</section>
+
+<section id="diseño-incorrecto" class="slide level1">
+<h2><span class="header-section-number">1</span> ¿Diseño incorrecto?</h2>
+<ul>
+<li>¿Cómo sabemos si nuestro diseño es incorrecto?
+<ul>
+<li>las clases son difíciles de cambiar</li>
+<li>las clases son difíciles de reutilizar</li>
+<li>las clases son difíciles de usar</li>
+<li>las clases tienen código repetido</li>
+<li>las clases dejen de funcionar sin motivo aparente</li>
+</ul></li>
+</ul>
+</section>
+<section id="mejorarlo-principios-solid" class="slide level1">
+<h2><span class="header-section-number">2</span> Mejorarlo: principios SOLID</h2>
+<table>
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 3%" />
+<col style="width: 37%" />
+<col style="width: 37%" />
+<col style="width: 13%" />
+<col style="width: 3%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>S</strong></td>
+<td style="text-align: left;">SRP</td>
+<td style="text-align: left;">(The <strong>S</strong>ingle Responsibility Principle o <strong>Principio de Responsabilidad Única</strong>)</td>
+<td style="text-align: left;">Las clases se diseñan sólo para un propósito.</td>
+<td style="text-align: left;">Tom DeMarco</td>
+<td style="text-align: left;">1979</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>O</strong></td>
+<td style="text-align: left;">OCP</td>
+<td style="text-align: left;">(The <strong>O</strong>pen/Closed Principle o <strong>Principio Abierto/Cerrado</strong>)</td>
+<td style="text-align: left;">Las clases debe permitir ser extendidas, sin necesidad de ser modificadas.</td>
+<td style="text-align: left;">Bertrand Meyer</td>
+<td style="text-align: left;">1997</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>L</strong></td>
+<td style="text-align: left;">LSP</td>
+<td style="text-align: left;">(The <strong>L</strong>iskov Substitution Principle o <strong>Principio de Sustitución de Liskov</strong>)</td>
+<td style="text-align: left;">Las clases padre siempre deben poder ser sustituidas por sus clases hijas y viceversa.</td>
+<td style="text-align: left;">Barbara Liskov</td>
+<td style="text-align: left;">1988</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>I</strong></td>
+<td style="text-align: left;">ISP</td>
+<td style="text-align: left;">(The <strong>I</strong>nterface Segregation Principle o <strong>Principio de Segregación de Interfaces</strong>)</td>
+<td style="text-align: left;">Las clases no deben ser forzados a depender de interfaces con métodos que no utilizan.</td>
+<td style="text-align: left;">Robert C. Martin</td>
+<td style="text-align: left;">1995</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>D</strong></td>
+<td style="text-align: left;">DIP</td>
+<td style="text-align: left;">(The <strong>D</strong>ependency Inversion Principle o <strong>Principio de Inversión de Dependencias</strong>)</td>
+<td style="text-align: left;">Los clientes deben delegar la gestión de las instancias de objetos a las librerias.</td>
+<td style="text-align: left;">Martin Fowler</td>
+<td style="text-align: left;">2004</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cómo-utilizar-nuestras-clases" class="slide level1">
+<h2><span class="header-section-number">3</span> ¿Cómo utilizar nuestras clases?</h2>
+<ul>
+<li><strong>Colaboración</strong>
+<ul>
+<li>Cuando 2 o más clases colaboran de distintas formas (ver teoría POO)</li>
+</ul></li>
+<li><strong>Herencia</strong>
+<ul>
+<li>Cuando una clase hija extiende una clase padre.</li>
+</ul></li>
+<li>Error común
+<ul>
+<li>Aplicar herencia para todo.</li>
+</ul></li>
+</ul>
+</section>
+<section id="herencia" class="slide level1">
+<h2><span class="header-section-number">4</span> Herencia</h2>
+<ul>
+<li>En Java no hay herencia múltiple pero una clase puede implementar varias Interfaces.</li>
+<li>Las <strong>Interfaces</strong> son clases que sólo definen métodos (comportamientos) y que obligan a las clases hijas a implementarlos.</li>
+<li>Las <strong>clases abstractas</strong> son clases que no se pueden instanciar, osea que sólo se pueden heredar. Implementan varios métodos, y definen otros como abstractos, obligando a las clases hijas a implementarlos.</li>
+</ul>
+</section>
+<section id="clases-padre-y-clases-hijas" class="slide level1">
+<h2><span class="header-section-number">5</span> Clases padre y clases hijas</h2>
+<ul>
+<li>El operador <strong>this</strong> hace referencia a la instancia concreta del objeto.</li>
+<li>El operador <strong>super</strong> hace referencia a la clase padre.</li>
+<li>Los métodos no marcados como final y/ como private, se pueden sobreescribir en las clases hijas (<strong>polimorfismo</strong>).</li>
+</ul>
+</section>
+
+<!--footer id="footer">
+  <h4 class="author"> Adolfo Sanz De Diego  - Junio de 2011</h4>
+</footer-->
+
+<!-- deck goto extension html -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck navigation extension html -->
+<div aria-role="navigation">
+  <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+  <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+</div>
+
+<!-- deck status extension html -->
+<p class="deck-status" aria-role="status">
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
+</p>
+
+<!-- jquery  -->
+<script src="../lib/deck.js-master/jquery.min.js"></script>
+
+<!-- deck core js  -->
+<script src="../lib/deck.js-master/core/deck.core.js"></script>
+
+<!-- deck extension js -->
+<script src="../lib/deck.js-master/extensions/goto/deck.goto.js"></script>
+<script src="../lib/deck.js-master/extensions/menu/deck.menu.js"></script>
+<script src="../lib/deck.js-master/extensions/navigation/deck.navigation.js"></script>
+<script src="../lib/deck.js-master/extensions/scale/deck.scale.js"></script>
+<script src="../lib/deck.js-master/extensions/status/deck.status.js"></script>
+<!--script src="../lib/deck.search.js-master/search/deck.search.js"></script-->
+
+<!-- Initialize the deck. -->
+<script>
+$(function() {
+    $.deck('.slide');
+});
+</script>
+
+</body>
+</html>

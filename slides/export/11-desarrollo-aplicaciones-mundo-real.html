@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Desarrollo aplicaciones mundo real" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Desarrollo aplicaciones mundo real</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Desarrollo aplicaciones mundo real</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#desarrollo-en-cascada"><span class="toc-section-number">1</span> Desarrollo en cascada</a></li>
+<li><a href="#desarrollos-ágiles"><span class="toc-section-number">2</span> Desarrollos ágiles</a></li>
+<li><a href="#control-de-versiones"><span class="toc-section-number">3</span> Control de versiones</a></li>
+<li><a href="#construcción-de-proyectos-ant"><span class="toc-section-number">4</span> Construcción de proyectos: Ant</a></li>
+<li><a href="#construcción-de-proyectos-maven"><span class="toc-section-number">5</span> Construcción de proyectos: Maven</a></li>
+<li><a href="#métricas-de-código"><span class="toc-section-number">6</span> Métricas de código</a></li>
+<li><a href="#herramientas-de-métricas-de-código"><span class="toc-section-number">7</span> Herramientas de métricas de código</a></li>
+<li><a href="#ventajas-de-las-métricas-de-código"><span class="toc-section-number">8</span> Ventajas de las métricas de código</a></li>
+<li><a href="#integración-continua"><span class="toc-section-number">9</span> Integración Continua</a></li>
+<li><a href="#esquema-integración-continua"><span class="toc-section-number">10</span> Esquema Integración Continua</a></li>
+<li><a href="#ventajas-de-la-integración-continua"><span class="toc-section-number">11</span> Ventajas de la Integración Continua</a></li>
+</ul>
+</nav>
+<h1 id="desarrollo-en-cascada"><span class="header-section-number">1</span> Desarrollo en cascada</h1>
+<p>En <strong>declive</strong>.</p>
+<p>Enfoque metodológico que ordena <strong>rigurosamente</strong> las etapas del ciclo de vida del software, de tal forma que el inicio de cada etapa debe esperar a la finalización de la inmediatamente anterior.</p>
+<p><strong>Etapas</strong>: 1. Análisis de requisitos 2. Diseño del Sistema 3. Diseño del Programa 4. Codificación 5. Pruebas 6. Implantación 7. Mantenimiento</p>
+<h1 id="desarrollos-ágiles"><span class="header-section-number">2</span> Desarrollos ágiles</h1>
+<p>En <strong>auge</strong>.</p>
+<p>Promueve <strong>iteraciones</strong> en el desarrollo a lo largo de todo el ciclo de vida del proyecto.</p>
+<p>Cada iteración del ciclo de vida incluye: planificación, análisis, diseño, codificación, revisión y documentación.</p>
+<p>Una iteración no debe agregar demasiada funcionalidad pues la meta es tener un demo (sin errores) al final de cada iteración.</p>
+<p>Al final de cada iteración el equipo vuelve a evaluar las prioridades del proyecto.</p>
+<p>Los métodos ágiles enfatizan las comunicaciones cara a cara en vez de la documentación.</p>
+<p>Muy ligado con <strong>TDD</strong>.</p>
+<h1 id="control-de-versiones"><span class="header-section-number">3</span> Control de versiones</h1>
+<p>Definición</p>
+<ul>
+<li><p>Gestionan los diversos <strong>cambios</strong> que se realizan sobre el código.</p></li>
+<li><p>Posibilitan el acceso al <strong>histórico</strong> de un determinado elemento o un conjunto de ellos, pudiendo normalmente volver a un estado anterior.</p></li>
+<li><p>Facilitan la administración de las distintas <strong>versiones</strong> de cada producto desarrollado.</p></li>
+</ul>
+<p>Funcionamiento</p>
+<ul>
+<li><p>Disponen de un <strong>repositorio</strong>, que contiene el historial de todos los elementos.</p></li>
+<li><p>Para trabajar, los usuarios se crean una copia local de la versión con la que quieren trabajar (<strong>checkout</strong>).</p></li>
+<li><p>Cuando el usuario termina, sube los cambios de nuevo al repositorio (<strong>commit</strong>)</p></li>
+</ul>
+<p>Ventajas</p>
+<ul>
+<li>Control del código a lo largo del tiempo.</li>
+</ul>
+<p>Tipos</p>
+<ul>
+<li><strong>Centralizados</strong>: existe un repositorio centralizado de todo el código, del cual es responsable un único usuario (o conjunto de ellos).
+<ul>
+<li>Ejemplo: <strong>Subversion</strong></li>
+</ul></li>
+<li><strong>Distribuidos</strong>: cada usuario tiene su propio repositorio.
+<ul>
+<li>Ejemplo: <strong>Git</strong></li>
+</ul></li>
+</ul>
+<h1 id="construcción-de-proyectos-ant"><span class="header-section-number">4</span> Construcción de proyectos: Ant</h1>
+<p>Herramienta <strong>simple y multi-propósito</strong> usada para la realización de tareas mecánicas y repetitivas</p>
+<p>Hecha en Java, tiene la ventaja de no depender de las órdenes del shell de cada sistema operativo, sino que se basa en archivos de configuración XML y clases Java para la realización de las distintas tareas, siendo idónea como solución <strong>multi-plataforma</strong>.</p>
+<p>Usada normalmente durante la fase de compilación y construcción de proyectos de software.</p>
+<h1 id="construcción-de-proyectos-maven"><span class="header-section-number">5</span> Construcción de proyectos: Maven</h1>
+<p>Herramienta de software para la <strong>gestión y construcción de proyectos Java</strong>.</p>
+<p>Es capaz de gestionar <strong>dependencias</strong> entre proyectos.</p>
+<p>Hay <strong>plugins</strong> para generar el JavaDoc, ejecutar los tests, lanzar métricas, etc.</p>
+<p>Está pensado para usarse en red, para la gestión de dependencias y plugins.</p>
+<p>El ciclo de vida de un proyecto Maven se divide en <strong>metas</strong>, de tal forma que para ejecutar cualquier meta, todas las anteriores han debido ser completadas satisfactoriamente.</p>
+<p>Las metas del ciclo de vida principal (existen otras) de un proyecto son: 1. compile 2. test 3. package 4. install 5. deploy</p>
+<h1 id="métricas-de-código"><span class="header-section-number">6</span> Métricas de código</h1>
+<p>Definición</p>
+<ul>
+<li>Son un conjunto de <strong>medidas de software</strong> que proporcionan una mejor visión del código que se está desarrollando.</li>
+</ul>
+<p>Algunos tipos</p>
+<ul>
+<li><p>Errores potenciales</p></li>
+<li><p>Reglas de codificación</p></li>
+<li><p>Número de comentarios</p></li>
+<li><p>Número de líneas de código (por método, clase, paquete)</p></li>
+<li><p>Complejidad ciclomática</p></li>
+<li><p>Duplicidad del código</p></li>
+<li><p>Cobertura de pruebas del código</p></li>
+<li><p>Profundidad de las herencias de las clases</p></li>
+<li><p>Acoplamiento de clases</p></li>
+<li><p>etc.</p></li>
+</ul>
+<h1 id="herramientas-de-métricas-de-código"><span class="header-section-number">7</span> Herramientas de métricas de código</h1>
+<p>Herramientas (muchas tienen plugins para eclipse y/o maven)</p>
+<ul>
+<li><p><strong>Checkstyle</strong> (convenciones de codificación)</p></li>
+<li><p><strong>PMD</strong> (busca en el código ciertos patrones de error)</p></li>
+<li><p><strong>Findbugs</strong> (realiza análisis estático de código en busca de errores)</p></li>
+<li><p><strong>JDepend</strong> (proporciona métricas de cálidad entre los paquetes de un proyecto en términos de su extensibilidad, reusabilidad, y mantenibilidad.)</p></li>
+<li><p><strong>JavaNCSS</strong> (permite recoger métricas sobre el código fuente, como el número de líneas, paquetes, clases o métodos.)</p></li>
+<li><p><strong>Cobertura</strong> (permite calcular la cantidad de código al que acceden los tests)</p></li>
+</ul>
+<p>Plataformas</p>
+<ul>
+<li><strong>Sonar</strong> integra todos las anteriores herramientas en una.</li>
+</ul>
+<h1 id="ventajas-de-las-métricas-de-código"><span class="header-section-number">8</span> Ventajas de las métricas de código</h1>
+<p>Cómo desarrollador:</p>
+<ul>
+<li><p>Aprendes a <strong>programar mejor</strong>.</p></li>
+<li><p>Aprendes a <strong>detectar errores comunes</strong>.</p></li>
+<li><p>Aprendes <strong>las reglas de codificación</strong>.</p></li>
+<li><p><strong>Cuantificas la calidad</strong> de tú software.</p></li>
+</ul>
+<p>Cómo docente:</p>
+<ul>
+<li>Se pueden pasar métricas al código entregado por los alumnos para <strong>corregir prácticas y exámenes automáticamente</strong>.</li>
+</ul>
+<h1 id="integración-continua"><span class="header-section-number">9</span> Integración Continua</h1>
+<p>Definición</p>
+<ul>
+<li><p>Consiste en hacer <strong>integraciones automáticas</strong> de un proyecto lo más a menudo posible para así poder detectar fallos cuanto antes.</p></li>
+<li><p>Cada cierto tiempo, o cada vez que se hace un commit: 1. <strong>descargarse las fuentes</strong> desde el gestor de control de versiones, 2. <strong>compilar el código</strong>, 3. <strong>ejecutar los tests</strong> 4. y <strong>generar informes</strong>.</p></li>
+</ul>
+<p>Los servidores de Integración Continua más conocidos actualmente para Java son <strong>Hudson y Jenkins</strong>.</p>
+<h1 id="esquema-integración-continua"><span class="header-section-number">10</span> Esquema Integración Continua</h1>
+<div style="text-align:center">
+<img src="../img/integracion-continua.png" />
+</div>
+<h1 id="ventajas-de-la-integración-continua"><span class="header-section-number">11</span> Ventajas de la Integración Continua</h1>
+<p>Los desarrolladores pueden <strong>detectar y solucionar problemas</strong> de integración de forma continua, evitando el caos de última hora cuando se acercan las fechas de entrega.</p>
+<p>Disponibilidad constante de un <strong>empaquetado</strong> para pruebas, demos o lanzamientos anticipados.</p>
+<p>Ejecución inmediata de los <strong>tests unitarias</strong>.</p>
+<p>Monitorización continua de las <strong>métricas de calidad</strong> del proyecto.</p>
+</body>
+</html>

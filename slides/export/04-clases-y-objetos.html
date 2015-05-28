@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="description" content="Clases y objetos" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <title>Clases y objetos</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Clases y objetos</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio de 2011</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#conceptos"><span class="toc-section-number">1</span> Conceptos</a></li>
+<li><a href="#el-modificador-static"><span class="toc-section-number">2</span> El modificador 'static'</a></li>
+<li><a href="#el-modificador-final"><span class="toc-section-number">3</span> El modificador 'final'</a></li>
+<li><a href="#el-modificador-abstract"><span class="toc-section-number">4</span> El modificador 'abstract'</a></li>
+<li><a href="#el-modificador-transient"><span class="toc-section-number">5</span> El modificador 'transient'</a></li>
+<li><a href="#modificadores-de-visibilidad"><span class="toc-section-number">6</span> Modificadores de visibilidad</a></li>
+<li><a href="#constructores"><span class="toc-section-number">7</span> Constructores</a></li>
+<li><a href="#destructores"><span class="toc-section-number">8</span> Destructores</a></li>
+<li><a href="#inversión-de-dependencias"><span class="toc-section-number">9</span> Inversión de Dependencias</a></li>
+</ul>
+</nav>
+<h1 id="conceptos"><span class="header-section-number">1</span> Conceptos</h1>
+<p><strong>Clase</strong></p>
+<ul>
+<li>Conjunto propiedades y métodos que modifican (o no) dichas propiedades.</li>
+</ul>
+<p><strong>Objeto</strong></p>
+<ul>
+<li>Instancia de una clase.</li>
+</ul>
+<h1 id="el-modificador-static"><span class="header-section-number">2</span> El modificador 'static'</h1>
+<p>Asocia una propiedad o un método a la clase, y no al objeto.</p>
+<p>La propiedad o método marcado como <strong>static</strong> se 'comparte' entre todas las instancias de la clase.</p>
+<h1 id="el-modificador-final"><span class="header-section-number">3</span> El modificador 'final'</h1>
+<p><strong>Clase</strong></p>
+<ul>
+<li>No permite que se herede de ella.</li>
+</ul>
+<p><strong>Propiedad</strong></p>
+<ul>
+<li>No permite que se modifique.</li>
+</ul>
+<p><strong>Método</strong></p>
+<ul>
+<li>No permite que se sobrescriba en clases hijas.</li>
+</ul>
+<h1 id="el-modificador-abstract"><span class="header-section-number">4</span> El modificador 'abstract'</h1>
+<p><strong>Clase</strong></p>
+<ul>
+<li>La convierte en abstracta obligando a sus clases hijas a sobrescribirlos métodos abstractos.</li>
+</ul>
+<p><strong>Método</strong></p>
+<ul>
+<li>Dentro de una clase abstracta los distintos métodos que las clases hijas deben de sobreescribir obligatoriamente.</li>
+</ul>
+<h1 id="el-modificador-transient"><span class="header-section-number">5</span> El modificador 'transient'</h1>
+<p><strong>Propiedad</strong></p>
+<ul>
+<li>Indica que no es parte persistente del objeto (serialización).</li>
+</ul>
+<h1 id="modificadores-de-visibilidad"><span class="header-section-number">6</span> Modificadores de visibilidad</h1>
+<table>
+<colgroup>
+<col style="width: 2%" />
+<col style="width: 16%" />
+<col style="width: 15%" />
+<col style="width: 23%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">La misma</td>
+<td style="text-align: center;">Otra clase del</td>
+<td style="text-align: center;">Subclase de</td>
+<td style="text-align: center;">Otra clase de</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: center;">clase</td>
+<td style="text-align: center;">mismo paquete</td>
+<td style="text-align: center;">otro paquete</td>
+<td style="text-align: center;">otro paquete</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">public**</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">protected**</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">default**</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">**</td>
+<td style="text-align: left;">private**</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h1 id="constructores"><span class="header-section-number">7</span> Constructores</h1>
+<p>Métodos que se llaman igual que la propia clase.</p>
+<p>Si no hay ninguno se aplica el por defecto.</p>
+<p>Puede haber uno o varios.</p>
+<p>Pueden tener o no parámetros.</p>
+<p>Para instanciar:</p>
+<ul>
+<li>Objeto o = new Objeto();</li>
+</ul>
+<p>Las clases abstractas no se pueden instanciar.</p>
+<h1 id="destructores"><span class="header-section-number">8</span> Destructores</h1>
+<p>No existen destructores.</p>
+<p>El <strong>recolector de basura</strong>:</p>
+<ul>
+<li><p>Es quien se encarga de destruir objetos.</p></li>
+<li><p>Es un mecanismo complicado.</p></li>
+<li><p>De forma sencilla: destruye los objetos que ya no son referenciados en ningún sitio.</p></li>
+<li><p>Problemas: ej. referenciar en un Array objetos que ya no se usan.</p></li>
+<li><p>Soluciones: ej. Objeto o = null; (pero con esto sólo borras una referencia y puede haber más)</p></li>
+</ul>
+<h1 id="inversión-de-dependencias"><span class="header-section-number">9</span> Inversión de Dependencias</h1>
+<p>Los términos fueron acuñados por <strong>Martin Fowler</strong> en el 2004.</p>
+<p>Intentan reducir el acoplamiento entre componentes.</p>
+<p><strong>Inyección de dependencias</strong></p>
+<ul>
+<li>Es un <strong>patrón de diseño</strong> orientado a objetos, en el que se suministran objetos a una clase en lugar de ser la propia clase quien cree el objeto.</li>
+</ul>
+<p><strong>Inversión de control</strong></p>
+<ul>
+<li><p>Implementación del <strong>Principio de Hollywood</strong> cuyo nombre proviene de las típicas respuestas que se les dan a los actores amateurs: <strong>no nos llames; nosotros te llamaremos</strong>.</p></li>
+<li><p>En este caso es la libreria la que llama al código y no al revés.</p></li>
+<li><p>Consiste en delegar la gestión de las instancias en un <strong>contenedor</strong>.</p></li>
+<li><p>Ejemplos: <strong>Spring</strong> y <strong>Google Guice</strong>.</p></li>
+</ul>
+</body>
+</html>
